@@ -151,6 +151,51 @@
                         </select>
                     </form>
                 </div>
+
+                <h2>Checkbox Elements</h2>
+
+                <div class="viewport-checkbox">
+                    <form>
+                        <label>
+                            Updated from model?
+                            <input type="checkbox" name="update-from-model" value="updated using applier"/>
+                        </label>
+
+                        <label>
+                            Updated from markup?
+                           <input type="checkbox" name="update-from-markup" value="updated using form controls"/>
+                        </label>
+
+                        <label>
+                            Initialized from model?
+                            <input type="checkbox" name="init-from-model"/>
+                        </label>
+
+                        <label>
+                            Initialized from markup?
+                            <input type="checkbox" name="init-from-markup" checked="true"/>
+                        </label>
+
+                        <hr/>
+
+                        <h3>Group of checkboxes with the same name attribute.</h3>
+
+                        <label>
+                            foo:
+                            <input type="checkbox" name="checkbox-groups" id="checkbox-group-foo" value="foo"/>
+                        </label>
+
+                        <label>
+                            bar:
+                            <input type="checkbox" name="checkbox-groups" id="checkbox-group-bar" value="bar"/>
+                        </label>
+
+                        <label>
+                            No value:
+                            <input type="checkbox" name="checkbox-groups"/>
+                        </label>
+                    </form>
+                </div>
             </div>
         </div>
 
@@ -162,6 +207,7 @@
             var textarea = gpii.tests.binder.long(".viewport-textarea");
             var select   = gpii.tests.binder.long(".viewport-select");
             var radio    = gpii.tests.binder.radio(".viewport-radio");
+            var checkbox = gpii.tests.binder.checkbox(".viewport-checkbox");
         </script>
     </body>
 </html>

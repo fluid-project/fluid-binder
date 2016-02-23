@@ -327,6 +327,59 @@ fluid.defaults("gpii.binder.tests.caseHolder", {
                 ]
             },
             {
+                name: "Confirm that a single form update to the 'checkbox' component results in a model update...",
+                sequence: [
+                    {
+                        func: "{testEnvironment}.browser.goto",
+                        args: ["{testEnvironment}.options.url"]
+                    },
+                    {
+                        event:    "{testEnvironment}.browser.events.onGotoComplete",
+                        listener: "{testEnvironment}.browser.check",
+                        args:     [".viewport-checkbox input[name='update-from-markup']"]
+                    },
+                    {
+                        event:    "{testEnvironment}.browser.events.onCheckComplete",
+                        listener: "{testEnvironment}.browser.evaluate",
+                        args:     [ gpii.tests.browser.tests.getGlobalValue, "checkbox.model.updateFromMarkup"]
+                    },
+                    {
+                        event:    "{testEnvironment}.browser.events.onEvaluateComplete",
+                        listener: "jqUnit.assertDeepEq",
+                        args:     ["The 'checkbox' field should have been updated based on a form change...", ["{testEnvironment}.options.toSet.fromMarkup"], "{arguments}.0"]
+                    }
+                ]
+            },
+            {
+                name: "Confirm that ticking multiple items in an array of checkboxes results in a model update...",
+                sequence: [
+                    {
+                        func: "{testEnvironment}.browser.goto",
+                        args: ["{testEnvironment}.options.url"]
+                    },
+                    {
+                        event:    "{testEnvironment}.browser.events.onGotoComplete",
+                        listener: "{testEnvironment}.browser.check",
+                        args:     ["#checkbox-group-foo"]
+                    },
+                    {
+                        event:    "{testEnvironment}.browser.events.onCheckComplete",
+                        listener: "{testEnvironment}.browser.check",
+                        args:     ["#checkbox-group-bar"]
+                    },
+                    {
+                        event:    "{testEnvironment}.browser.events.onCheckComplete",
+                        listener: "{testEnvironment}.browser.evaluate",
+                        args:     [ gpii.tests.browser.tests.getGlobalValue, "checkbox.model.array"]
+                    },
+                    {
+                        event:    "{testEnvironment}.browser.events.onEvaluateComplete",
+                        listener: "jqUnit.assertDeepEq",
+                        args:     ["The 'checkbox' array should have been updated based on form changes...", ["foo", "bar"], "{arguments}.0"]
+                    }
+                ]
+            },
+            {
                 name: "Test updating 'long' form value using model change applier...",
                 sequence: [
                     {
@@ -447,7 +500,7 @@ fluid.defaults("gpii.binder.tests.caseHolder", {
                 ]
             },
             {
-                name: "Test updating 'radio' form value using model change applier...",
+                name: "Test updating 'checkbox' form value using model change applier...",
                 sequence: [
                     {
                         func: "{testEnvironment}.browser.goto",
@@ -456,17 +509,41 @@ fluid.defaults("gpii.binder.tests.caseHolder", {
                     {
                         event:    "{testEnvironment}.browser.events.onGotoComplete",
                         listener: "{testEnvironment}.browser.evaluate",
-                        args:     [gpii.binder.tests.applyChange , "radio", "updateFromModel", "{testEnvironment}.options.toSet.fromApplier"]
+                        args:     [gpii.binder.tests.applyChange , "checkbox", "updateFromModel", "{testEnvironment}.options.toSet.fromApplier"]
                     },
                     {
                         event:    "{testEnvironment}.browser.events.onEvaluateComplete",
                         listener: "{testEnvironment}.browser.evaluate",
-                        args:     [gpii.tests.browser.tests.lookupFunction, ".viewport-radio [name='update-from-model']:checked", "value"]
+                        args:     [gpii.tests.browser.tests.lookupFunction, ".viewport-checkbox [name='update-from-model']", "value"]
                     },
                     {
                         event:     "{testEnvironment}.browser.events.onEvaluateComplete",
                         listener: "jqUnit.assertEquals",
-                        args:      ["The 'radio' form field should have been updated with new model data...", "{testEnvironment}.options.toSet.fromApplier", "{arguments}.0"]
+                        args:      ["The 'checkbox' form field should have been updated with new model data...", "{testEnvironment}.options.toSet.fromApplier", "{arguments}.0"]
+                    }
+                ]
+            },
+            {
+                name: "Test updating and array of 'checkbox' form values using model change applier...",
+                sequence: [
+                    {
+                        func: "{testEnvironment}.browser.goto",
+                        args: ["{testEnvironment}.options.url"]
+                    },
+                    {
+                        event:    "{testEnvironment}.browser.events.onGotoComplete",
+                        listener: "{testEnvironment}.browser.evaluate",
+                        args:     [gpii.binder.tests.applyChange , "checkbox", "array", ["bar","foo"]]
+                    },
+                    {
+                        event:    "{testEnvironment}.browser.events.onEvaluateComplete",
+                        listener: "{testEnvironment}.browser.evaluate",
+                        args:     [gpii.tests.browser.tests.lookupFunction, "[name='checkbox-groups']:checked", "value"]
+                    },
+                    {
+                        event:     "{testEnvironment}.browser.events.onEvaluateComplete",
+                        listener: "jqUnit.assertDeepEq",
+                        args:      ["The 'checkbox' form field should have been updated with new model data...", ["foo","bar"], "{arguments}.0"]
                     }
                 ]
             }

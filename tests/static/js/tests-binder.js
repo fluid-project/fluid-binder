@@ -108,3 +108,36 @@ fluid.defaults("gpii.tests.binder.radio", {
         }
     }
 });
+
+// Component to test support for checkboxes
+fluid.defaults("gpii.tests.binder.checkbox", {
+    gradeNames: ["gpii.tests.binder.base"],
+    model: {
+        initFromModel: ["on"]
+    },
+    selectors: {
+        array: "input[name='checkbox-groups']"
+    },
+    bindings: {
+        initFromModel: {
+            selector: "initFromModel",
+            path:     "initFromModel"
+        },
+        initFromMarkup: {
+            selector: "initFromMarkup",
+            path:     "initFromMarkup"
+        },
+        updateFromModel: {
+            selector: "updateFromModel",
+            path:     "updateFromModel"
+        },
+        updateFromMarkup: {
+            selector: "updateFromMarkup",
+            path:     "updateFromMarkup"
+        },
+        array: {
+            selector: "array",
+            path:     "array"
+        }
+    }
+});
