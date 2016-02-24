@@ -3,8 +3,7 @@
     Add persistent bindings between a selector and a model value.  Changes are propagated between the two. See the
     documentation for more details:
 
-    https://github.com/the-t-in-rtf/gpii-binder/blob/GPII-1579/
-
+    https://github.com/GPII/gpii-binder/
 
     This code was originally written by Antranig Basman <amb26@ponder.org.uk> and with his advice was updated and
     extended by Tony Atkins <tony@raisingthefloor.org>.
