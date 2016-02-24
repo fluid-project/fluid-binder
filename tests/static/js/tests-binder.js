@@ -17,7 +17,7 @@ fluid.defaults("gpii.tests.binder.base", {
     },
     listeners: {
         "onCreate.applyBinding": {
-            funcName: "gpii.templates.binder.applyBinding",
+            funcName: "gpii.binder.applyBinding",
             args:     ["{that}"]
         }
     }
