@@ -37,8 +37,7 @@
 
                     var elementValue = fluid.value(element);
 
-                    // Standardize non-values and empty strings as `null` per https://issues.gpii.net/browse/GPII-1580
-                    that.applier.change(path, (elementValue && elementValue.length > 0) ? elementValue : null);
+                    that.applier.change(path, elementValue);
                 });
 
                 // Update the form elements when the model changes
