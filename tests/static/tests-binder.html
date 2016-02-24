@@ -100,6 +100,14 @@
                     </form>
                 </div>
 
+                <!-- markup for "short notation" tests -->
+                <h2>To Be Cleared</h2>
+                <div class="viewport-toBeCleared">
+                    <form>
+                        <input type="text" name="to-be-cleared" value="initialized from markup"/>
+                    </form>
+                </div>
+
                 <!-- markup for "array notation" tests -->
                 <h2>Array Notation</h2>
                 <div class="viewport-array">
@@ -201,13 +209,14 @@
 
         <script type="text/javascript">
             <!-- instantiate test components -->
-            var long     = gpii.tests.binder.long(".viewport-long");
-            var short    = gpii.tests.binder.short(".viewport-short");
-            var array    = gpii.tests.binder.array(".viewport-array");
-            var textarea = gpii.tests.binder.long(".viewport-textarea");
-            var select   = gpii.tests.binder.long(".viewport-select");
-            var radio    = gpii.tests.binder.radio(".viewport-radio");
-            var checkbox = gpii.tests.binder.checkbox(".viewport-checkbox");
+            var long        = gpii.tests.binder.long(".viewport-long");
+            var short       = gpii.tests.binder.short(".viewport-short");
+            var array       = gpii.tests.binder.array(".viewport-array");
+            var toBeCleared = gpii.tests.binder.toBeCleared(".viewport-toBeCleared");
+            var textarea    = gpii.tests.binder.long(".viewport-textarea");
+            var select      = gpii.tests.binder.long(".viewport-select");
+            var radio       = gpii.tests.binder.radio(".viewport-radio");
+            var checkbox    = gpii.tests.binder.checkbox(".viewport-checkbox");
         </script>
     </body>
 </html>

@@ -217,6 +217,76 @@ fluid.defaults("gpii.binder.tests.caseHolder", {
                 ]
             },
             {
+                name: "Confirm that a form update to the 'short' component results in a model update...",
+                sequence: [
+                    {
+                        func: "{testEnvironment}.browser.goto",
+                        args: ["{testEnvironment}.options.url"]
+                    },
+                    {
+                        event: "{testEnvironment}.browser.events.onGotoComplete",
+                        listener: "{testEnvironment}.browser.type",
+                        args: [".viewport-short [name='update-from-markup']", "{testEnvironment}.options.toSet.fromMarkup"]
+                    },
+                    // We need to manually change focus to propagate the change through to the model.
+                    // TODO:  Once we have keypress support, update this to tab away.
+                    {
+                        event:    "{testEnvironment}.browser.events.onTypeComplete",
+                        listener: "{testEnvironment}.browser.click",
+                        args:     [".avert-your-focus"]
+                    },
+                    {
+                        event: "{testEnvironment}.browser.events.onClickComplete",
+                        listener: "{testEnvironment}.browser.evaluate",
+                        args: [gpii.tests.browser.tests.getGlobalValue, "short.model.updateFromMarkup"]
+                    },
+                    {
+                        event: "{testEnvironment}.browser.events.onEvaluateComplete",
+                        listener: "jqUnit.assertEquals",
+                        args: ["The 'short' field should have been updated based on a form change...", "{testEnvironment}.options.toSet.fromMarkup", "{arguments}.0"]
+                    }
+                ]
+            },
+            {
+                name: "Confirm that clearing out a text field sets the associated model value to `null`...",
+                sequence: [
+                    {
+                        func: "{testEnvironment}.browser.goto",
+                        args: ["{testEnvironment}.options.url"]
+                    },
+                    {
+                        event:    "{testEnvironment}.browser.events.onGotoComplete",
+                        listener: "{testEnvironment}.browser.type",
+                        // Sending backspaces is currently the only way to clear a field that results in the browser
+                        // firing the `change` event for the element.  Our binder listens to the `change` event.  Since
+                        // Nightmare's `insert` method uses `element.value` to clear the existing value, that event is
+                        // never fired.
+                        //
+                        // For background on the change event, see: https://api.jquery.com/change/
+                        //
+                        // For the bug reported against Nightmare, see : https://github.com/segmentio/nightmare/issues/499
+                        args:     [".viewport-toBeCleared input[name='to-be-cleared']", "\b\b\b\b\b\b\b\b\b\b\b"]
+                    },
+                    // We need to manually change focus to propagate the change through to the model.
+                    // TODO:  Once we have keypress support, update this to tab away.
+                    {
+                        event:    "{testEnvironment}.browser.events.onTypeComplete",
+                        listener: "{testEnvironment}.browser.click",
+                        args:     [".avert-your-focus"]
+                    },
+                    {
+                        event: "{testEnvironment}.browser.events.onClickComplete",
+                        listener: "{testEnvironment}.browser.evaluate",
+                        args: [gpii.tests.browser.tests.getGlobalValue, "toBeCleared.model.toBeCleared"]
+                    },
+                    {
+                        event:    "{testEnvironment}.browser.events.onEvaluateComplete",
+                        listener: "jqUnit.assertEquals",
+                        args:     ["The model value should have been cleared out when we cleared the text field...", undefined, "{arguments}.0"]
+                    }
+                ]
+            },
+            {
                 name: "Confirm that a form update to the 'array' component results in a model update...",
                 sequence: [
                     {

@@ -3,7 +3,7 @@
 "use strict";
 
 fluid.registerNamespace("gpii.tests.binder");
-// Base grade for all components
+// Base grade for (almost) all components
 fluid.defaults("gpii.tests.binder.base", {
     gradeNames: ["fluid.viewComponent"],
     model: {
@@ -138,6 +138,25 @@ fluid.defaults("gpii.tests.binder.checkbox", {
         array: {
             selector: "array",
             path:     "array"
+        }
+    }
+});
+
+fluid.defaults("gpii.tests.binder.toBeCleared", {
+    gradeNames: ["fluid.viewComponent"],
+    model: {
+        toBeCleared: "Model value"
+    },
+    selectors: {
+        toBeCleared: "[name='to-be-cleared']"
+    },
+    bindings: {
+        toBeCleared: "toBeCleared"
+    },
+    listeners: {
+        "onCreate.applyBinding": {
+            funcName: "gpii.templates.binder.applyBinding",
+            args:     ["{that}"]
         }
     }
 });
