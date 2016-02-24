@@ -14,16 +14,16 @@
 (function () {
     "use strict";
     var gpii = fluid.registerNamespace("gpii");
-    fluid.registerNamespace("gpii.templates.binder");
+    fluid.registerNamespace("gpii.binder");
 
     /**
      *
      * The main function to create bindings between markup and model elements.  See above for usage details.
      *
      * @param that - A fluid viewComponent with `options.bindings` and `options.selectors` defined.
-     * 
+     *
      */
-    gpii.templates.binder.applyBinding = function (that) {
+    gpii.binder.applyBinding = function (that) {
         var bindings = that.options.bindings;
         fluid.each(bindings, function (value, key) {
             var path     = typeof value === "string" ? value : value.path;

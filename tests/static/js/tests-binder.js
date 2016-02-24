@@ -155,7 +155,7 @@ fluid.defaults("gpii.tests.binder.toBeCleared", {
     },
     listeners: {
         "onCreate.applyBinding": {
-            funcName: "gpii.templates.binder.applyBinding",
+            funcName: "gpii.binder.applyBinding",
             args:     ["{that}"]
         }
     }

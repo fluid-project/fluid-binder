@@ -12,7 +12,7 @@ primary (and tested use case is in working with form elements, specifically:
 * `<textarea>` fields
 * `<select>` fields
 
-Once you run `gpii.templates.binder.applyBinding(component)` (see "Static Functions" below), a "binding" is created
+Once you run `gpii.binder.applyBinding(component)` (see "Static Functions" below), a "binding" is created
 between any selectors and model variables referenced in`options.binding` (see "Supported options" for the format).
 
 Once a binding exists, changes to a bound model sent using [the change applier](http://docs.fluidproject.org/infusion/development/ChangeApplier.html)
@@ -26,7 +26,7 @@ updated the value using browser events *and* change focus.  For more details, se
 
 # Supported options
 
-The `gpii.templates.binder.applyBinding` function provided by this package can only do its work if you have the
+The `gpii.binder.applyBinding` function provided by this package can only do its work if you have the
 following options defined:
 
 | Option             | Type     | Description |
@@ -77,7 +77,7 @@ You can use both forms together, as in:
 
 # Static Functions
 
-## `gpii.templates.binder.applyBinding(component)`
+## `gpii.binder.applyBinding(component)`
 * `component` `{Object}` - A fluid `viewComponent` with both `selectors` and `bindings` options defined (see above).
 * Returns: Nothing.
 
@@ -87,7 +87,7 @@ For example, if all required markup already exists on startup, you can simply bi
 
     listeners: {
         "onCreate.applyBindings": {
-            "funcName": "gpii.templates.binder.applyBinding",
+            "funcName": "gpii.binder.applyBinding",
             "args":     "{that}"
         }
     }
@@ -96,13 +96,13 @@ For an example of using the binder with static markup, see the tests in this pac
 
 ### Bindings and dynamic markup
 
-If your component generates or regenerates markup, you will need to call `gpii.templates.binder.applyBinding(component)`
+If your component generates or regenerates markup, you will need to call `gpii.binder.applyBinding(component)`
 whenever it changes.  Best practice is to call `fluid.initDomBinder` when you have finished manipulating the DOM and
 then listen for the `viewComponent`'s `onDomBind` event, as in:
 
     listeners: {
         "onCreate.applyBindings": {
-            "funcName": "gpii.templates.binder.applyBinding",
+            "funcName": "gpii.binder.applyBinding",
             "args":     "{that}"
         }
     }
