@@ -1,10 +1,10 @@
 # `gpii-binder`
 
-This package provides a mechanism for "binding" [Fluid view component](http://docs.fluidproject.org/infusion/development/tutorial-gettingStartedWithInfusion/ViewComponents.html) model variables to DOM elements using [selectors](http://docs.fluidproject.org/infusion/development/tutorial-gettingStartedWithInfusion/ViewComponents.html#selectors).
+This package provides a mechanism for binding [Fluid view component](http://docs.fluidproject.org/infusion/development/tutorial-gettingStartedWithInfusion/ViewComponents.html) model variables to DOM elements using [selectors](http://docs.fluidproject.org/infusion/development/tutorial-gettingStartedWithInfusion/ViewComponents.html#selectors).
 
 You can bind to any DOM element whose value can be read and set using
 [`fluid.value`](http://docs.fluidproject.org/infusion/development/ViewAPI.html#fluid-value-nodein-newvalue-), but the
-primary (and tested use case is in working with form elements, specifically:
+primary (and tested) use case is binding model variables to form elements, specifically:
 
 * text `<input>` fields
 * radio `<input>` fields
@@ -12,7 +12,7 @@ primary (and tested use case is in working with form elements, specifically:
 * `<textarea>` fields
 * `<select>` fields
 
-Once you run `gpii.binder.applyBinding(component)` (see "Static Functions" below), a "binding" is created
+Once you run `gpii.binder.applyBinding(component)` (see "Static Functions" below), a binding is created
 between any selectors and model variables referenced in`options.binding` (see "Supported options" for the format).
 
 Once a binding exists, changes to a bound model sent using [the change applier](http://docs.fluidproject.org/infusion/development/ChangeApplier.html)
