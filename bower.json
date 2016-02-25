@@ -1,16 +1,16 @@
 {
   "name": "gpii-binder",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "homepage": "https://github.com/GPII/gpii-binder",
   "authors": [
     "Tony <tony@raisingthefloor.org>"
   ],
   "description": "A Fluid component library that creates live bindings between model data and views.",
   "moduleType": [
-    "amd"
+    "globals"
   ],
-  "license": "See LICENSE file for details.",
-  "private": true,
+  "license": "BSD-3-Clause",
+  "private": false,
   "main": [
     "./src/js/binder.js"
   ],

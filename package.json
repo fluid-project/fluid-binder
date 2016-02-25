@@ -1,7 +1,7 @@
 {
   "name": "gpii-binder",
-  "version": "0.0.1",
-  "private": true,
+  "version": "1.0.0",
+  "private": false,
   "license": "BSD-3-Clause",
   "repository": "https://github.com/GPII/gpii-binder",
   "scripts": {
@@ -9,13 +9,13 @@
     "test": "node tests/all-tests.js"
   },
   "devDependencies": {
-    "node-jqunit": "~1.1.3",
     "gpii-express": "git://github.com/the-t-in-rtf/gpii-express#4d0314d123ccc543da41a4cd1fc5471d4260e24a",
     "gpii-test-browser": "git://github.com/the-t-in-rtf/gpii-test-browser#04a45c1683e69ae9453f55b049c96b90cac32c39",
     "grunt": "~0.4.4",
-    "grunt-shell": "0.6.4",
     "grunt-contrib-jshint": "~0.9.0",
     "grunt-jsonlint": "1.0.4",
-    "infusion": "2.0.0-dev.20151211T025229Z.eabb4fc"
+    "grunt-shell": "0.6.4",
+    "infusion": "2.0.0-dev.20151211T025229Z.eabb4fc",
+    "node-jqunit": "~1.1.3"
   }
 }
