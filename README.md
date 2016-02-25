@@ -40,14 +40,14 @@ There are two ways of specifying bindings.  The "long form" has named keys (as i
 supports the following options:
 
 * selector: A valid selector for your component.  Must be able to be resolved using `that.locate(selector)`
-* path: A valid path for the model variable whose value will be watched.  Must be able to be resolved using `fluid.get(path)`.
+* path: A valid path for the model variable whose value will be watched.  Must be able to be resolved using `fluid.get(that.model, path)`.
 
 The "long form" looks like:
 
     bindings: {
-        "key": {
-            selector: "selector1",
-            path:     "path1"
+        "<key>": {
+            selector: "<selector1>",
+            path:     "<path1>"
         }
     }
 
@@ -57,7 +57,7 @@ The "long form" looks like:
 The "short form" uses the selector as the key, and the path as a string value (as in the second example above).
 
     bindings: {
-        "selector2": "path2"
+        "<selector2>": "<path2>"
     }
 
 
@@ -66,11 +66,11 @@ The "short form" uses the selector as the key, and the path as a string value (a
 You can use both forms together, as in:
 
     bindings: {
-        "key": {
-            selector: "selector1",
-            path:     "path1"
+        "<key>": {
+            selector: "<selector1>",
+            path:     "<path1>"
         },
-        "selector2": "path2"
+        "<selector2>": "<path2>"
     }
 
 
