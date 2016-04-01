@@ -5,7 +5,6 @@
   "license": "BSD-3-Clause",
   "repository": "https://github.com/GPII/gpii-binder",
   "scripts": {
-    "postinstall": "bower install",
     "test": "testem ci"
   },
   "devDependencies": {
