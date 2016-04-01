@@ -1,1 +1,0 @@
-require("./js/browser-binder-tests");

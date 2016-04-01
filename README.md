@@ -109,3 +109,7 @@ then listen for the `viewComponent`'s `onDomBind` event, as in:
 
 See the `templateAware` grade in [the `gpii-handlebars` package](https://github.com/GPII/gpii-handlebars) for a working
 example of dynamically updating bindings.
+
+# Tests
+
+To run the tests in this package, you  must have [testem](https://github.com/testem/testem) installed.

@@ -1,0 +1,96 @@
+<html>
+    <head>
+        <title>Unit Tests for Binder Module checkbox support...</title>
+
+        <!-- Bring in jQuery and other dependencies -->
+        <script type="text/javascript" src="../../node_modules/infusion/src/lib/jquery/core/js/jquery.js"></script>
+
+        <!-- Bring in fluid dependencies -->
+        <script type="text/javascript" src="../../node_modules/infusion/src/framework/core/js/Fluid.js"></script>
+        <script type="text/javascript" src="../../node_modules/infusion/src/framework/core/js/FluidDocument.js"></script>
+        <script type="text/javascript" src="../../node_modules/infusion/src/framework/core/js/FluidDOMUtilities.js"></script>
+        <script type="text/javascript" src="../../node_modules/infusion/src/framework/core/js/FluidIoC.js"></script>
+        <script type="text/javascript" src="../../node_modules/infusion/src/framework/core/js/DataBinding.js"></script>
+        <script type="text/javascript" src="../../node_modules/infusion/src/framework/core/js/FluidView.js"></script>
+        <script type="text/javascript" src="../../node_modules/infusion/src/framework/core/js/ModelTransformation.js"></script>
+        <script type="text/javascript" src="../../node_modules/infusion/src/framework/core/js/ModelTransformationTransforms.js"></script>
+        <script type="text/javascript" src="../../node_modules/infusion/src/framework/enhancement/js/ContextAwareness.js"></script>
+        <script type="text/javascript" src="../../node_modules/infusion/src/framework/enhancement/js/ProgressiveEnhancement.js"></script>
+
+        <script type="text/javascript" src="../../node_modules/infusion/tests/test-core/utils/js/IoCTestUtils.js"></script>
+
+        <!-- QUnit/jqUnit dependencies -->
+        <script type="text/javascript" src="../../node_modules/infusion/tests/lib/qunit/js/qunit.js"></script>
+        <script type="text/javascript" src="../../node_modules/infusion/tests/test-core/jqUnit/js/jqUnit.js"></script>
+        <script type="text/javascript" src="../../node_modules/infusion/tests/test-core/jqUnit/js/jqUnit-browser.js"></script>
+
+        <!-- Express test infrastructure, used in our caseHolder -->
+        <script type="text/javascript" src="../../node_modules/gpii-express/tests/js/lib/test-helpers.js"></script>
+
+        <!-- Our test fixtures -->
+        <script type="text/javascript" src="./js/tests-fixtures.js"></script>
+
+        <!-- Bring in client library being tested -->
+        <script type="text/javascript" src="../../src/js/binder.js"></script>
+
+        <link rel="stylesheet" href="../../node_modules/node-jqunit/node_modules/infusion/tests/lib/qunit/css/qunit.css"/>
+
+        <script src="/testem.js"></script>
+    </head>
+    <body>
+        <h1 id="qunit-header">"Checkbox" Component Tests</h1>
+        <h2 id="qunit-banner"></h2>
+        <div id="qunit-testrunner-toolbar"></div>
+        <h2 id="qunit-userAgent"></h2>
+        <ol id="qunit-tests"></ol>
+
+        <!-- Test HTML -->
+        <div id="qunit-fixture">
+            <div class="viewport-checkbox">
+                <form>
+                    <label>
+                        Updated from model?
+                        <input type="checkbox" name="update-from-model" value="updated using applier"/>
+                    </label>
+
+                    <label>
+                        Updated from markup?
+                        <input type="checkbox" name="update-from-markup" value="updated using form controls"/>
+                    </label>
+
+                    <label>
+                        Initialized from model?
+                        <input type="checkbox" name="init-from-model"/>
+                    </label>
+
+                    <label>
+                        Initialized from markup?
+                        <input type="checkbox" name="init-from-markup" checked="true"/>
+                    </label>
+
+                    <hr/>
+
+                    <h3>Group of checkboxes with the same name attribute.</h3>
+
+                    <label>
+                        foo:
+                        <input type="checkbox" name="checkbox-groups" id="checkbox-group-foo" value="foo"/>
+                    </label>
+
+                    <label>
+                        bar:
+                        <input type="checkbox" name="checkbox-groups" id="checkbox-group-bar" value="bar"/>
+                    </label>
+
+                    <label>
+                        No value:
+                        <input type="checkbox" name="checkbox-groups"/>
+                    </label>
+                </form>
+            </div>
+        </div>
+
+        <!-- our QUnit tests -->
+        <script type="text/javascript" src="./js/jqunit/jqunit-binder-checkbox.js"></script>
+    </body>
+</html>

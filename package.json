@@ -6,11 +6,10 @@
   "repository": "https://github.com/GPII/gpii-binder",
   "scripts": {
     "postinstall": "bower install",
-    "test": "node tests/all-tests.js"
+    "test": "testem ci"
   },
   "devDependencies": {
-    "gpii-express": "git://github.com/the-t-in-rtf/gpii-express#4d0314d123ccc543da41a4cd1fc5471d4260e24a",
-    "gpii-test-browser": "git://github.com/the-t-in-rtf/gpii-test-browser#04a45c1683e69ae9453f55b049c96b90cac32c39",
+    "gpii-express": "git://github.com/the-t-in-rtf/gpii-express#7f8ed3a088419943d34b66a0e6f720b97a6b3fd4",
     "grunt": "~0.4.4",
     "grunt-contrib-jshint": "~0.9.0",
     "grunt-jsonlint": "1.0.4",

@@ -1,0 +1,13 @@
+{
+  "framework": "qunit",
+  "test_page": [
+    "tests/static/tests-binder-array.html",
+    "tests/static/tests-binder-checkbox.html",
+    "tests/static/tests-binder-clear.html",
+    "tests/static/tests-binder-long.html",
+    "tests/static/tests-binder-radio.html",
+    "tests/static/tests-binder-select.html",
+    "tests/static/tests-binder-short.html",
+    "tests/static/tests-binder-textarea.html"
+  ]
+}
