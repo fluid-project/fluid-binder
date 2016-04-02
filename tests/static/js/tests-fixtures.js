@@ -46,25 +46,16 @@ gpii.binder.tests.testElement = function (fnName, message, expected, selector) {
     jqUnit[fnName](message, expected, value);
 };
 
-/*
-
-    A test caseHolder that (re)constructs its binder for each test.  Your test definitions when using this
-    grade should be stored in `rawModules` rather than `modules`.
-
- */
+// A common caseHolder for all tests.  Currently empty, but exists to allow us to change all tests more easily, as we
+// have already done at least once.
 fluid.defaults("gpii.binder.tests.caseHolder", {
-    gradeNames: ["gpii.express.tests.caseHolder.base"],
-    sequenceStart: [
-        {
-            func: "{testEnvironment}.events.constructComponent.fire"
-        }
-    ]
+    gradeNames: ["fluid.test.testCaseHolder"]
 });
 
 // Common tests to confirm that variables are populated correctly on startup...
 fluid.defaults("gpii.binder.tests.caseHolder.startup", {
     gradeNames: ["gpii.binder.tests.caseHolder"],
-    rawModules: [{
+    modules: [{
         tests: [
             {
                 name: "Confirm that bindings are passed correctly on initialization...",
@@ -87,7 +78,7 @@ fluid.defaults("gpii.binder.tests.caseHolder.startup", {
 // Common tests for many variations (form field type, etc.)
 fluid.defaults("gpii.binder.tests.caseHolder.simpleRelay", {
     gradeNames: ["gpii.binder.tests.caseHolder"],
-    rawModules: [{
+    modules: [{
         tests: [
             {
                 name: "Confirm that a form update results in a model update...",
@@ -123,22 +114,17 @@ fluid.defaults("gpii.binder.tests.caseHolder.simpleRelay", {
 
 /*
 
-    A test environment that creates a new test component with the specified container and gradeNames whenever
-    the `constructComponent` event is fired.  Intended for use with an instance of the `caseHolder` grade above.
+    A test environment that lets us try variations on our component using different container and grade combinations.
 
-*/
+ */
 fluid.defaults("gpii.binder.tests.environment", {
     gradeNames: ["fluid.test.testEnvironment"],
     binderContainer: "body",
     binderGradeNames: [],
     moduleMessage: "",
-    events: {
-        constructComponent: null
-    },
     components: {
         binder: {
             type:          "fluid.viewComponent",
-            createOnEvent: "constructComponent",
             container:     "{gpii.binder.tests.environment}.options.binderContainer",
             options: {
                 gradeNames: "{gpii.binder.tests.environment}.options.binderGradeNames"

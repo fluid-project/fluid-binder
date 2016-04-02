@@ -24,9 +24,6 @@
         <script type="text/javascript" src="../../node_modules/infusion/tests/test-core/jqUnit/js/jqUnit.js"></script>
         <script type="text/javascript" src="../../node_modules/infusion/tests/test-core/jqUnit/js/jqUnit-browser.js"></script>
 
-        <!-- Express test infrastructure, used in our caseHolder -->
-        <script type="text/javascript" src="../../node_modules/gpii-express/tests/js/lib/test-helpers.js"></script>
-
         <!-- Our test fixtures -->
         <script type="text/javascript" src="./js/tests-fixtures.js"></script>
 
@@ -45,49 +42,50 @@
         <ol id="qunit-tests"></ol>
 
         <!-- Test HTML -->
-        <div id="qunit-fixture">
-            <div class="viewport-checkbox">
-                <form>
-                    <label>
-                        Updated from model?
-                        <input type="checkbox" name="update-from-model" value="updated using applier"/>
-                    </label>
+        <hr/>
+        <h2>Test Fixtures (must be visible)</h2>
 
-                    <label>
-                        Updated from markup?
-                        <input type="checkbox" name="update-from-markup" value="updated using form controls"/>
-                    </label>
+        <div class="viewport-checkbox">
+            <form>
+                <label>
+                    Updated from model?
+                    <input type="checkbox" name="update-from-model" value="updated using applier"/>
+                </label>
 
-                    <label>
-                        Initialized from model?
-                        <input type="checkbox" name="init-from-model"/>
-                    </label>
+                <label>
+                    Updated from markup?
+                    <input type="checkbox" name="update-from-markup" value="updated using form controls"/>
+                </label>
 
-                    <label>
-                        Initialized from markup?
-                        <input type="checkbox" name="init-from-markup" checked="true"/>
-                    </label>
+                <label>
+                    Initialized from model?
+                    <input type="checkbox" name="init-from-model"/>
+                </label>
 
-                    <hr/>
+                <label>
+                    Initialized from markup?
+                    <input type="checkbox" name="init-from-markup" checked="true"/>
+                </label>
 
-                    <h3>Group of checkboxes with the same name attribute.</h3>
+                <hr/>
 
-                    <label>
-                        foo:
-                        <input type="checkbox" name="checkbox-groups" id="checkbox-group-foo" value="foo"/>
-                    </label>
+                <h3>Group of checkboxes with the same name attribute.</h3>
 
-                    <label>
-                        bar:
-                        <input type="checkbox" name="checkbox-groups" id="checkbox-group-bar" value="bar"/>
-                    </label>
+                <label>
+                    foo:
+                    <input type="checkbox" name="checkbox-groups" id="checkbox-group-foo" value="foo"/>
+                </label>
 
-                    <label>
-                        No value:
-                        <input type="checkbox" name="checkbox-groups"/>
-                    </label>
-                </form>
-            </div>
+                <label>
+                    bar:
+                    <input type="checkbox" name="checkbox-groups" id="checkbox-group-bar" value="bar"/>
+                </label>
+
+                <label>
+                    No value:
+                    <input type="checkbox" name="checkbox-groups"/>
+                </label>
+            </form>
         </div>
 
         <!-- our QUnit tests -->

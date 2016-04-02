@@ -24,9 +24,6 @@
         <script type="text/javascript" src="../../node_modules/infusion/tests/test-core/jqUnit/js/jqUnit.js"></script>
         <script type="text/javascript" src="../../node_modules/infusion/tests/test-core/jqUnit/js/jqUnit-browser.js"></script>
 
-        <!-- Express test infrastructure, used in our caseHolder -->
-        <script type="text/javascript" src="../../node_modules/gpii-express/tests/js/lib/test-helpers.js"></script>
-
         <!-- Our test fixtures -->
         <script type="text/javascript" src="./js/tests-fixtures.js"></script>
 
@@ -45,15 +42,16 @@
         <ol id="qunit-tests"></ol>
 
         <!-- Test HTML -->
-        <div id="qunit-fixture">
-            <div class="viewport-long">
-                <form>
-                    <input type="text" name="init-from-model"/>
-                    <input type="text" name="init-from-markup" value="initialized from markup"/>
-                    <input type="text" name="update-from-model"/>
-                    <input type="text" name="update-from-markup"/>
-                </form>
-            </div>
+        <hr/>
+        <h2>Test Fixtures (must be visible)</h2>
+
+        <div class="viewport-long">
+            <form>
+                <input type="text" name="init-from-model"/>
+                <input type="text" name="init-from-markup" value="initialized from markup"/>
+                <input type="text" name="update-from-model"/>
+                <input type="text" name="update-from-markup"/>
+            </form>
         </div>
 
         <!-- our QUnit tests -->

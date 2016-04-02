@@ -28,7 +28,7 @@
 
     fluid.defaults("gpii.binder.tests.radio.caseHolder", {
         gradeNames: ["gpii.binder.tests.caseHolder"],
-        rawModules: [{
+        modules: [{
             tests: [
                 {
                     name: "Confirm that a form update results in a model update...",

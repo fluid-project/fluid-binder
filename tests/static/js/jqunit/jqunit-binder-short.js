@@ -16,9 +16,9 @@
 
     fluid.defaults("gpii.binder.tests.short.environment", {
         gradeNames:       ["gpii.binder.tests.environment"],
+        moduleMessage:    "Testing binder component (short notation)...",
         binderContainer:  ".viewport-short",
         binderGradeNames: ["gpii.tests.binder.short"],
-        moduleMessage:    "Testing binder component (short notation)...",
         components: {
             startupTests: {
                 type: "gpii.binder.tests.caseHolder.startup"

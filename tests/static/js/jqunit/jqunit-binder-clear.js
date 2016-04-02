@@ -24,7 +24,7 @@
 
     fluid.defaults("gpii.binder.tests.clear.caseHolder", {
         gradeNames: ["gpii.binder.tests.caseHolder"],
-        rawModules: [{
+        modules: [{
             tests: [
                 {
                     name: "Confirm that clearing out a text field sets the associated model value to `null`...",

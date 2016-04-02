@@ -24,9 +24,6 @@
         <script type="text/javascript" src="../../node_modules/infusion/tests/test-core/jqUnit/js/jqUnit.js"></script>
         <script type="text/javascript" src="../../node_modules/infusion/tests/test-core/jqUnit/js/jqUnit-browser.js"></script>
 
-        <!-- Express test infrastructure, used in our caseHolder -->
-        <script type="text/javascript" src="../../node_modules/gpii-express/tests/js/lib/test-helpers.js"></script>
-
         <!-- Our test fixtures -->
         <script type="text/javascript" src="./js/tests-fixtures.js"></script>
 
@@ -45,30 +42,30 @@
         <ol id="qunit-tests"></ol>
 
         <!-- Test HTML -->
-        <div id="qunit-fixture">
-            <div class="viewport-select">
-                <form>
-                    <select name="update-from-model">
-                        <option value="">default</option>
-                        <option value="updated using applier">updated using applier</option>
-                    </select>
+        <hr/>
+        <h2>Test Fixtures (must be visible)</h2>
+        <div class="viewport-select">
+            <form>
+                <select name="update-from-model">
+                    <option value="">default</option>
+                    <option value="updated using applier">updated using applier</option>
+                </select>
 
-                    <select name="update-from-markup">
-                        <option value="">default</option>
-                        <option id="update-from-markup-markup" value="updated using form controls">updated using form controls</option>
-                    </select>
+                <select name="update-from-markup">
+                    <option value="">default</option>
+                    <option id="update-from-markup-markup" value="updated using form controls">updated using form controls</option>
+                </select>
 
-                    <select name="init-from-model">
-                        <option value="default">default</option>
-                        <option value="initialized from model">initialized from model</option>
-                    </select>
+                <select name="init-from-model">
+                    <option value="default">default</option>
+                    <option value="initialized from model">initialized from model</option>
+                </select>
 
-                    <select name="init-from-markup">
-                        <option value="default">default</option>
-                        <option value="initialized from markup" selected="true">initialized from markup</option>
-                    </select>
-                </form>
-            </div>
+                <select name="init-from-markup">
+                    <option value="default">default</option>
+                    <option value="initialized from markup" selected="true">initialized from markup</option>
+                </select>
+            </form>
         </div>
 
         <!-- our QUnit tests -->

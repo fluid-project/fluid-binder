@@ -24,9 +24,6 @@
         <script type="text/javascript" src="../../node_modules/infusion/tests/test-core/jqUnit/js/jqUnit.js"></script>
         <script type="text/javascript" src="../../node_modules/infusion/tests/test-core/jqUnit/js/jqUnit-browser.js"></script>
 
-        <!-- Express test infrastructure, used in our caseHolder -->
-        <script type="text/javascript" src="../../node_modules/gpii-express/tests/js/lib/test-helpers.js"></script>
-
         <!-- Our test fixtures -->
         <script type="text/javascript" src="./js/tests-fixtures.js"></script>
 
@@ -45,42 +42,43 @@
         <ol id="qunit-tests"></ol>
 
         <!-- Test HTML -->
-        <div id="qunit-fixture">
-            <div class="viewport-radio">
-                <form>
-                    <h3>Model Update</h3>
-                    <p>
-                        <input type="radio" id="update-from-model-markup" name="update-from-model" value="updated using form controls"/>
-                        <label for="update-from-model-markup">markup</label>
-                        <input type="radio" id="update-from-model-applier" name="update-from-model" value="updated using applier"/>
-                        <label for="update-from-model-applier">applier</label>
-                    </p>
+        <hr/>
+        <h2>Test Fixtures (must be visible)</h2>
 
-                    <h3>Markup Update</h3>
-                    <p>
-                        <input type="radio" id="update-from-markup-markup" name="update-from-markup" value="updated using form controls"/>
-                        <label for="update-from-markup-markup">markup</label>
-                        <input type="radio" id="update-from-markup-applier" name="update-from-markup" value="updated using applier"/>
-                        <label for="update-from-model-applier">applier</label>
-                    </p>
+        <div class="viewport-radio">
+            <form>
+                <h3>Model Update</h3>
+                <p>
+                    <input type="radio" id="update-from-model-markup" name="update-from-model" value="updated using form controls"/>
+                    <label for="update-from-model-markup">markup</label>
+                    <input type="radio" id="update-from-model-applier" name="update-from-model" value="updated using applier"/>
+                    <label for="update-from-model-applier">applier</label>
+                </p>
 
-                    <h3>Model Init</h3>
-                    <p>
-                        <input type="radio" id="init-from-model-markup" name="init-from-model" value="Set in markup."/>
-                        <label for="init-from-model-markup">markup</label>
-                        <input type="radio" id="init-from-model-model" name="init-from-model" value="initialized from model"/>
-                        <label for="init-from-model-model">model</label>
-                    </p>
+                <h3>Markup Update</h3>
+                <p>
+                    <input type="radio" id="update-from-markup-markup" name="update-from-markup" value="updated using form controls"/>
+                    <label for="update-from-markup-markup">markup</label>
+                    <input type="radio" id="update-from-markup-applier" name="update-from-markup" value="updated using applier"/>
+                    <label for="update-from-model-applier">applier</label>
+                </p>
 
-                    <h3>Markup Init</h3>
-                    <p>
-                        <input type="radio" id="init-from-markup-markup" name="init-from-markup" value="initialized from markup" checked="true"/>
-                        <label for="init-from-markup-markup">markup</label>
-                        <input type="radio" id="init-from-markup-applier" name="init-from-markup" value="initialized from model"/>
-                        <label for="init-from-markup-applier">applier</label>
-                    </p>
-                </form>
-            </div>
+                <h3>Model Init</h3>
+                <p>
+                    <input type="radio" id="init-from-model-markup" name="init-from-model" value="Set in markup."/>
+                    <label for="init-from-model-markup">markup</label>
+                    <input type="radio" id="init-from-model-model" name="init-from-model" value="initialized from model"/>
+                    <label for="init-from-model-model">model</label>
+                </p>
+
+                <h3>Markup Init</h3>
+                <p>
+                    <input type="radio" id="init-from-markup-markup" name="init-from-markup" value="initialized from markup" checked="true"/>
+                    <label for="init-from-markup-markup">markup</label>
+                    <input type="radio" id="init-from-markup-applier" name="init-from-markup" value="initialized from model"/>
+                    <label for="init-from-markup-applier">applier</label>
+                </p>
+            </form>
         </div>
 
         <!-- our QUnit tests -->
