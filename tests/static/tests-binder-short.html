@@ -41,11 +41,8 @@
         <h2 id="qunit-userAgent"></h2>
         <ol id="qunit-tests"></ol>
 
-        <!-- Test HTML -->
-        <hr/>
-        <h2>Test Fixtures (must be visible)</h2>
-
-        <div class="viewport-short">
+        <!-- Test HTML, we have to hide this ourselves.  QUnit's styles put it offscreen, which doesn't work for us. -->
+        <div class="viewport-short" style="display:none">
             <form>
                 <input type="text" name="init-from-model"/>
                 <input type="text" name="init-from-markup" value="initialized from markup"/>
