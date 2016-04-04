@@ -4,7 +4,7 @@
 
  */
 
-/* globals fluid, $, jqUnit */
+/* globals fluid, $, jqUnit, QUnit */
 "use strict";
 var gpii = fluid.registerNamespace("gpii");
 
@@ -46,16 +46,51 @@ gpii.binder.tests.testElement = function (fnName, message, expected, selector) {
     jqUnit[fnName](message, expected, value);
 };
 
-// A common caseHolder for all tests.  Currently empty, but exists to allow us to change all tests more easily, as we
-// have already done at least once.
+fluid.registerNamespace("gpii.binder.tests.caseHolder");
+gpii.binder.tests.caseHolder.prependModuleName = function (that) {
+    if (that.options.modules) {
+        return that.options.modules;
+    }
+    else if (that.options.rawModules) {
+        if (that.options.moduleName) {
+            var processedModules = [];
+            fluid.each(that.options.rawModules, function (module) {
+                var processedModule = fluid.copy(module);
+                var processedTests = [];
+                fluid.each(module.tests, function (testDef) {
+                    var processedTest = fluid.copy(testDef);
+                    processedTest.name = that.options.moduleName + ": " + testDef.name;
+                    processedTests.push(processedTest);
+                });
+                processedModule.tests = processedTests;
+                processedModules.push(processedModule);
+            });
+
+            return processedModules;
+        }
+        else {
+            return that.options.rawModules;
+        }
+    }
+};
+
+// A common caseHolder for all tests.  As we reuse many of these tests, supports prepending an identifier to all tests
+// names, which makes it easier to identify failures in a particular variation.
 fluid.defaults("gpii.binder.tests.caseHolder", {
-    gradeNames: ["fluid.test.testCaseHolder"]
+    gradeNames: ["fluid.test.testCaseHolder"],
+    mergePolicy: {
+        rawModules:    "noexpand"
+    },
+    moduleSource: {
+        funcName: "gpii.binder.tests.caseHolder.prependModuleName",
+        args:     ["{that}"]
+    }
 });
 
 // Common tests to confirm that variables are populated correctly on startup...
 fluid.defaults("gpii.binder.tests.caseHolder.startup", {
     gradeNames: ["gpii.binder.tests.caseHolder"],
-    modules: [{
+    rawModules: [{
         tests: [
             {
                 name: "Confirm that bindings are passed correctly on initialization...",
@@ -67,7 +102,7 @@ fluid.defaults("gpii.binder.tests.caseHolder.startup", {
                     },
                     {
                         func: "jqUnit.assertEquals",
-                        args: ["Model data should be correctly initialized from markup values...", "initialized from markup", "{testEnvironment}.binder.model.initFromMarkup"]
+                        args: [ QUnit.config.currentModule + ": Model data should be correctly initialized from markup values...", "initialized from markup", "{testEnvironment}.binder.model.initFromMarkup"]
                     }
                 ]
             }
@@ -78,7 +113,7 @@ fluid.defaults("gpii.binder.tests.caseHolder.startup", {
 // Common tests for many variations (form field type, etc.)
 fluid.defaults("gpii.binder.tests.caseHolder.simpleRelay", {
     gradeNames: ["gpii.binder.tests.caseHolder"],
-    modules: [{
+    rawModules: [{
         tests: [
             {
                 name: "Confirm that a form update results in a model update...",
@@ -90,7 +125,7 @@ fluid.defaults("gpii.binder.tests.caseHolder.simpleRelay", {
                     },
                     {
                         func: "jqUnit.assertEquals",
-                        args: ["Model data should be correctly updated after a form field change...", "updated via form element", "{testEnvironment}.binder.model.updateFromMarkup"]
+                        args: [ QUnit.config.currentModule + ": Model data should be correctly updated after a form field change...", "updated via form element", "{testEnvironment}.binder.model.updateFromMarkup"]
                     }
                 ]
             },
@@ -121,7 +156,11 @@ fluid.defaults("gpii.binder.tests.environment", {
     gradeNames: ["fluid.test.testEnvironment"],
     binderContainer: "body",
     binderGradeNames: [],
-    moduleMessage: "",
+    // If `moduleName` is set, distribute that to all caseHolders so that they can prepend it to their test names.
+    distributeOptions: {
+        source: "{that}.options.moduleName",
+        target: "{that gpii.binder.tests.caseHolder}.options.moduleName"
+    },
     components: {
         binder: {
             type:          "fluid.viewComponent",
@@ -129,12 +168,6 @@ fluid.defaults("gpii.binder.tests.environment", {
             options: {
                 gradeNames: "{gpii.binder.tests.environment}.options.binderGradeNames"
             }
-        }
-    },
-    listeners: {
-        "onCreate.announceModule": {
-            funcName: "jqUnit.module",
-            args: ["{that}.options.moduleMessage"]
         }
     }
 });

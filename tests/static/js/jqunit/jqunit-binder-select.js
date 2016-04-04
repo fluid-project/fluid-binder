@@ -28,7 +28,7 @@
 
     fluid.defaults("gpii.binder.tests.select.caseHolder", {
         gradeNames: ["gpii.binder.tests.caseHolder"],
-        modules: [{
+        rawModules: [{
             tests: [
                 {
                     name: "Confirm that a form update results in a model update...",
@@ -66,7 +66,7 @@
         gradeNames:       ["gpii.binder.tests.environment"],
         binderContainer:  ".viewport-select",
         binderGradeNames: ["gpii.tests.binder.select"],
-        moduleMessage:    "Testing select form inputs...",
+        moduleName:       "Testing select form inputs",
         components: {
             startupTests: {
                 type: "gpii.binder.tests.caseHolder.startup"

@@ -38,7 +38,7 @@
 
     fluid.defaults("gpii.binder.tests.checkbox.caseHolder", {
         gradeNames: ["gpii.binder.tests.caseHolder"],
-        modules: [{
+        rawModules: [{
             tests: [
                 {
                     name: "Confirm that a single form update to the 'checkbox' component results in a model update...",
@@ -104,7 +104,7 @@
         gradeNames:       ["gpii.binder.tests.environment"],
         binderContainer:  ".viewport-checkbox",
         binderGradeNames: ["gpii.tests.binder.checkbox"],
-        moduleMessage:    "Testing checkbox support...",
+        moduleName:       "Testing checkbox support",
         components: {
             checkboxTests: {
                 type: "gpii.binder.tests.checkbox.caseHolder"

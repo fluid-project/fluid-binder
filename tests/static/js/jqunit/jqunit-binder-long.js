@@ -30,7 +30,7 @@
         gradeNames:       ["gpii.binder.tests.environment"],
         binderContainer:  ".viewport-long",
         binderGradeNames: ["gpii.tests.binder.long"],
-        moduleMessage:    "Testing binder component (long notation)...",
+        moduleName:       "Testing binder component (long notation)",
         components: {
             startupTests: {
                 type: "gpii.binder.tests.caseHolder.startup"

@@ -30,7 +30,7 @@
         gradeNames:       ["gpii.binder.tests.environment"],
         binderContainer:  ".viewport-textarea",
         binderGradeNames: ["gpii.tests.binder.textarea"],
-        moduleMessage:    "Testing textarea form inputs...",
+        moduleName:       "Testing textarea form inputs",
         components: {
             startupTests: {
                 type: "gpii.binder.tests.caseHolder.startup"

@@ -30,7 +30,7 @@
         gradeNames:       ["gpii.binder.tests.environment"],
         binderContainer:  ".viewport-array",
         binderGradeNames: ["gpii.tests.binder.array"],
-        moduleMessage:    "Testing array notation...",
+        moduleName:       "Testing array notation",
         components: {
             startupTests: {
                 type: "gpii.binder.tests.caseHolder.startup"
