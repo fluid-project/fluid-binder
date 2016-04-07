@@ -28,7 +28,7 @@
 
     fluid.defaults("gpii.binder.tests.long.environment", {
         gradeNames:       ["gpii.binder.tests.environment"],
-        binderContainer:  ".viewport-long",
+        markupFixture:    ".viewport-long",
         binderGradeNames: ["gpii.tests.binder.long"],
         moduleName:       "Testing binder component (long notation)",
         components: {

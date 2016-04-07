@@ -45,7 +45,7 @@
 
     fluid.defaults("gpii.binder.tests.clear.environment", {
         gradeNames:       ["gpii.binder.tests.environment"],
-        binderContainer:  ".viewport-toBeCleared",
+        markupFixture:    ".viewport-toBeCleared",
         binderGradeNames: ["gpii.tests.binder.clear"],
         moduleName:       "Testing clearing an existing value",
         components: {

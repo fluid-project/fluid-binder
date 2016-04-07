@@ -102,7 +102,7 @@
 
     fluid.defaults("gpii.binder.tests.checkbox.environment", {
         gradeNames:       ["gpii.binder.tests.environment"],
-        binderContainer:  ".viewport-checkbox",
+        markupFixture:    ".viewport-checkbox",
         binderGradeNames: ["gpii.tests.binder.checkbox"],
         moduleName:       "Testing checkbox support",
         components: {

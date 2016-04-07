@@ -154,7 +154,6 @@ fluid.defaults("gpii.binder.tests.caseHolder.simpleRelay", {
  */
 fluid.defaults("gpii.binder.tests.environment", {
     gradeNames: ["fluid.test.testEnvironment"],
-    binderContainer: "body",
     binderGradeNames: [],
     // If `moduleName` is set, distribute that to all caseHolders so that they can prepend it to their test names.
     distributeOptions: {
@@ -164,7 +163,7 @@ fluid.defaults("gpii.binder.tests.environment", {
     components: {
         binder: {
             type:          "fluid.viewComponent",
-            container:     "{gpii.binder.tests.environment}.options.binderContainer",
+            container:     "{gpii.binder.tests.environment}.options.markupFixture",
             options: {
                 gradeNames: "{gpii.binder.tests.environment}.options.binderGradeNames"
             }

@@ -28,7 +28,7 @@
 
     fluid.defaults("gpii.binder.tests.textarea.environment", {
         gradeNames:       ["gpii.binder.tests.environment"],
-        binderContainer:  ".viewport-textarea",
+        markupFixture:    ".viewport-textarea",
         binderGradeNames: ["gpii.tests.binder.textarea"],
         moduleName:       "Testing textarea form inputs",
         components: {

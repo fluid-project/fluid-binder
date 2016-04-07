@@ -64,7 +64,7 @@
 
     fluid.defaults("gpii.binder.tests.radio.environment", {
         gradeNames:       ["gpii.binder.tests.environment"],
-        binderContainer:  ".viewport-radio",
+        markupFixture:    ".viewport-radio",
         binderGradeNames: ["gpii.tests.binder.radio"],
         moduleName:       "Testing radio button support",
         components: {

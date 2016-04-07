@@ -28,7 +28,7 @@
 
     fluid.defaults("gpii.binder.tests.array.environment", {
         gradeNames:       ["gpii.binder.tests.environment"],
-        binderContainer:  ".viewport-array",
+        markupFixture:    ".viewport-array",
         binderGradeNames: ["gpii.tests.binder.array"],
         moduleName:       "Testing array notation",
         components: {

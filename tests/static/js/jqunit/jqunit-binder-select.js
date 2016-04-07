@@ -64,7 +64,7 @@
 
     fluid.defaults("gpii.binder.tests.select.environment", {
         gradeNames:       ["gpii.binder.tests.environment"],
-        binderContainer:  ".viewport-select",
+        markupFixture:    ".viewport-select",
         binderGradeNames: ["gpii.tests.binder.select"],
         moduleName:       "Testing select form inputs",
         components: {
