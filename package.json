@@ -5,7 +5,7 @@
   "license": "BSD-3-Clause",
   "repository": "https://github.com/GPII/gpii-binder",
   "scripts": {
-    "test": "testem ci --skip PhantomJS"
+    "test": "testem ci --skip PhantomJS,chromium-browser"
   },
   "devDependencies": {
     "grunt": "~0.4.4",
