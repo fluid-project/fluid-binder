@@ -91,6 +91,7 @@ fluid.defaults("gpii.binder.tests.caseHolder", {
 fluid.defaults("gpii.binder.tests.caseHolder.startup", {
     gradeNames: ["gpii.binder.tests.caseHolder"],
     rawModules: [{
+        name: "Common startup tests...",
         tests: [
             {
                 name: "Confirm that bindings are passed correctly on initialization...",
@@ -113,38 +114,41 @@ fluid.defaults("gpii.binder.tests.caseHolder.startup", {
 // Common tests for many variations (form field type, etc.)
 fluid.defaults("gpii.binder.tests.caseHolder.simpleRelay", {
     gradeNames: ["gpii.binder.tests.caseHolder"],
-    rawModules: [{
-        tests: [
-            {
-                name: "Confirm that a form update results in a model update...",
-                type: "test",
-                sequence: [
-                    {
-                        func: "fluid.changeElementValue",
-                        args: ["[name='update-from-markup']", "updated via form element"]
-                    },
-                    {
-                        func: "jqUnit.assertEquals",
-                        args: [ QUnit.config.currentModule + ": Model data should be correctly updated after a form field change...", "updated via form element", "{testEnvironment}.binder.model.updateFromMarkup"]
-                    }
-                ]
-            },
-            {
-                name: "Confirm that a model update results in a form change...",
-                type: "test",
-                sequence: [
-                    {
-                        func: "{testEnvironment}.binder.applier.change",
-                        args: ["updateFromModel", "updated from model"]
-                    },
-                    {
-                        func: "gpii.binder.tests.testElement",
-                        args: ["assertEquals", "A form element should be updated after a model change...", "updated from model", "[name='update-from-model']"] // (fnName, message, expected, selector)
-                    }
-                ]
-            }
-        ]
-    }]
+    rawModules: [
+        {
+            name: "Common tests for gpii-binder...",
+            tests: [
+                {
+                    name: "Confirm that a form update results in a model update...",
+                    type: "test",
+                    sequence: [
+                        {
+                            func: "fluid.changeElementValue",
+                            args: ["[name='update-from-markup']", "updated via form element"]
+                        },
+                        {
+                            func: "jqUnit.assertEquals",
+                            args: [ QUnit.config.currentModule + ": Model data should be correctly updated after a form field change...", "updated via form element", "{testEnvironment}.binder.model.updateFromMarkup"]
+                        }
+                    ]
+                },
+                {
+                    name: "Confirm that a model update results in a form change...",
+                    type: "test",
+                    sequence: [
+                        {
+                            func: "{testEnvironment}.binder.applier.change",
+                            args: ["updateFromModel", "updated from model"]
+                        },
+                        {
+                            func: "gpii.binder.tests.testElement",
+                            args: ["assertEquals", "A form element should be updated after a model change...", "updated from model", "[name='update-from-model']"] // (fnName, message, expected, selector)
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
 });
 
 /*

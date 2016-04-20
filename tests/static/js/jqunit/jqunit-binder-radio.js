@@ -29,6 +29,7 @@
     fluid.defaults("gpii.binder.tests.radio.caseHolder", {
         gradeNames: ["gpii.binder.tests.caseHolder"],
         rawModules: [{
+            name: "Testing support for radio buttons...",
             tests: [
                 {
                     name: "Confirm that a form update results in a model update...",
