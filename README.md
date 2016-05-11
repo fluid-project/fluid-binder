@@ -112,4 +112,5 @@ example of dynamically updating bindings.
 
 # Tests
 
-To run the tests in this package, you  must have [testem](https://github.com/testem/testem) installed.
+To run the tests in this package, run `npm test`.  In addition to the normal test output, an
+[Istanbul](https://github.com/gotwarlost/istanbul) test coverage report will be saved to `coverage/lcov-report/index.html`.
