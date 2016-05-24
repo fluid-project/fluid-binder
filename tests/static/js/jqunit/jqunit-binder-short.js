@@ -10,7 +10,8 @@
             initFromModel:    "initFromModel",
             initFromMarkup:   "initFromMarkup",
             updateFromModel:  "updateFromModel",
-            updateFromMarkup: "updateFromMarkup"
+            updateFromMarkup: "updateFromMarkup",
+            missingElement:   "missingElement"
         }
     });
 

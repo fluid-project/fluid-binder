@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Unit Tests for Binder Module checkbox support...</title>
+        <title>Unit Tests for Binder Module radio button support...</title>
 
         <!-- Bring in jQuery and other dependencies -->
         <script type="text/javascript" src="../../node_modules/infusion/src/lib/jquery/core/js/jquery.js"></script>
@@ -32,63 +32,49 @@
         <script type="text/javascript" src="./js/testem/coverage.js"></script>
         <script type="text/javascript" src="/instrumented/js/binder.js"></script>
 
-        <!-- non-instrumented, comment out the previous two lines and uncomment this for debugging -->
-        <!--<script type="text/javascript" src="../../src/js/binder.js"></script>-->
-
         <link rel="stylesheet" href="../../node_modules/node-jqunit/node_modules/infusion/tests/lib/qunit/css/qunit.css"/>
     </head>
     <body>
-        <h1 id="qunit-header">"Checkbox" Component Tests</h1>
+        <h1 id="qunit-header">Value Encoding Tests</h1>
         <h2 id="qunit-banner"></h2>
         <div id="qunit-testrunner-toolbar"></div>
         <h2 id="qunit-userAgent"></h2>
         <ol id="qunit-tests"></ol>
 
         <!-- Test HTML, we have to hide this ourselves.  QUnit's styles put it offscreen, which doesn't work for us. -->
-        <div class="viewport-checkbox" style="display:none">
+        <div class="viewport-encoding" style="display:none">
             <form>
-                <label>
-                    Updated from model?
-                    <input type="checkbox" name="update-from-model" value="updated using applier"/>
-                </label>
+                <h3>Numeric Values</h3>
 
-                <label>
-                    Updated from markup?
-                    <input type="checkbox" name="update-from-markup" value="updated using form controls"/>
-                </label>
+                <input type="hidden" name="number-from-markup" value="3"/>
+                <select class="number-select">
+                    <option value="default" selected="true">Default Value</option>
+                    <option value="0">zero</option>
+                    <option value="1">one</option>
+                    <option value="2">two</option>
+                </select>
 
-                <label>
-                    Initialized from model?
-                    <input type="checkbox" name="init-from-model"/>
-                </label>
+                <h3>"Falsy" Data</h3>
 
-                <label>
-                    Initialized from markup?
-                    <input type="checkbox" name="init-from-markup" checked="true"/>
-                </label>
+                <input type="hidden" name="false-from-markup" value="false"/>
+                <input type="hidden" name="zero-from-markup" value="0"/>
+                <input type="hidden" name="null-from-markup" value="null"/>
 
-                <hr/>
+                <select class="falsy-select">
+                    <option value="default" selected="true">Default Value</option>
+                    <option value="false">false</option>
+                    <option value="0">zero</option>
+                    <option value="null">null</option>
+                </select>
 
-                <h3>Group of checkboxes with the same name attribute.</h3>
+                <h3>Object Data</h3>
 
-                <label>
-                    foo:
-                    <input type="checkbox" name="checkbox-groups" id="checkbox-group-foo" value="foo"/>
-                </label>
-
-                <label>
-                    bar:
-                    <input type="checkbox" name="checkbox-groups" id="checkbox-group-bar" value="bar"/>
-                </label>
-
-                <label>
-                    No value:
-                    <input type="checkbox" name="checkbox-groups"/>
-                </label>
+                <input type="hidden" name="array-from-markup" value='["foo","bar"]'>
+                <input type="hidden" name="object-from-markup" value='{ "foo": "bar" }'>
             </form>
         </div>
 
         <!-- our QUnit tests -->
-        <script type="text/javascript" src="./js/jqunit/jqunit-binder-checkbox.js"></script>
+        <script type="text/javascript" src="./js/jqunit/jqunit-binder-encoding.js"></script>
     </body>
 </html>

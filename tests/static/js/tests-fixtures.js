@@ -18,7 +18,8 @@ fluid.defaults("gpii.tests.binder.base", {
         initFromModel:    "[name='init-from-model']",
         initFromMarkup:   "[name='init-from-markup']",
         updateFromModel:  "[name='update-from-model']",
-        updateFromMarkup: "[name='update-from-markup']"
+        updateFromMarkup: "[name='update-from-markup']",
+        missingElement:   ".not-found-at-all"
     },
     listeners: {
         "onCreate.applyBinding": {

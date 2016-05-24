@@ -22,6 +22,10 @@
             updateFromMarkup: {
                 selector: "updateFromMarkup",
                 path:     "updateFromMarkup"
+            },
+            missingElement: {
+                selector: "missingElement",
+                path:     "missingElement"
             }
         }
     });

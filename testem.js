@@ -16,6 +16,7 @@ module.exports = {
         "tests/static/tests-binder-array.html",
         "tests/static/tests-binder-checkbox.html",
         "tests/static/tests-binder-clear.html",
+        "tests/static/tests-binder-encoding.html",
         "tests/static/tests-binder-long.html",
         "tests/static/tests-binder-radio.html",
         "tests/static/tests-binder-select.html",
@@ -36,7 +37,7 @@ module.exports = {
     },
 
     // instrument files, spin up http server to write coverage data to disk
-    before_tests: function (config, data, callback) {
+    on_start: function (config, data, callback) {
         shell.exec("node ./node_modules/istanbul/lib/cli.js instrument --output instrumented src", function (code, output) {
             if (code) {
                 callback(code, output);
@@ -67,7 +68,7 @@ module.exports = {
     },
 
     // after tests done, stop http server, combined coverage data into the report
-    after_tests: function (config, data, callback) {
+    on_exit: function (config, data, callback) {
         // shutdown the server
         server.close();
 
