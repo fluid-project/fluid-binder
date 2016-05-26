@@ -68,6 +68,15 @@
         }
     };
 
+    gpii.binder.applyChangeSafely = function (that, path, elementValue) {
+        if (elementValue === null) {
+            that.applier.change(path, elementValue, "DELETE");
+        }
+        else {
+            that.applier.change(path, elementValue);
+        }
+    };
+
     /**
      *
      * The main function to create bindings between markup and model elements.  See above for usage details.
@@ -88,7 +97,7 @@
                     fluid.log("Changing model based on element update.");
 
                     var elementValue = gpii.binder.jsonOrString(fluid.value(element));
-                    that.applier.change(path, elementValue);
+                    gpii.binder.applyChangeSafely(that, path, elementValue);
                 });
 
                 // Update the form elements when the model changes

@@ -125,7 +125,7 @@
                         },
                         {
                             func: "jqUnit.assertEquals",
-                            args: ["The model data should be set to null...", null, "{testEnvironment}.binder.model.falsy-select"]
+                            args: ["The model data should be set to undefined...", undefined, "{testEnvironment}.binder.model.falsy-select"]
                         }
                     ]
                 },
