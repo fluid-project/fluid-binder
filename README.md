@@ -101,7 +101,7 @@ whenever it changes.  Best practice is to call `fluid.initDomBinder` when you ha
 then listen for the `viewComponent`'s `onDomBind` event, as in:
 
     listeners: {
-        "onCreate.applyBindings": {
+        "onDomBind.applyBindings": {
             "funcName": "gpii.binder.applyBinding",
             "args":     "{that}"
         }
