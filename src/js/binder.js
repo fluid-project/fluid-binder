@@ -17,25 +17,34 @@
 
     /**
      *
-     * Try to evolve a given string using `JSON.parse`.
+     * Try to evolve a given string into a typed variable or object.
      *
      * @param originalValue {String|Array} The value we will try to evolve.
      * @returns {Object|String} An object if we were able to parse it, otherwise the original string.
      *
      */
     gpii.binder.jsonOrString = function (originalValue) {
-        if (Array.isArray(originalValue)) {
+        if (typeof originalValue === "string") {
+            // empty "value" elements in HTML should not result in a bunch of empty strings in our model
+            if (originalValue.length === 0) {
+                return null;
+            }
+            else {
+                try {
+                    var objectValue = JSON.parse(originalValue);
+                    return objectValue;
+                }
+                catch (e) {
+                    // Ignore the error and keep the string value.
+                    return originalValue;
+                }
+            }
+        }
+        else if (Array.isArray(originalValue)) {
             return originalValue.map(gpii.binder.jsonOrString);
         }
         else {
-            try {
-                var objectValue = JSON.parse(originalValue);
-                return objectValue;
-            }
-            catch (e) {
-                // Ignore the error and keep the string value.
-                return originalValue;
-            }
+            return originalValue;
         }
     };
 
