@@ -2,16 +2,11 @@ app_name: gpii-binder
 
 git_repository: https://github.com/the-t-in-rtf/gpii-binder.git
 
-git_branches:
-  - GPII-1579
-
 email: tony@raisingthefloor.org
 
 env_runtime: linux-desktop
 
 app_start_service: false
-
-app_tcp_port: 9999
 
 software_stack: nodejs
 
