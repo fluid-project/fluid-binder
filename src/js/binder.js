@@ -19,18 +19,23 @@
      *
      * Try to evolve a given string using `JSON.parse`.
      *
-     * @param originalString {String} The value we will try to evolve.
+     * @param originalValue {String|Array} The value we will try to evolve.
      * @returns {Object|String} An object if we were able to parse it, otherwise the original string.
      *
      */
-    gpii.binder.jsonOrString = function (originalString) {
-        try {
-            var objectValue = JSON.parse(originalString);
-            return objectValue;
+    gpii.binder.jsonOrString = function (originalValue) {
+        if (Array.isArray(originalValue)) {
+            return originalValue.map(gpii.binder.jsonOrString);
         }
-        catch (e) {
-            // Ignore the error and keep the string value.
-            return originalString;
+        else {
+            try {
+                var objectValue = JSON.parse(originalValue);
+                return objectValue;
+            }
+            catch (e) {
+                // Ignore the error and keep the string value.
+                return originalValue;
+            }
         }
     };
 
@@ -43,11 +48,14 @@
      * @returns {Object|String} The original data, encoded as needed to work correctly with fluid.value.
      */
     gpii.binder.getSafeValue = function (originalData) {
-        switch (typeof originalData) {
-            case "boolean":
-                return JSON.stringify(originalData);
-            default:
-                return originalData;
+        if (Array.isArray(originalData)) {
+            return originalData.map(gpii.binder.getSafeValue);
+        }
+        else if (typeof originalData !== "string") {
+            return JSON.stringify(originalData);
+        }
+        else {
+            return originalData;
         }
     };
 
