@@ -29,26 +29,26 @@ fluid.defaults("gpii.tests.binder.base", {
     }
 });
 
-fluid.registerNamespace("gpii.binder.tests");
+fluid.registerNamespace("gpii.tests.binder");
 
 // Client-side function to retrieve a value by a selector from within an IoC test.
-gpii.binder.tests.getElementValue = function (selector) {
+gpii.tests.binder.getElementValue = function (selector) {
     return fluid.value($(selector));
 };
 
 // Client-side function to click a selector
-gpii.binder.tests.clickSelector = function (selector) {
+gpii.tests.binder.clickSelector = function (selector) {
     $(selector).click();
 };
 
 // Client side one-shot element test, which can use most jqUnit functions.
-gpii.binder.tests.testElement = function (fnName, message, expected, selector) {
-    var value = gpii.binder.tests.getElementValue(selector);
+gpii.tests.binder.testElement = function (fnName, message, expected, selector) {
+    var value = gpii.tests.binder.getElementValue(selector);
     jqUnit[fnName](message, expected, value);
 };
 
-fluid.registerNamespace("gpii.binder.tests.caseHolder");
-gpii.binder.tests.caseHolder.prependModuleName = function (that) {
+fluid.registerNamespace("gpii.tests.binder.caseHolder");
+gpii.tests.binder.caseHolder.prependModuleName = function (that) {
     if (that.options.modules) {
         return that.options.modules;
     }
@@ -77,20 +77,20 @@ gpii.binder.tests.caseHolder.prependModuleName = function (that) {
 
 // A common caseHolder for all tests.  As we reuse many of these tests, supports prepending an identifier to all tests
 // names, which makes it easier to identify failures in a particular variation.
-fluid.defaults("gpii.binder.tests.caseHolder", {
+fluid.defaults("gpii.tests.binder.caseHolder", {
     gradeNames: ["fluid.test.testCaseHolder"],
     mergePolicy: {
         rawModules:    "noexpand"
     },
     moduleSource: {
-        funcName: "gpii.binder.tests.caseHolder.prependModuleName",
+        funcName: "gpii.tests.binder.caseHolder.prependModuleName",
         args:     ["{that}"]
     }
 });
 
 // Common tests to confirm that variables are populated correctly on startup...
-fluid.defaults("gpii.binder.tests.caseHolder.startup", {
-    gradeNames: ["gpii.binder.tests.caseHolder"],
+fluid.defaults("gpii.tests.binder.caseHolder.startup", {
+    gradeNames: ["gpii.tests.binder.caseHolder"],
     rawModules: [{
         name: "Common startup tests...",
         tests: [
@@ -99,7 +99,7 @@ fluid.defaults("gpii.binder.tests.caseHolder.startup", {
                 type: "test",
                 sequence: [
                     {
-                        func: "gpii.binder.tests.testElement",
+                        func: "gpii.tests.binder.testElement",
                         args: ["assertEquals", "A form element with no markup value should be correctly initialized...", "initialized from model", "[name='init-from-model']"] // (fnName, message, expected, selector)
                     },
                     {
@@ -113,8 +113,8 @@ fluid.defaults("gpii.binder.tests.caseHolder.startup", {
 });
 
 // Common tests for many variations (form field type, etc.)
-fluid.defaults("gpii.binder.tests.caseHolder.simpleRelay", {
-    gradeNames: ["gpii.binder.tests.caseHolder"],
+fluid.defaults("gpii.tests.binder.caseHolder.simpleRelay", {
+    gradeNames: ["gpii.tests.binder.caseHolder"],
     rawModules: [
         {
             name: "Common tests for gpii-binder...",
@@ -142,7 +142,7 @@ fluid.defaults("gpii.binder.tests.caseHolder.simpleRelay", {
                             args: ["updateFromModel", "updated from model"]
                         },
                         {
-                            func: "gpii.binder.tests.testElement",
+                            func: "gpii.tests.binder.testElement",
                             args: ["assertEquals", "A form element should be updated after a model change...", "updated from model", "[name='update-from-model']"] // (fnName, message, expected, selector)
                         }
                     ]
@@ -157,20 +157,20 @@ fluid.defaults("gpii.binder.tests.caseHolder.simpleRelay", {
     A test environment that lets us try variations on our component using different container and grade combinations.
 
  */
-fluid.defaults("gpii.binder.tests.environment", {
+fluid.defaults("gpii.tests.binder.environment", {
     gradeNames: ["fluid.test.testEnvironment"],
     binderGradeNames: [],
     // If `moduleName` is set, distribute that to all caseHolders so that they can prepend it to their test names.
     distributeOptions: {
         source: "{that}.options.moduleName",
-        target: "{that gpii.binder.tests.caseHolder}.options.moduleName"
+        target: "{that gpii.tests.binder.caseHolder}.options.moduleName"
     },
     components: {
         binder: {
-            type:          "fluid.viewComponent",
-            container:     "{gpii.binder.tests.environment}.options.markupFixture",
+            type:      "fluid.viewComponent",
+            container: "{gpii.tests.binder.environment}.options.markupFixture",
             options: {
-                gradeNames: "{gpii.binder.tests.environment}.options.binderGradeNames"
+                gradeNames: "{gpii.tests.binder.environment}.options.binderGradeNames"
             }
         }
     }

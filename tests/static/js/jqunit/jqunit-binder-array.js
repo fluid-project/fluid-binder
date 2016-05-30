@@ -26,20 +26,20 @@
         ]
     });
 
-    fluid.defaults("gpii.binder.tests.array.environment", {
-        gradeNames:       ["gpii.binder.tests.environment"],
+    fluid.defaults("gpii.tests.binder.array.environment", {
+        gradeNames:       ["gpii.tests.binder.environment"],
         markupFixture:    ".viewport-array",
         binderGradeNames: ["gpii.tests.binder.array"],
         moduleName:       "Testing array notation",
         components: {
             startupTests: {
-                type: "gpii.binder.tests.caseHolder.startup"
+                type: "gpii.tests.binder.caseHolder.startup"
             },
             simpleRelayTests: {
-                type: "gpii.binder.tests.caseHolder.simpleRelay"
+                type: "gpii.tests.binder.caseHolder.simpleRelay"
             }
         }
     });
 
-    gpii.binder.tests.array.environment();
+    gpii.tests.binder.array.environment();
 })();

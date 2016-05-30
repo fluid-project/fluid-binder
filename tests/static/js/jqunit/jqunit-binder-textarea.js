@@ -26,20 +26,20 @@
         ]
     });
 
-    fluid.defaults("gpii.binder.tests.textarea.environment", {
-        gradeNames:       ["gpii.binder.tests.environment"],
+    fluid.defaults("gpii.tests.binder.textarea.environment", {
+        gradeNames:       ["gpii.tests.binder.environment"],
         markupFixture:    ".viewport-textarea",
         binderGradeNames: ["gpii.tests.binder.textarea"],
         moduleName:       "Testing textarea form inputs",
         components: {
             startupTests: {
-                type: "gpii.binder.tests.caseHolder.startup"
+                type: "gpii.tests.binder.caseHolder.startup"
             },
             simpleRelayTests: {
-                type: "gpii.binder.tests.caseHolder.simpleRelay"
+                type: "gpii.tests.binder.caseHolder.simpleRelay"
             }
         }
     });
 
-    gpii.binder.tests.textarea.environment();
+    gpii.tests.binder.textarea.environment();
 })();

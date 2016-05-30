@@ -30,20 +30,20 @@
         }
     });
 
-    fluid.defaults("gpii.binder.tests.long.environment", {
-        gradeNames:       ["gpii.binder.tests.environment"],
+    fluid.defaults("gpii.tests.binder.long.environment", {
+        gradeNames:       ["gpii.tests.binder.environment"],
         markupFixture:    ".viewport-long",
         binderGradeNames: ["gpii.tests.binder.long"],
         moduleName:       "Testing binder component (long notation)",
         components: {
             startupTests: {
-                type: "gpii.binder.tests.caseHolder.startup"
+                type: "gpii.tests.binder.caseHolder.startup"
             },
             simpleRelayTests: {
-                type: "gpii.binder.tests.caseHolder.simpleRelay"
+                type: "gpii.tests.binder.caseHolder.simpleRelay"
             }
         }
     });
 
-    gpii.binder.tests["long"].environment();
+    gpii.tests.binder["long"].environment();
 })();

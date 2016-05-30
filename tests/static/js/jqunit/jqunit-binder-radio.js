@@ -26,8 +26,8 @@
         }
     });
 
-    fluid.defaults("gpii.binder.tests.radio.caseHolder", {
-        gradeNames: ["gpii.binder.tests.caseHolder"],
+    fluid.defaults("gpii.tests.binder.radio.caseHolder", {
+        gradeNames: ["gpii.tests.binder.caseHolder"],
         rawModules: [{
             name: "Testing support for radio buttons...",
             tests: [
@@ -36,7 +36,7 @@
                     type: "test",
                     sequence: [
                         {
-                            func: "gpii.binder.tests.clickSelector",
+                            func: "gpii.tests.binder.clickSelector",
                             args: ["#update-from-markup-markup"]
                         },
                         {
@@ -54,7 +54,7 @@
                             args: ["updateFromModel", "updated using applier"]
                         },
                         {
-                            func: "gpii.binder.tests.testElement",
+                            func: "gpii.tests.binder.testElement",
                             args: ["assertEquals", "A form element should be updated after a model change...", "updated using applier", "[name='update-from-model']"] // (fnName, message, expected, selector)
                         }
                     ]
@@ -63,20 +63,20 @@
         }]
     });
 
-    fluid.defaults("gpii.binder.tests.radio.environment", {
-        gradeNames:       ["gpii.binder.tests.environment"],
+    fluid.defaults("gpii.tests.binder.radio.environment", {
+        gradeNames:       ["gpii.tests.binder.environment"],
         markupFixture:    ".viewport-radio",
         binderGradeNames: ["gpii.tests.binder.radio"],
         moduleName:       "Testing radio button support",
         components: {
             startupTests: {
-                type: "gpii.binder.tests.caseHolder.startup"
+                type: "gpii.tests.binder.caseHolder.startup"
             },
             radioTests: {
-                type: "gpii.binder.tests.radio.caseHolder"
+                type: "gpii.tests.binder.radio.caseHolder"
             }
         }
     });
 
-    gpii.binder.tests.radio.environment();
+    gpii.tests.binder.radio.environment();
 })();

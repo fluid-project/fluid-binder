@@ -22,8 +22,8 @@
         }
     });
 
-    fluid.defaults("gpii.binder.tests.clear.caseHolder", {
-        gradeNames: ["gpii.binder.tests.caseHolder"],
+    fluid.defaults("gpii.tests.binder.clear.caseHolder", {
+        gradeNames: ["gpii.tests.binder.caseHolder"],
         rawModules: [{
             name: "Testing clearing an existing value from a text field...",
             tests: [
@@ -44,17 +44,17 @@
         }]
     });
 
-    fluid.defaults("gpii.binder.tests.clear.environment", {
-        gradeNames:       ["gpii.binder.tests.environment"],
+    fluid.defaults("gpii.tests.binder.clear.environment", {
+        gradeNames:       ["gpii.tests.binder.environment"],
         markupFixture:    ".viewport-toBeCleared",
         binderGradeNames: ["gpii.tests.binder.clear"],
         moduleName:       "Testing clearing an existing value",
         components: {
             tests: {
-                type: "gpii.binder.tests.clear.caseHolder"
+                type: "gpii.tests.binder.clear.caseHolder"
             }
         }
     });
 
-    gpii.binder.tests.clear.environment();
+    gpii.tests.binder.clear.environment();
 })();

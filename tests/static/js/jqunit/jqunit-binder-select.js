@@ -26,8 +26,8 @@
         ]
     });
 
-    fluid.defaults("gpii.binder.tests.select.caseHolder", {
-        gradeNames: ["gpii.binder.tests.caseHolder"],
+    fluid.defaults("gpii.tests.binder.select.caseHolder", {
+        gradeNames: ["gpii.tests.binder.caseHolder"],
         rawModules: [{
             name: "Testing support for select elements...",
             tests: [
@@ -54,7 +54,7 @@
                             args: ["updateFromModel", "updated using applier"]
                         },
                         {
-                            func: "gpii.binder.tests.testElement",
+                            func: "gpii.tests.binder.testElement",
                             args: ["assertEquals", "A form element should be updated after a model change...", "updated using applier", "[name='update-from-model']"] // (fnName, message, expected, selector)
                         }
                     ]
@@ -63,20 +63,20 @@
         }]
     });
 
-    fluid.defaults("gpii.binder.tests.select.environment", {
-        gradeNames:       ["gpii.binder.tests.environment"],
+    fluid.defaults("gpii.tests.binder.select.environment", {
+        gradeNames:       ["gpii.tests.binder.environment"],
         markupFixture:    ".viewport-select",
         binderGradeNames: ["gpii.tests.binder.select"],
         moduleName:       "Testing select form inputs",
         components: {
             startupTests: {
-                type: "gpii.binder.tests.caseHolder.startup"
+                type: "gpii.tests.binder.caseHolder.startup"
             },
             selectTests: {
-                type: "gpii.binder.tests.select.caseHolder"
+                type: "gpii.tests.binder.select.caseHolder"
             }
         }
     });
 
-    gpii.binder.tests.select.environment();
+    gpii.tests.binder.select.environment();
 })();
