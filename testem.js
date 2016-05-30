@@ -14,6 +14,7 @@ module.exports = {
     "framework": "qunit",
     "test_page": [
         "tests/static/tests-binder-array.html",
+        "tests/static/tests-binder-bindOnDomChange.html",
         "tests/static/tests-binder-checkbox.html",
         "tests/static/tests-binder-clear.html",
         // Currently testing this with Karma, which requires non-trivial changes that would prevent it from working here.

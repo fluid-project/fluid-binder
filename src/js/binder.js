@@ -133,6 +133,30 @@
             }
         });
     };
+
+    // A mix-in grade to apply bindings when a viewComponent is created.
+    fluid.defaults("gpii.binder.bindOnCreate", {
+        gradeNames: ["fluid.viewComponent"],
+        listeners: {
+            "onCreate.applyBinding": {
+                funcName: "gpii.binder.applyBinding",
+                args:     ["{that}"]
+            }
+        }
+    });
+    
+    fluid.defaults("gpii.binder.bindOnDomChange", {
+        gradeNames: ["fluid.viewComponent"],
+        events: {
+            onDomChange: null
+        },
+        listeners: {
+            "onDomChange.applyBinding": {
+                funcName: "gpii.binder.applyBinding",
+                args:     ["{that}"]
+            }
+        }
+    });
 })(jQuery);
 
 

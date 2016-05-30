@@ -10,7 +10,7 @@ var gpii = fluid.registerNamespace("gpii");
 
 // Base viewComponent used in most tests.
 fluid.defaults("gpii.tests.binder.base", {
-    gradeNames: ["fluid.viewComponent"],
+    gradeNames: ["gpii.binder.bindOnCreate"],
     model: {
         initFromModel:    "initialized from model" // The markup will be initialized with this value.
     },
@@ -20,12 +20,6 @@ fluid.defaults("gpii.tests.binder.base", {
         updateFromModel:  "[name='update-from-model']",
         updateFromMarkup: "[name='update-from-markup']",
         missingElement:   ".not-found-at-all"
-    },
-    listeners: {
-        "onCreate.applyBinding": {
-            funcName: "gpii.binder.applyBinding",
-            args:     ["{that}"]
-        }
     }
 });
 

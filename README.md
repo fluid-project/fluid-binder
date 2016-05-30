@@ -92,23 +92,13 @@ For example, if all required markup already exists on startup, you can simply bi
         }
     }
 
-For an example of using the binder with static markup, see the tests in this package.
+The `gpii.binder.bindOnCreate` grade included with this package will do this for you.
 
 ### Bindings and dynamic markup
 
 If your component generates or regenerates markup, you will need to call `gpii.binder.applyBinding(component)`
-whenever it changes.  Best practice is to call `fluid.initDomBinder` when you have finished manipulating the DOM and
-then listen for the `viewComponent`'s `onDomBind` event, as in:
-
-    listeners: {
-        "onDomBind.applyBindings": {
-            "funcName": "gpii.binder.applyBinding",
-            "args":     "{that}"
-        }
-    }
-
-See the `templateAware` grade in [the `gpii-handlebars` package](https://github.com/GPII/gpii-handlebars) for a working
-example of dynamically updating bindings.
+whenever it changes.  The `gpii.binder.bindOnDomChange` grade included in this package will reapply the bindings
+whenever an `onDomChange` event is fired.
 
 # Tests
 

@@ -5,7 +5,7 @@
 
 // Component to test support for encoded "typed" data
     fluid.defaults("gpii.tests.binder.encoding", {
-        gradeNames: ["fluid.viewComponent"],
+        gradeNames: ["gpii.binder.bindOnCreate"],
         model: {
         },
         selectors: {
@@ -27,12 +27,6 @@
             "falsy-select":       "falsy-select",
             "object-from-markup": "object-from-markup",
             "array-from-markup":  "array-from-markup"
-        },
-        listeners: {
-            "onCreate.applyBinding": {
-                funcName: "gpii.binder.applyBinding",
-                args:     ["{that}"]
-            }
         }
     });
 

@@ -4,7 +4,7 @@
     var gpii = fluid.registerNamespace("gpii");
 
     fluid.defaults("gpii.tests.binder.toBeCleared", {
-        gradeNames: ["fluid.viewComponent"],
+        gradeNames: ["gpii.binder.bindOnCreate"],
         model: {
             toBeCleared: "Model value"
         },
@@ -13,12 +13,6 @@
         },
         bindings: {
             toBeCleared: "toBeCleared"
-        },
-        listeners: {
-            "onCreate.applyBinding": {
-                funcName: "gpii.binder.applyBinding",
-                args:     ["{that}"]
-            }
         }
     });
 
