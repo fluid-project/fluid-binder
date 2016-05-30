@@ -68,8 +68,18 @@
         }
     };
 
+    /**
+     *
+     * A function to "safely" apply changes. It uses the model change applier, but deletes "null" or "undefined" values.
+     * This is required to deal with form fields whose value is set to an empty string, which commonly occurs with text
+     * inputs.
+     *
+     * @param that {Object} The component itself.
+     * @param path {String} The path to the model variable to be updated.
+     * @param elementValue {Object} The value to set.
+     */
     gpii.binder.applyChangeSafely = function (that, path, elementValue) {
-        if (elementValue === null) {
+        if (elementValue === null || elementValue === undefined) {
             that.applier.change(path, elementValue, "DELETE");
         }
         else {
