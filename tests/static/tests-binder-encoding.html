@@ -2,38 +2,28 @@
     <head>
         <title>Unit Tests for Binder Module radio button support...</title>
 
-        <!-- Bring in jQuery and other dependencies -->
-        <script type="text/javascript" src="../../node_modules/infusion/src/lib/jquery/core/js/jquery.js"></script>
 
-        <!-- Bring in fluid dependencies -->
-        <script type="text/javascript" src="../../node_modules/infusion/src/framework/core/js/Fluid.js"></script>
-        <script type="text/javascript" src="../../node_modules/infusion/src/framework/core/js/FluidDocument.js"></script>
-        <script type="text/javascript" src="../../node_modules/infusion/src/framework/core/js/FluidDOMUtilities.js"></script>
-        <script type="text/javascript" src="../../node_modules/infusion/src/framework/core/js/FluidIoC.js"></script>
-        <script type="text/javascript" src="../../node_modules/infusion/src/framework/core/js/DataBinding.js"></script>
-        <script type="text/javascript" src="../../node_modules/infusion/src/framework/core/js/FluidView.js"></script>
-        <script type="text/javascript" src="../../node_modules/infusion/src/framework/core/js/ModelTransformation.js"></script>
-        <script type="text/javascript" src="../../node_modules/infusion/src/framework/core/js/ModelTransformationTransforms.js"></script>
-        <script type="text/javascript" src="../../node_modules/infusion/src/framework/enhancement/js/ContextAwareness.js"></script>
-        <script type="text/javascript" src="../../node_modules/infusion/src/framework/enhancement/js/ProgressiveEnhancement.js"></script>
-
-        <script type="text/javascript" src="../../node_modules/infusion/tests/test-core/utils/js/IoCTestUtils.js"></script>
-
-        <!-- QUnit/jqUnit dependencies -->
-        <script type="text/javascript" src="../../node_modules/infusion/tests/lib/qunit/js/qunit.js"></script>
-        <script src="/testem.js"></script>
-        <script type="text/javascript" src="../../node_modules/infusion/tests/test-core/jqUnit/js/jqUnit.js"></script>
-        <script type="text/javascript" src="../../node_modules/infusion/tests/test-core/jqUnit/js/jqUnit-browser.js"></script>
-
+        <script type="text/javascript" src="/base/node_modules/infusion/src/lib/jquery/core/js/jquery.js"></script>
+        <script type="text/javascript" src="/base/node_modules/infusion/src/framework/core/js/Fluid.js"></script>
+        <script type="text/javascript" src="/base/node_modules/infusion/src/framework/core/js/FluidDocument.js"></script>
+        <script type="text/javascript" src="/base/node_modules/infusion/src/framework/core/js/FluidDOMUtilities.js"></script>
+        <script type="text/javascript" src="/base/node_modules/infusion/src/framework/core/js/FluidIoC.js"></script>
+        <script type="text/javascript" src="/base/node_modules/infusion/src/framework/core/js/DataBinding.js"></script>
+        <script type="text/javascript" src="/base/node_modules/infusion/src/framework/core/js/FluidView.js"></script>
+        <script type="text/javascript" src="/base/node_modules/infusion/src/framework/core/js/ModelTransformation.js"></script>
+        <script type="text/javascript" src="/base/node_modules/infusion/src/framework/core/js/ModelTransformationTransforms.js"></script>
+        <script type="text/javascript" src="/base/node_modules/infusion/src/framework/enhancement/js/ContextAwareness.js"></script>
+        <script type="text/javascript" src="/base/node_modules/infusion/src/framework/enhancement/js/ProgressiveEnhancement.js"></script>
+        <script type="text/javascript" src="/base/node_modules/infusion/tests/test-core/utils/js/DebugFocus.js"></script>
+        <script type="text/javascript" src="/base/node_modules/infusion/tests/test-core/utils/js/IoCTestUtils.js"></script>
+        <script type="text/javascript" src="/base/node_modules/qunitjs/qunit/qunit.js"></script>
+        <script type="text/javascript" src="/base/node_modules/infusion/tests/test-core/jqUnit/js/jqUnit-browser.js"></script>
+        <script type="text/javascript" src="/base/node_modules/infusion/tests/test-core/jqUnit/js/jqUnit.js"></script>
+        <script type="text/javascript" src="/base/node_modules/infusion/tests/lib/qunit/addons/composite/qunit-composite.js"></script>
+        <script type="text/javascript" src="/base/src/js/binder.js"></script>
         <!-- Our test fixtures -->
         <script type="text/javascript" src="./js/tests-fixtures.js"></script>
-
-        <!-- Bring in client library being tested -->
-        <script type="text/javascript" src="./js/testem/coverage.js"></script>
-        <script type="text/javascript" src="/instrumented/js/binder.js"></script>
-
-        <link rel="stylesheet" href="../../node_modules/node-jqunit/node_modules/infusion/tests/lib/qunit/css/qunit.css"/>
-    </head>
+   </head>
     <body>
         <h1 id="qunit-header">Value Encoding Tests</h1>
         <h2 id="qunit-banner"></h2>

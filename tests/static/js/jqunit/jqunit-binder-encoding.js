@@ -1,4 +1,4 @@
-/* globals fluid */
+/* globals fluid, jqUnit */
 (function () {
     "use strict";
     var gpii = fluid.registerNamespace("gpii");
@@ -36,8 +36,8 @@
         }
     });
 
-    fluid.defaults("gpii.binder.tests.encoding.caseHolder", {
-        gradeNames: ["gpii.binder.tests.caseHolder"],
+    fluid.defaults("gpii.tests.binder.encoding.caseHolder", {
+        gradeNames: ["gpii.tests.binder.caseHolder"],
         rawModules: [{
             name: "Testing support for encoding non-string data...",
             tests: [
@@ -93,7 +93,7 @@
                             args: ["number-select", 1]
                         },
                         {
-                            func: "gpii.binder.tests.testElement",
+                            func: "gpii.tests.binder.testElement",
                             args: ["assertEquals", "The form element should have been updated...", "1", ".number-select"] // (fnName, message, expected, selector)
                         }
                     ]
@@ -138,7 +138,7 @@
                             args: ["falsy-select", false]
                         },
                         {
-                            func: "gpii.binder.tests.testElement",
+                            func: "gpii.tests.binder.testElement",
                             args: ["assertEquals", "The form element should have been updated...", "false", ".falsy-select"] // (fnName, message, expected, selector)
                         }
                     ]
@@ -147,17 +147,17 @@
         }]
     });
 
-    fluid.defaults("gpii.binder.tests.encoding.environment", {
-        gradeNames:       ["gpii.binder.tests.environment"],
+    fluid.defaults("gpii.tests.binder.encoding.environment", {
+        gradeNames:       ["gpii.tests.binder.environment"],
         markupFixture:    ".viewport-encoding",
         binderGradeNames: ["gpii.tests.binder.encoding"],
         moduleName:       "Testing encoding support",
         components: {
             encodingTests: {
-                type: "gpii.binder.tests.encoding.caseHolder"
+                type: "gpii.tests.binder.encoding.caseHolder"
             }
         }
     });
-
-    gpii.binder.tests.encoding.environment();
+    jqUnit.module("foo");
+    gpii.tests.binder.encoding.environment();
 })();
