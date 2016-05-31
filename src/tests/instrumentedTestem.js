@@ -119,6 +119,7 @@ fluid.defaults("gpii.test.testem.instrumented", {
                 args:     ["{that}.options.sourceFiles"]
             }
         },
+        // TODO:  Testem doesn't seem to accept full paths, it wants paths relative to where you run things from.
         test_page: {
             expander: {
                 funcName: "gpii.test.testem.instrumented.resolvePaths",
