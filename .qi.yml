@@ -17,3 +17,7 @@ setup:
 
 commands:
   - npm test
+
+publishers:
+  - cobertura:
+      report-file: "coverage/cobertura-coverage.xml"
