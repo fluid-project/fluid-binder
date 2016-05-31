@@ -39,13 +39,14 @@ gpii.test.testem.instrumented.init = function (that, config, data, callback) {
 
     var srcDir = fluid.module.resolvePath(that.options.sourceDir);
 
-    // TODO:  Note, only one source directory is supported at the moment.
+    // TODO:  If we go further down this road, convert this to use Istanbul in code rather than shell form.
     shell.exec("node ./node_modules/istanbul/lib/cli.js instrument --output " + instrumentedDir + " " + srcDir, function (code, output) {
         if (code) {
             callback(code, output);
             return;
         }
 
+        // TODO:  If we go further down this road, convert this to use a gpii.express instance and associated middleware.
         // if instrumented successfully
         // start the server
         that.server = http.createServer(function (req, res) {
@@ -68,8 +69,9 @@ gpii.test.testem.instrumented.shutdown = function (that, config, data, callback)
         // shutdown the server
         that.server.close();
 
+        // TODO:  If we go further down this road, convert this to use Istanbul in code rather than shell form.
         // generate report
-        shell.exec("node ./node_modules/istanbul/lib/cli.js report", function (code, output) {
+        shell.exec("node ./node_modules/istanbul/lib/cli.js report lcov cobertura", function (code, output) {
             if (code) {
                 return callback(code, output);
             }
