@@ -7,6 +7,8 @@ require("./index");
 
 gpii.binder.loadTestingSupport();
 
+var outputFile = fluid.module.resolvePath("%gpii-binder/report.tap");
+
 var testemHarness = gpii.test.testem.instrumented({
     testPages: [
         "%gpii-binder/tests/static/tests-binder-array.html",
@@ -22,8 +24,9 @@ var testemHarness = gpii.test.testem.instrumented({
         "%gpii-binder/tests/static/tests-binder-textarea.html"
     ],
     testemOptions: {
-        "framework": "qunit",
-        "parallel": 5
+        "framework":   "qunit",
+        "parallel":    5,
+        "report_file": outputFile
     }
 });
 module.exports = testemHarness.options.testemOptions;
