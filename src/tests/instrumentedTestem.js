@@ -16,14 +16,13 @@ var rimraf = require("rimraf");
 fluid.registerNamespace("gpii.test.testem.instrumented");
 
 gpii.test.testem.instrumented.cleanDirs = function (pathStringOrArray) {
-    var subdirPaths = fluid.makeArray(pathStringOrArray);
-    fluid.each(subdirPaths, function (subdirPath) {
-        var fullSubdirPath = path.join(__dirname, subdirPath);
-        if (!fs.existsSync(fullSubdirPath)) {
-            fs.mkdirSync(fullSubdirPath);
+    var dirPaths = fluid.makeArray(pathStringOrArray);
+    fluid.each(dirPaths, function (dirPath) {
+        if (!fs.existsSync(dirPath)) {
+            fs.mkdirSync(dirPath);
         }
         else {
-            var pattern = path.join(fullSubdirPath, "*");
+            var pattern = path.join(dirPath, "*");
             rimraf(pattern, function (error) {
                 if (error) {
                     fluid.fail(error);
@@ -34,11 +33,11 @@ gpii.test.testem.instrumented.cleanDirs = function (pathStringOrArray) {
 };
 
 gpii.test.testem.instrumented.init = function (that, config, data, callback) {
-    gpii.test.testem.instrumented.cleanDirs("coverage", "instrumented");
-
     var instrumentedDir = fluid.module.resolvePath(that.options.instrumentedDir);
-    var srcDir          = fluid.module.resolvePath(that.options.sourceDir);
     var coverageDir     = fluid.module.resolvePath(that.options.coverageDir);
+    gpii.test.testem.instrumented.cleanDirs([instrumentedDir, coverageDir]);
+
+    var srcDir = fluid.module.resolvePath(that.options.sourceDir);
 
     // TODO:  Note, only one source directory is supported at the moment.
     shell.exec("node ./node_modules/istanbul/lib/cli.js instrument --output " + instrumentedDir + " " + srcDir, function (code, output) {
@@ -46,7 +45,6 @@ gpii.test.testem.instrumented.init = function (that, config, data, callback) {
             callback(code, output);
             return;
         }
-
 
         // if instrumented successfully
         // start the server
