@@ -6,27 +6,161 @@
 // Component to test support for encoded "typed" data
     fluid.defaults("gpii.tests.binder.encoding", {
         gradeNames: ["gpii.binder.bindOnCreate"],
-        model: {
-        },
+        model: {},
         selectors: {
             "number-from-markup": "[name='number-from-markup']",
-            "number-select":      ".number-select",
-            "false-from-markup":  "[name='false-from-markup']",
-            "zero-from-markup":   "[name='zero-from-markup']",
-            "null-from-markup":   "[name='null-from-markup']",
-            "falsy-select":       ".falsy-select",
+            "number-select": ".number-select",
+            "false-from-markup": "[name='false-from-markup']",
+            "false-from-model": "[name='false-from-model']",
+            "zero-from-markup": "[name='zero-from-markup']",
+            "null-from-markup": "[name='null-from-markup']",
+            "falsy-select": ".falsy-select",
             "object-from-markup": "[name='object-from-markup']",
-            "array-from-markup":  "[name='array-from-markup']"
+            "array-from-markup": "[name='array-from-markup']"
         },
         bindings: {
-            "number-from-markup": "number-from-markup",
-            "number-select":      "number-select",
-            "false-from-markup":  "false-from-markup",
-            "zero-from-markup":   "zero-from-markup",
-            "null-from-markup":   "null-from-markup",
-            "falsy-select":       "falsy-select",
-            "object-from-markup": "object-from-markup",
-            "array-from-markup":  "array-from-markup"
+            "number-from-markup": {
+                path: "number-from-markup",
+                selector: "number-from-markup",
+                rules: {
+                    domToModel: {
+                        "": {
+                            transform: {
+                                type: "fluid.transforms.stringToNumber",
+                                inputPath: ""
+                            }
+                        }
+                    }
+                }
+            },
+            "number-select": {
+                path: "number-select",
+                selector: "number-select",
+                rules: {
+                    domToModel: {
+                        "": {
+                            transform: {
+                                type:  "fluid.transforms.stringToNumber",
+                                inputPath: ""
+                            }
+                        }
+                    },
+                    modelToDom: {
+                        "": {
+                            transform: {
+                                type: "fluid.transforms.stringToNumber",
+                                inputPath: ""
+                            }
+                        }
+                    }
+                }
+            },
+            "false-from-markup": {
+                path: "false-from-markup",
+                selector: "false-from-markup",
+                rules: {
+                    domToModel: {
+                        "": {
+                            transform: {
+                                type:  "gpii.binder.transforms.stringToBoolean",
+                                inputPath: ""
+                            }
+                        }
+                    }
+                }
+            },
+            "false-from-model": {
+                path: "false-from-model",
+                selector: "false-from-model",
+                rules: {
+                    modelToDom: {
+                        "": {
+                            transform: {
+                                type:  "gpii.binder.transforms.booleanToString",
+                                inputPath: ""
+                            }
+                        }
+                    }
+                }
+            },
+            "zero-from-markup": {
+                path: "zero-from-markup",
+                selector: "zero-from-markup",
+                rules: {
+                    domToModel: {
+                        "": {
+                            transform: {
+                                type: "fluid.transforms.stringToNumber",
+                                inputPath: ""
+                            }
+                        }
+                    }
+                }
+            },
+            "null-from-markup": {
+                path: "null-from-markup",
+                selector: "null-from-markup",
+                rules: {
+                    domToModel: {
+                        "": {
+                            transform: {
+                                type: "gpii.binder.transforms.stringToObject",
+                                inputPath: ""
+                            }
+                        }
+                    }
+                }
+            },
+            "falsy-select": {
+                path: "falsy-select",
+                selector: "falsy-select",
+                rules: {
+                    domToModel: {
+                        "": {
+                            transform: {
+                                type:  "gpii.binder.transforms.stringToBoolean",
+                                inputPath: ""
+                            }
+                        }
+                    },
+                    modelToDom: {
+                        "": {
+                            transform: {
+                                type:  "gpii.binder.transforms.booleanToString",
+                                inputPath: ""
+                            }
+                        }
+                    }
+                }
+            },
+            "object-from-markup": {
+                path: "object-from-markup",
+                selector: "object-from-markup",
+                rules: {
+                    domToModel: {
+                        "": {
+                            transform: {
+                                type:  "gpii.binder.transforms.stringToObject",
+                                inputPath: ""
+                            }
+                        }
+                    }
+                }
+            },
+            "array-from-markup": {
+                path: "array-from-markup",
+                selector: "array-from-markup",
+                rules: {
+                    domToModel: {
+                        "": {
+                            transform: {
+                                type:  "gpii.binder.transforms.stringToObject",
+                                inputPath: ""
+                            }
+                        }
+                    }
+                }
+            }
         }
     });
 
@@ -52,7 +186,7 @@
                         },
                         {
                             func: "jqUnit.assertEquals",
-                            args: ["A null value in the initial markup should be null in the model...", null, "{testEnvironment}.binder.model.null-from-markup"]
+                            args: ["A null value in the initial markup should not be set in the model...", undefined, "{testEnvironment}.binder.model.null-from-markup"]
                         },
                         {
                             func: "jqUnit.assertDeepEq",
@@ -60,7 +194,7 @@
                         },
                         {
                             func: "jqUnit.assertDeepEq",
-                            args: ["An object in the initial markup should be an object in the model...", { "foo": "bar"}, "{testEnvironment}.binder.model.object-from-markup"]
+                            args: ["An object in the initial markup should be an object in the model...", {"foo": "bar"}, "{testEnvironment}.binder.model.object-from-markup"]
                         }
                     ]
                 },
@@ -103,7 +237,7 @@
                         },
                         {
                             func: "jqUnit.assertEquals",
-                            args: ["The model data should be set to 'false'...", false, "{testEnvironment}.binder.model.falsy-select"]
+                            args: ["The model data should be set to false...", false, "{testEnvironment}.binder.model.falsy-select"]
                         },
                         {
                             func: "fluid.changeElementValue",
@@ -111,7 +245,7 @@
                         },
                         {
                             func: "jqUnit.assertEquals",
-                            args: ["The model data should be set to zero...", 0, "{testEnvironment}.binder.model.falsy-select"]
+                            args: ["The model data should be set to false...", false, "{testEnvironment}.binder.model.falsy-select"]
                         },
                         {
                             func: "fluid.changeElementValue",
@@ -119,7 +253,7 @@
                         },
                         {
                             func: "jqUnit.assertEquals",
-                            args: ["The model data should be set to undefined...", undefined, "{testEnvironment}.binder.model.falsy-select"]
+                            args: ["The model data should be set to false...", false, "{testEnvironment}.binder.model.falsy-select"]
                         }
                     ]
                 },
@@ -129,11 +263,11 @@
                     sequence: [
                         {
                             func: "{testEnvironment}.binder.applier.change",
-                            args: ["falsy-select", false]
+                            args: ["false-from-model", false]
                         },
                         {
                             func: "gpii.tests.binder.testElement",
-                            args: ["assertEquals", "The form element should have been updated...", "false", ".falsy-select"] // (fnName, message, expected, selector)
+                            args: ["assertEquals", "The form element should have been updated...", "false", "[name='false-from-model']"] // (fnName, message, expected, selector)
                         }
                     ]
                 }
@@ -142,10 +276,10 @@
     });
 
     fluid.defaults("gpii.tests.binder.encoding.environment", {
-        gradeNames:       ["gpii.tests.binder.environment"],
-        markupFixture:    ".viewport-encoding",
+        gradeNames: ["gpii.tests.binder.environment"],
+        markupFixture: ".viewport-encoding",
         binderGradeNames: ["gpii.tests.binder.encoding"],
-        moduleName:       "Testing encoding support",
+        moduleName: "Testing encoding support",
         components: {
             encodingTests: {
                 type: "gpii.tests.binder.encoding.caseHolder"

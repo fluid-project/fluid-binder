@@ -75,7 +75,7 @@
                         },
                         {
                             func: "jqUnit.assertDeepEq",
-                            args: ["The 'checkbox' array should have been updated based on form changes...", ["a string", 42, false], "{testEnvironment}.binder.model.array"]
+                            args: ["The 'checkbox' array should have been updated based on form changes...", ["a string", "42", "false"], "{testEnvironment}.binder.model.array"]
                         }
                     ]
                 },
@@ -92,7 +92,7 @@
                         },
                         {
                             func: "jqUnit.assertDeepEq",
-                            args: ["Selecting a single value should still result in an array of settings...", [42], "{testEnvironment}.binder.model.array"]
+                            args: ["Selecting a single value should still result in an array of settings...", ["42"], "{testEnvironment}.binder.model.array"]
                         }
                     ]
                 },
@@ -127,7 +127,7 @@
                     sequence: [
                         {
                             func: "{testEnvironment}.binder.applier.change",
-                            args: ["array", [42]]
+                            args: ["array", ["42"]]
                         },
                         {
                             func: "gpii.tests.binder.testElement",
@@ -140,7 +140,7 @@
                     sequence: [
                         {
                             func: "{testEnvironment}.binder.applier.change",
-                            args: ["array", [false]]
+                            args: ["array", ["false"]]
                         },
                         {
                             func: "gpii.tests.binder.testElement",
@@ -153,7 +153,7 @@
                     sequence: [
                         {
                             func: "{testEnvironment}.binder.applier.change",
-                            args: ["array", [42, false, "a string"]]
+                            args: ["array", ["42", "false", "a string"]]
                             // These should not be in the same order as the options appear in the markup, so that we
                             // can confirm that the presence of the value in the list is enough to indicate that its
                             // checkbox should be ticked.

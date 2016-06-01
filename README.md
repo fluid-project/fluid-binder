@@ -41,6 +41,8 @@ supports the following options:
 
 * selector: A valid selector for your component.  Must be able to be resolved using `that.locate(selector)`
 * path: A valid path for the model variable whose value will be watched.  Must be able to be resolved using `fluid.get(that.model, path)`.
+* rules.domToModel: Model transformation rules that are applied to a DOM (element) value before it is relayed to the model.
+* rules.modelToDom: Model transformation rules that are applied to a model value before it is relayed to the DOM (element).
 
 The "long form" looks like:
 
@@ -51,6 +53,40 @@ The "long form" looks like:
         }
     }
 
+The following is an example of how model transformation rules are used in binding definitions:
+
+    bindings: {
+        "myKey": {
+            selector: "mySelector",
+            path:     "myPath",
+            rules: {
+                domToModel: {
+                    "": {
+                        transform: {
+                            type: "fluid.transforms.numberToString",
+                            inputPath: ""
+                        }
+                    }
+                },
+                modelToDom: {
+                    "": {
+                        transform: {
+                            type: "fluid.transforms.stringToNumber",
+                            inputPath: ""
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+In the above example:
+
+1. A model change to the `myPath` variable will be transformed from a number to a string before the DOM element is updated.
+2. A form element change will be transformed to a number before it is applied to the model.
+
+If you do not supply any rules, be aware that non-string values will be converted to strings using their `toString` 
+method.  For objects, this results in the form values being set to the literal string `[Object object]`.
 
 ## Short notation
 

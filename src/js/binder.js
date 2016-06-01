@@ -17,75 +17,91 @@
 
     /**
      *
-     * Try to evolve a given string into a typed variable or object.
+     * A function to "safely" relay DOM changes to the model.  It uses the model change applier, but deletes "null" or
+     * "undefined" values.  This is required to deal with form fields whose value is set to an empty string, which
+     * commonly occurs with text inputs.
      *
-     * @param originalValue {String|Array} The value we will try to evolve.
-     * @returns {Object|String} An object if we were able to parse it, otherwise the original string.
-     *
-     */
-    gpii.binder.jsonOrString = function (originalValue) {
-        if (typeof originalValue === "string") {
-            // empty "value" elements in HTML should not result in a bunch of empty strings in our model
-            if (originalValue.length === 0) {
-                return null;
-            }
-            else {
-                try {
-                    var objectValue = JSON.parse(originalValue);
-                    return objectValue;
-                }
-                catch (e) {
-                    // Ignore the error and keep the string value.
-                    return originalValue;
-                }
-            }
-        }
-        else if (Array.isArray(originalValue)) {
-            return originalValue.map(gpii.binder.jsonOrString);
-        }
-        else {
-            return originalValue;
-        }
-    };
-
-    /**
-     * 
-     * A function to encode problematic values that will not work correctly with fluid.value -> jQuery.val().
-     * Adds special handling for boolean values, which would ordinarily be mangled.
-     * 
-     * @param originalData The original data, in its original form.
-     * @returns {Object|String} The original data, encoded as needed to work correctly with fluid.value.
-     */
-    gpii.binder.getSafeValue = function (originalData) {
-        if (Array.isArray(originalData)) {
-            return originalData.map(gpii.binder.getSafeValue);
-        }
-        else if (typeof originalData !== "string") {
-            return JSON.stringify(originalData);
-        }
-        else {
-            return originalData;
-        }
-    };
-
-    /**
-     *
-     * A function to "safely" apply changes. It uses the model change applier, but deletes "null" or "undefined" values.
-     * This is required to deal with form fields whose value is set to an empty string, which commonly occurs with text
-     * inputs.
+     * The raw values are transformed using `fluid.model.transformWithRules` and `options.rules.domToModel`.
      *
      * @param that {Object} The component itself.
      * @param path {String} The path to the model variable to be updated.
      * @param elementValue {Object} The value to set.
      */
-    gpii.binder.applyChangeSafely = function (that, path, elementValue) {
-        if (elementValue === null || elementValue === undefined) {
-            that.applier.change(path, elementValue, "DELETE");
+    gpii.binder.changeModelValue = function (that, path, elementValue) {
+        var transformedValue = gpii.binder.transformPathedValue(that, path, elementValue, "domToModel");
+        if (transformedValue === null || transformedValue === undefined) {
+            that.applier.change(path, transformedValue, "DELETE");
         }
         else {
-            that.applier.change(path, elementValue);
+            that.applier.change(path, transformedValue);
         }
     };
+
+    /**
+     *
+     * Change the value of a DOM element based on a model values. Raw values are transformed using ``.
+     *
+     * @param that {Object} The component itself.
+     * @param element {Object} The jQuery element itself.
+     * @param path {String} The path to the model variable to be updated.
+     * @param modelValue {Object} The value to set.
+     *
+     * */
+    gpii.binder.changeElementValue = function (that, element, path, modelValue) {
+        var transformedValue = gpii.binder.transformPathedValue(that, path, modelValue, "modelToDom");
+        fluid.value(element, transformedValue);
+    };
+
+    /**
+     *
+     * Transform a raw value based on the model transformation rules in its binding definition.  Note, that because
+     * the model transformation system deals oddly with `undefined` values, those are implicitly converted to `null`
+     * before attempting to transform them.
+     *
+     * @param path {String} The path to the bound model variable.  Used to look up the binding settings.
+     * @param rawValue {Object} The value to be transformed.
+     * @param ruleName {String} The rule to use when transforming the rule.
+     * @returns The transformed value.
+     *
+     */
+    gpii.binder.transformPathedValue = function (that, path, rawValue, ruleName) {
+        var binderOptions = gpii.binder.getPathBindingOptions(that, path);
+        if (binderOptions.rules && binderOptions.rules[ruleName]) {
+            // `undefined` values assigned to the path "" (as we intend for people to do) results in empty objects rather
+            // than `undefined` values.  We pass `null` instead, so that the underlying transformation can make the call.
+            var valueToTransform = rawValue === undefined ? null : rawValue;
+
+            var rules = binderOptions.rules[ruleName];
+            return fluid.model.transformWithRules(valueToTransform, rules);
+        }
+        else {
+            return rawValue;
+        }
+    };
+
+    /**
+     *
+     * Retrieve the binding settings for an individual path.
+     *
+     * @param that {Object} The binder component itself.
+     * @param desiredPath {String} The model path for the desired binding.
+     * @returns {Object} The binder options for the specific path, in "long form".
+     *
+     */
+    gpii.binder.getPathBindingOptions = function (that, desiredPath) {
+        return fluid.find(that.options.bindings, function (value, key) {
+            var path = typeof value === "string" ? value : value.path;
+            if (path === desiredPath) {
+                if (typeof value === "string") {
+                    return { path: path, selector: key };
+                }
+                else {
+                    return value;
+                }
+            }
+        });
+    };
+
 
     /**
      *
@@ -95,8 +111,7 @@
      *
      */
     gpii.binder.applyBinding = function (that) {
-        var bindings = that.options.bindings;
-        fluid.each(bindings, function (value, key) {
+        fluid.each(that.options.bindings, function (value, key) {
             var path     = typeof value === "string" ? value : value.path;
             var selector = typeof value === "string" ? key : value.selector;
             var element = that.locate(selector);
@@ -106,26 +121,23 @@
                 element.change(function () {
                     fluid.log("Changing model based on element update.");
 
-                    var elementValue = gpii.binder.jsonOrString(fluid.value(element));
-                    gpii.binder.applyChangeSafely(that, path, elementValue);
+                    gpii.binder.changeModelValue(that, path, fluid.value(element));
                 });
 
                 // Update the form elements when the model changes
-                that.applier.modelChanged.addListener(path, function (change) {
+                that.applier.modelChanged.addListener(path, function (changedValue) {
                     fluid.log("Changing value based on model update.");
-
-                    fluid.value(element, gpii.binder.getSafeValue(change));
+                    gpii.binder.changeElementValue(that, element, path, changedValue);
                 });
 
                 // If we have model data initially, update the form.  Model values win out over markup.
                 var initialModelValue = fluid.get(that.model, path);
                 if (initialModelValue !== undefined) {
-                    fluid.value(element, gpii.binder.getSafeValue(initialModelValue));
+                    gpii.binder.changeElementValue(that, element, path, initialModelValue);
                 }
                 // If we have no model data, but there are defaults in the markup, using them to update the model.
                 else {
-                    var initialFormValue = gpii.binder.jsonOrString(fluid.value(element));
-                    that.applier.change(path, initialFormValue);
+                    gpii.binder.changeModelValue(that, path, fluid.value(element));
                 }
             }
             else {
@@ -134,9 +146,16 @@
         });
     };
 
+    fluid.defaults("gpii.binder", {
+        gradeNames: ["fluid.viewComponent"],
+        mergePolicy: {
+            bindings: "nomerge"
+        }
+    });
+
     // A mix-in grade to apply bindings when a viewComponent is created.
     fluid.defaults("gpii.binder.bindOnCreate", {
-        gradeNames: ["fluid.viewComponent"],
+        gradeNames: ["gpii.binder"],
         listeners: {
             "onCreate.applyBinding": {
                 funcName: "gpii.binder.applyBinding",
@@ -146,7 +165,7 @@
     });
     
     fluid.defaults("gpii.binder.bindOnDomChange", {
-        gradeNames: ["fluid.viewComponent"],
+        gradeNames: ["gpii.binder"],
         events: {
             onDomChange: null
         },
