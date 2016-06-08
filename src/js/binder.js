@@ -163,7 +163,7 @@
             }
         }
     });
-    
+
     fluid.defaults("gpii.binder.bindOnDomChange", {
         gradeNames: ["gpii.binder"],
         events: {
@@ -177,5 +177,3 @@
         }
     });
 })(jQuery);
-
-

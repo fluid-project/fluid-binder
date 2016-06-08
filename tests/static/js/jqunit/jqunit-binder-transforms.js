@@ -14,7 +14,7 @@
             });
         });
     };
-    
+
     // We cannot use IoC tests or even a component here because we have no way of preventing input or expected values
     // like `'{"foo":"bar"}'` from being resolved as `undefined` IoC references.  We cannot use "noResolve" on the whole
     // construct, as we would like to reuse individual rulesets.

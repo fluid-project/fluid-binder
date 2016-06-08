@@ -3,6 +3,7 @@
     A Fluid component to launch testem with test coverage instrumentation.
 
  */
+/* eslint-env node */
 "use strict";
 var fluid = require("infusion");
 var gpii  = fluid.registerNamespace("gpii");
@@ -81,7 +82,7 @@ gpii.test.testem.instrumented.shutdown = function (that, config, data, callback)
             // check on generated report
             var lcov = shell.grep("end_of_record", path.join(coverageDir, "lcov.info"));
             var report = shell.grep("src/index.html", path.join(coverageDir, "lcov-report/index.html"));
-    
+
             if (!lcov || !report) {
                 callback(new Error("Unable to generate coverage report."));
                 return;
@@ -91,7 +92,7 @@ gpii.test.testem.instrumented.shutdown = function (that, config, data, callback)
             // everything is good
             callback(null);
         });
-        
+
     }
     else {
         callback(new Error("Cannot shutdown server because it does not exist."));

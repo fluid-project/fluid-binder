@@ -3,7 +3,7 @@
     A test environment, caseHolder, and reusable common tests for use in our test suite.
 
  */
-
+/* eslint-env node */
 /* globals fluid, $, jqUnit, QUnit */
 "use strict";
 var gpii = fluid.registerNamespace("gpii");
