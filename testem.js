@@ -25,7 +25,7 @@ var testemHarness = gpii.test.testem.instrumented({
     ],
     testemOptions: {
         "framework":   "qunit",
-        "parallel":    5,
+        "parallel":    1,
         "report_file": outputFile
     }
 });
