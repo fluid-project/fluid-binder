@@ -63,7 +63,7 @@ The following is an example of how model transformation rules are used in bindin
                 domToModel: {
                     "": {
                         transform: {
-                            type: "fluid.transforms.numberToString",
+                            type: "fluid.transforms.stringToNumber",
                             inputPath: ""
                         }
                     }
@@ -71,7 +71,7 @@ The following is an example of how model transformation rules are used in bindin
                 modelToDom: {
                     "": {
                         transform: {
-                            type: "fluid.transforms.stringToNumber",
+                            type: "fluid.transforms.numberToString",
                             inputPath: ""
                         }
                     }
