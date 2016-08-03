@@ -5,6 +5,7 @@
   "license": "BSD-3-Clause",
   "repository": "https://github.com/GPII/gpii-binder",
   "scripts": {
+    "pretest": "rimraf coverage instrumented",
     "test": "node node_modules/testem/testem.js ci --skip PhantomJS,Chromium,Safari"
   },
   "devDependencies": {
