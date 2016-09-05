@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Fluid framework complete tests runner</title>
+
+    <script type="text/javascript" src="./js/testem/coverage.js"></script>
+
+    <link rel="stylesheet" href="../../node_modules/node-jqunit/node_modules/infusion/tests/lib/qunit/css/qunit.css"/>
+    <link rel="stylesheet" href="../../node_modules/node-jqunit/node_modules/infusion/tests/lib/qunit/addons/composite/qunit-composite.css"/>
+    <script type="text/javascript" src="../../node_modules/infusion/tests/lib/qunit/js/qunit.js"></script>
+    <script src="/testem.js"></script>
+    <script src="../../node_modules/node-jqunit/node_modules/infusion/tests/lib/qunit/addons/composite/qunit-composite.js"></script>
+
+    <script>
+        QUnit.testSuites("Binder Tests", [
+            "./tests-binder-array.html",
+            "./tests-binder-bindOnDomChange.html",
+            "./tests-binder-checkbox.html",
+            "./tests-binder-clear.html",
+            "./tests-binder-encoding.html",
+            "./tests-binder-long.html",
+            "./tests-binder-radio.html",
+            "./tests-binder-select.html",
+            "./tests-binder-short.html",
+            "./tests-binder-textarea.html",
+            "./tests-binder-transforms.html"
+        ]);
+    </script>
+</head>
+<body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture">
+</div>
+</body>
+</html>
