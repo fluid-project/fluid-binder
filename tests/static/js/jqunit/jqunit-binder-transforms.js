@@ -68,6 +68,30 @@
                     inputPath: ""
                 }
             }
+        },
+        stringToDate: {
+            "": {
+                transform: {
+                    type: "gpii.binder.transforms.stringToDate",
+                    inputPath: ""
+                }
+            }
+        },
+        dateToString: {
+            "": {
+                transform: {
+                    type: "gpii.binder.transforms.dateToString",
+                    inputPath: ""
+                }
+            }
+        },
+        dateTimeToString: {
+            "": {
+                transform: {
+                    type: "gpii.binder.transforms.dateTimeToString",
+                    inputPath: ""
+                }
+            }
         }
     };
 
@@ -115,6 +139,25 @@
             input: [{ foo: "bar" }],
             rules: rules.objectToString,
             expected: "{\"foo\":\"bar\"}"
+        },
+        {
+            message: "A stringified date should be correctly decoded",
+            input: ["1972-02-05"],
+            rules: rules.stringToDate,
+            expected: new Date("1972-02-05"),
+            fnName: "assertDeepEq"
+        },
+        {
+            message: "A date should be correctly converted to a string",
+            input: [new Date("2014-01-17")],
+            rules: rules.dateToString,
+            expected: "2014-01-17"
+        },
+        {
+            message: "A date/time should be correctly converted to a string",
+            input: [new Date("2011-04-22T17:14:25")],
+            rules: rules.dateTimeToString,
+            expected: "2011-04-22T17:14:25.000Z"
         },
         // "canary" tests to confirm that the untested string to number transform functions provided with Fluid still work.
         {
