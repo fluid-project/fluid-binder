@@ -62,7 +62,7 @@
                     domToModel: {
                         "": {
                             transform: {
-                                type:  "gpii.binder.transforms.stringToBoolean",
+                                type:  "fluid.transforms.stringToBoolean",
                                 inputPath: ""
                             }
                         }
@@ -76,7 +76,7 @@
                     modelToDom: {
                         "": {
                             transform: {
-                                type:  "gpii.binder.transforms.booleanToString",
+                                type:  "fluid.transforms.booleanToString",
                                 inputPath: ""
                             }
                         }
@@ -104,7 +104,7 @@
                     domToModel: {
                         "": {
                             transform: {
-                                type: "gpii.binder.transforms.stringToObject",
+                                type: "fluid.transforms.JSONstringToObject",
                                 inputPath: ""
                             }
                         }
@@ -118,7 +118,7 @@
                     domToModel: {
                         "": {
                             transform: {
-                                type:  "gpii.binder.transforms.stringToBoolean",
+                                type:  "fluid.transforms.stringToBoolean",
                                 inputPath: ""
                             }
                         }
@@ -126,7 +126,7 @@
                     modelToDom: {
                         "": {
                             transform: {
-                                type:  "gpii.binder.transforms.booleanToString",
+                                type:  "fluid.transforms.booleanToString",
                                 inputPath: ""
                             }
                         }
@@ -140,7 +140,7 @@
                     domToModel: {
                         "": {
                             transform: {
-                                type:  "gpii.binder.transforms.stringToObject",
+                                type:  "fluid.transforms.JSONstringToObject",
                                 inputPath: ""
                             }
                         }
@@ -154,7 +154,7 @@
                     domToModel: {
                         "": {
                             transform: {
-                                type:  "gpii.binder.transforms.stringToObject",
+                                type:  "fluid.transforms.JSONstringToObject",
                                 inputPath: ""
                             }
                         }
