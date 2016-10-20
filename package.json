@@ -21,6 +21,6 @@
     "testem": "1.10.2"
   },
   "dependencies": {
-    "infusion": "git://github.com/the-t-in-rtf/infusion.git#056bd1a246fd63f0123fcd375db8f6b157e245b8"
+    "infusion": "git://github.com/the-t-in-rtf/infusion.git#5c44ca5ad6626f1c0616f55fa228640e41cbab32"
   }
 }
