@@ -18,9 +18,9 @@
     "qunitjs": "2.0.1",
     "rimraf": "2.5.4",
     "shelljs": "0.7.3",
-    "testem": "1.10.2"
+    "testem": "1.13.0"
   },
   "dependencies": {
-    "infusion": "git://github.com/the-t-in-rtf/infusion.git#5c44ca5ad6626f1c0616f55fa228640e41cbab32"
+    "infusion": "git://github.com/the-t-in-rtf/infusion.git#8202f87093d60bdf7c58d95a41ecdf27aca0eca9"
   }
 }
