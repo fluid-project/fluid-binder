@@ -8,19 +8,20 @@
     "pretest": "node node_modules/rimraf/bin.js coverage instrumented",
     "test": "node node_modules/testem/testem.js ci --skip PhantomJS,Chromium,Safari"
   },
+  "dependencies": {
+    "infusion": "git://github.com/the-t-in-rtf/infusion.git#8202f87093d60bdf7c58d95a41ecdf27aca0eca9"
+  },
   "devDependencies": {
-    "eslint": "3.2.2",
+    "eslint": "3.10.2",
+    "eslint-config-fluid": "1.0.0",
     "grunt": "1.0.1",
-    "fluid-grunt-eslint": "18.1.1",
+    "fluid-grunt-eslint": "18.1.2",
     "grunt-jsonlint": "1.1.0",
-    "istanbul": "0.4.4",
+    "istanbul": "0.4.5",
     "node-jqunit": "1.1.4",
     "qunitjs": "2.0.1",
     "rimraf": "2.5.4",
-    "shelljs": "0.7.3",
+    "shelljs": "0.7.5",
     "testem": "1.13.0"
-  },
-  "dependencies": {
-    "infusion": "git://github.com/the-t-in-rtf/infusion.git#8202f87093d60bdf7c58d95a41ecdf27aca0eca9"
   }
 }
