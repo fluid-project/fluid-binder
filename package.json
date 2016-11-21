@@ -5,7 +5,6 @@
   "license": "BSD-3-Clause",
   "repository": "https://github.com/GPII/gpii-binder",
   "scripts": {
-    "postinstall": "npm run instrument",
     "instrument": "node node_modules/istanbul/lib/cli.js instrument --no-compact --output instrumented src",
     "pretest": "node node_modules/rimraf/bin.js coverage instrumented && npm run instrument",
     "test": "node node_modules/testem/testem.js ci --skip PhantomJS,Chromium,Safari",
