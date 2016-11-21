@@ -6,3 +6,4 @@ instrumented
 .vagrant
 report.tap
 yarn.lock
+reports

@@ -5,8 +5,11 @@
   "license": "BSD-3-Clause",
   "repository": "https://github.com/GPII/gpii-binder",
   "scripts": {
-    "pretest": "node node_modules/rimraf/bin.js coverage instrumented",
-    "test": "node node_modules/testem/testem.js ci --skip PhantomJS,Chromium,Safari"
+    "postinstall": "npm run instrument",
+    "instrument": "node node_modules/istanbul/lib/cli.js instrument --no-compact --output instrumented src",
+    "pretest": "node node_modules/rimraf/bin.js coverage instrumented && npm run instrument",
+    "test": "node node_modules/testem/testem.js ci --skip PhantomJS,Chromium,Safari",
+    "posttest": "node node_modules/istanbul/lib/cli.js report --root coverage --dir reports text-summary html"
   },
   "dependencies": {
     "infusion": "git://github.com/the-t-in-rtf/infusion.git#8202f87093d60bdf7c58d95a41ecdf27aca0eca9"
@@ -21,7 +24,6 @@
     "node-jqunit": "1.1.4",
     "qunitjs": "2.0.1",
     "rimraf": "2.5.4",
-    "shelljs": "0.7.5",
     "testem": "1.13.0"
   }
 }

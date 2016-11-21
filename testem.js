@@ -10,7 +10,7 @@ gpii.binder.loadTestingSupport();
 
 var outputFile = fluid.module.resolvePath("%gpii-binder/report.tap");
 
-var testemHarness = gpii.test.testem.instrumented({
+var testemHarness = gpii.test.testem({
     testPages: [ "tests/static/all-tests.html" ],
     testemOptions: {
         "framework":   "qunit",
