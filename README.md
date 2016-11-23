@@ -141,5 +141,6 @@ whenever an `onDomChange` event is fired.
 To run the tests in this package, run `npm test`.  In addition to the normal test output, an
 [Istanbul](https://github.com/gotwarlost/istanbul) test coverage report will be saved to `coverage/lcov-report/index.html`.
 
-If you want to view the tests in a browser, you will need to run `npm run instrument` manually first.  You can then
-either run `testem` and open the URL it returns in a browser, or host the content yourself and open it directly.
+If you want to debug the tests in a browser, you will need to somehow host the root directory, for example, using a
+command like `python -m SimpleHTTPServer 7291`.  You would then open `http://localhost:7291/tests/static/all-tests.html`
+in your browser.
