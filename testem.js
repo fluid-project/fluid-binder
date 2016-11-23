@@ -15,7 +15,10 @@ var testemHarness = gpii.test.testem({
     testemOptions: {
         "framework":   "qunit",
         "parallel":    1,
-        "report_file": outputFile
+        "report_file": outputFile,
+        "routes": {
+            "/src": "instrumented"
+        }
     }
 });
 module.exports = testemHarness.options.testemOptions;
