@@ -40,7 +40,7 @@
     fluid.defaults("gpii.tests.binder.clear.caseHolder", {
         gradeNames: ["gpii.tests.binder.caseHolder"],
         rawModules: [{
-            name: "Testing clearing an existing value from a text field...",
+            name: "Testing clearing an existing model value from a text field...",
             tests: [
                 {
                     name: "Confirm that clearing out a text field sets the associated model value to `null`...",
@@ -50,25 +50,16 @@
                             args: ["The initial model value should be correct...", "Model value", "{testEnvironment}.binder.model.toBeCleared"]
                         },
                         {
-                            func: "fluid.changeElementValue",
-                            args: ["[name='to-be-cleared']", ""]
-                        },
-                        {
-                            func: "jqUnit.assertEquals",
-                            args: ["The model value should have been cleared out when we cleared the text field...", undefined, "{testEnvironment}.binder.model.toBeCleared"]
-                        }
-                    ]
-                },
-                {
-                    name: "Confirm that model deletions are correctly relayed (FLUID-5585)...",
-                    sequence: [
-                        {
                             func: "jqUnit.assertEquals",
                             args: ["The initial model value should be correctly relayed...", "Model value", "{testEnvironment}.binder.hasRelayedModel.model.toBeCleared"]
                         },
                         {
                             func: "fluid.changeElementValue",
                             args: ["[name='to-be-cleared']", ""]
+                        },
+                        {
+                            func: "jqUnit.assertEquals",
+                            args: ["The model value should have been cleared out when we cleared the text field...", undefined, "{testEnvironment}.binder.model.toBeCleared"]
                         },
                         {
                             func: "jqUnit.assertEquals",
@@ -82,7 +73,7 @@
 
     fluid.defaults("gpii.tests.binder.clear.environment", {
         gradeNames:       ["gpii.tests.binder.environment"],
-        markupFixture:    ".viewport-toBeCleared",
+        markupFixture:    ".viewport-clear",
         binderGradeNames: ["gpii.tests.binder.toBeCleared"],
         moduleName:       "Testing clearing an existing value",
         components: {
