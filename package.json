@@ -11,7 +11,7 @@
     "posttest": "node node_modules/istanbul/lib/cli.js report --root coverage --dir reports text-summary html"
   },
   "dependencies": {
-    "infusion": "git://github.com/the-t-in-rtf/infusion.git#8202f87093d60bdf7c58d95a41ecdf27aca0eca9"
+    "infusion": "git://github.com/the-t-in-rtf/infusion.git#a53da57e5deb0791778027324f7abd004f4ff13c"
   },
   "devDependencies": {
     "eslint": "3.10.2",

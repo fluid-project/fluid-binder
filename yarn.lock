@@ -1131,9 +1131,9 @@ infusion@2.0.0-dev.20151130T180545Z.18ee3f8:
   dependencies:
     resolve "1.1.6"
 
-"infusion@git://github.com/amb26/infusion.git#11b4750daa93596f0b594b8aa174579fb973d4e0":
+"infusion@git://github.com/the-t-in-rtf/infusion.git#a53da57e5deb0791778027324f7abd004f4ff13c":
   version "2.0.0"
-  resolved "git://github.com/amb26/infusion.git#11b4750daa93596f0b594b8aa174579fb973d4e0"
+  resolved "git://github.com/the-t-in-rtf/infusion.git#a53da57e5deb0791778027324f7abd004f4ff13c"
   dependencies:
     fluid-resolve "1.2.0"
 
