@@ -16,13 +16,13 @@
   "devDependencies": {
     "eslint": "3.10.2",
     "eslint-config-fluid": "1.0.0",
-    "grunt": "1.0.1",
     "fluid-grunt-eslint": "18.1.2",
+    "grunt": "1.0.1",
     "grunt-jsonlint": "1.1.0",
     "istanbul": "0.4.5",
     "node-jqunit": "1.1.4",
     "qunitjs": "2.0.1",
     "rimraf": "2.5.4",
-    "testem": "1.13.0"
+    "testem": "^1.13.0"
   }
 }
