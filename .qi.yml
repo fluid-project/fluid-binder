@@ -5,7 +5,7 @@ env_runtime: linux-desktop
 apps:
   - app_name: gpii-binder
     git_repository: https://github.com/the-t-in-rtf/gpii-binder.git
-    git_branch: GPII-1759
+    git_branch: GPII-2077
     software_stack: nodejs
     software_stack_version: lts
     folder:
