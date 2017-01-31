@@ -53,7 +53,7 @@ gpii.test.testem.init = function (that, config, data, callback) {
 gpii.test.testem.shutdown = function (that, config, data, callback) {
     if (that.server) {
         // shutdown the server
-        that.server.close();
+        that.server.close(callback);
     }
     else {
         callback(new Error("Cannot shutdown server because it does not exist."));

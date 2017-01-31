@@ -16,13 +16,12 @@ if (typeof require !== "undefined") {
     var testemHarness = gpii.test.testem({
         testPages: [ "tests/static/all-tests.html"],
         testemOptions: {
-            "browser_disconnect_timeout": 60,
+            "browser_disconnect_timeout": 10,
             "framework":   "qunit",
             "parallel":    1,
             "report_file": outputFile,
             "routes": {
-                "/src": "instrumented",
-                "/testem.js": "/"
+                "/src": "instrumented"
             }
         }
     });
