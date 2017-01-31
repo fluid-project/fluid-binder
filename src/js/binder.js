@@ -135,7 +135,7 @@
                 if (initialModelValue !== undefined) {
                     gpii.binder.changeElementValue(that, element, path, initialModelValue);
                 }
-                // If we have no model data, but there are defaults in the markup, using them to update the model.
+                // If we have no model data, but there are defaults in the markup, use them to update the model.
                 else {
                     gpii.binder.changeModelValue(that, path, fluid.value(element));
                 }

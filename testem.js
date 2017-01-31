@@ -1,32 +1,29 @@
 // Adapted from node ./node_modules/istanbul/lib/cli.js report
 /* eslint-env node */
 "use strict";
-var fluid = require("infusion");
-var gpii  = fluid.registerNamespace("gpii");
+if (typeof require !== "undefined") {
+    // If we use python to host this directory, this file will be loaded from the browser.  To avoid this, we "gate"
+    // The body of the script behind a check to see if `require` exists.
+    var fluid = require("infusion");
+    var gpii  = fluid.registerNamespace("gpii");
 
-require("./index");
+    require("./index");
 
-gpii.binder.loadTestingSupport();
+    gpii.binder.loadTestingSupport();
 
-var outputFile = fluid.module.resolvePath("%gpii-binder/report.tap");
+    var outputFile = fluid.module.resolvePath("%gpii-binder/report.tap");
 
-var testemHarness = gpii.test.testem.instrumented({
-    testPages: [
-        "tests/static/tests-binder-array.html",
-        "tests/static/tests-binder-bindOnDomChange.html",
-        "tests/static/tests-binder-checkbox.html",
-        "tests/static/tests-binder-clear.html",
-        "tests/static/tests-binder-encoding.html",
-        "tests/static/tests-binder-long.html",
-        "tests/static/tests-binder-radio.html",
-        "tests/static/tests-binder-select.html",
-        "tests/static/tests-binder-short.html",
-        "tests/static/tests-binder-textarea.html"
-    ],
-    testemOptions: {
-        "framework":   "qunit",
-        "parallel":    1,
-        "report_file": outputFile
-    }
-});
-module.exports = testemHarness.options.testemOptions;
+    var testemHarness = gpii.test.testem({
+        testPages: [ "tests/static/all-tests.html"],
+        testemOptions: {
+            "browser_disconnect_timeout": 10,
+            "framework":   "qunit",
+            "parallel":    1,
+            "report_file": outputFile,
+            "routes": {
+                "/src": "instrumented"
+            }
+        }
+    });
+    module.exports = testemHarness.options.testemOptions;
+}
