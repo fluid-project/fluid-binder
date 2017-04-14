@@ -1,9 +1,10 @@
 {
-  "name": "gpii-binder",
-  "version": "1.0.0",
-  "private": false,
+  "name": "gpii-mail-test",
+  "version": "1.0.1",
+  "description": "A fluid component that provides an SMTP server and client that can be used for testing purposes.",
+  "author": "Tony Atkins <tony@raisingthefloor.org>",
   "license": "BSD-3-Clause",
-  "repository": "https://github.com/GPII/gpii-binder",
+  "main": "",
   "scripts": {
     "pretest": "node node_modules/rimraf/bin.js instrumented/* reports/* coverage/*",
     "test": "node node_modules/testem/testem.js --file tests/testem.js ci --skip PhantomJS,Chromium,Safari"
