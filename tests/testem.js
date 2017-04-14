@@ -4,7 +4,7 @@ var fluid = require("infusion");
 var gpii  = fluid.registerNamespace("gpii");
 
 require("../");
-fluid.require("%gpii-testem");
+require("gpii-testem");
 
 var outputFile = fluid.module.resolvePath("%gpii-binder/report.tap");
 

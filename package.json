@@ -5,10 +5,11 @@
   "license": "BSD-3-Clause",
   "repository": "https://github.com/GPII/gpii-binder",
   "scripts": {
+    "pretest": "node node_modules/rimraf/bin.js instrumented/* reports/* coverage/*",
     "test": "node node_modules/testem/testem.js --file tests/testem.js ci --skip PhantomJS,Chromium,Safari"
   },
   "dependencies": {
-    "infusion": "3.0.0-dev.20170127T130413Z.103de6e"
+    "infusion": "3.0.0-dev.20170322T234120Z.278de35"
   },
   "devDependencies": {
     "eslint": "3.19.0",
