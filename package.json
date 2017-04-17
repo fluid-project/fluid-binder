@@ -1,32 +1,27 @@
 {
-  "name": "gpii-mail-test",
+  "name": "gpii-binder",
   "version": "1.0.1",
-  "description": "A fluid component that provides an SMTP server and client that can be used for testing purposes.",
   "author": "Tony Atkins <tony@raisingthefloor.org>",
   "license": "BSD-3-Clause",
-  "main": "",
   "scripts": {
-    "test": "node node_modules/istanbul/lib/cli.js cover tests/all-tests.js"
+    "pretest": "node node_modules/rimraf/bin.js coverage/* instrumented/* reports/*",
+    "test": "node node_modules/testem/testem.js ci --file tests/testem.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/GPII/gpii-mail-test"
-  },
+  "repository": "https://github.com/GPII/gpii-binder",
   "dependencies": {
-    "infusion": "3.0.0-dev.20170127T130413Z.103de6e",
-    "nodemailer": "3.0.2",
-    "nodemailer-smtp-transport": "2.7.2",
-    "simplesmtp": "0.3.35"
+    "infusion": "3.0.0-dev.20170322T234120Z.278de35"
   },
   "devDependencies": {
-    "eslint": "3.15.0",
+    "eslint": "3.19.0",
     "eslint-config-fluid": "1.1.0",
     "fluid-grunt-eslint": "18.1.2",
-    "gpii-express": "1.0.2",
+    "gpii-testem": "1.0.0-dev.20170411T125618Z.4ec8037",
     "grunt": "1.0.1",
     "grunt-jsonlint": "1.1.0",
     "istanbul": "0.4.5",
-    "kettle": "1.3.2",
-    "node-jqunit": "1.1.4"
+    "node-jqunit": "1.1.4",
+    "qunitjs": "2.1.1",
+    "rimraf": "2.6.1",
+    "testem": "1.13.0"
   }
 }
