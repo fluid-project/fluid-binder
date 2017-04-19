@@ -1005,9 +1005,9 @@ globby@^5.0.0:
     pify "^2.0.0"
     pinkie-promise "^2.0.0"
 
-gpii-express@1.0.7-dev.20170419T081915Z.306d53d:
-  version "1.0.7-dev.20170419T081915Z.306d53d"
-  resolved "https://registry.yarnpkg.com/gpii-express/-/gpii-express-1.0.7-dev.20170419T081915Z.306d53d.tgz#162f42d96640002b50e1cefe04b7a827213ce3ee"
+gpii-express@1.0.7-dev.20170419T084255Z.1cfe9d8:
+  version "1.0.7-dev.20170419T084255Z.1cfe9d8"
+  resolved "https://registry.yarnpkg.com/gpii-express/-/gpii-express-1.0.7-dev.20170419T084255Z.1cfe9d8.tgz#eff4853fff23fe5485ad898c5b9243eb87548b26"
   dependencies:
     body-parser "1.17.1"
     cookie-parser "1.4.3"
@@ -1015,11 +1015,11 @@ gpii-express@1.0.7-dev.20170419T081915Z.306d53d:
     express-session "1.15.2"
     infusion "3.0.0-dev.20170322T234120Z.278de35"
 
-gpii-testem@1.0.0-dev.20170419T083441Z.65cacf1:
-  version "1.0.0-dev.20170419T083441Z.65cacf1"
-  resolved "https://registry.yarnpkg.com/gpii-testem/-/gpii-testem-1.0.0-dev.20170419T083441Z.65cacf1.tgz#66861f3d65ff808e46f78c63bb64e439da1afdb3"
+gpii-testem@1.0.0-dev.20170419T084501Z.6d115d4:
+  version "1.0.0-dev.20170419T084501Z.6d115d4"
+  resolved "https://registry.yarnpkg.com/gpii-testem/-/gpii-testem-1.0.0-dev.20170419T084501Z.6d115d4.tgz#e83568a8386769df2cc85ffd4066e0d71e42c62a"
   dependencies:
-    gpii-express "1.0.7-dev.20170419T081915Z.306d53d"
+    gpii-express "1.0.7-dev.20170419T084255Z.1cfe9d8"
     infusion "3.0.0-dev.20170322T234120Z.278de35"
     istanbul "0.4.5"
     mkdirp "0.5.1"
