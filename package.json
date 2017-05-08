@@ -5,7 +5,7 @@
   "license": "BSD-3-Clause",
   "scripts": {
     "pretest": "node node_modules/rimraf/bin.js coverage/* instrumented/* reports/*",
-    "test": "node node_modules/testem/testem.js ci --file tests/testem.js --skip IE"
+    "test": "node node_modules/testem/testem.js ci --file tests/testem.js"
   },
   "repository": "https://github.com/GPII/gpii-binder",
   "dependencies": {
