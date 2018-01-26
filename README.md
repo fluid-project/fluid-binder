@@ -53,6 +53,8 @@ The "long form" looks like:
         }
     }
 
+### Example 1: Using "long notation" to handle a numeric model value.
+
 The following is an example of how model transformation rules are used in binding definitions:
 
     bindings: {
@@ -87,6 +89,44 @@ In the above example:
 
 If you do not supply any rules, be aware that non-string values will be converted to strings using their `toString` 
 method.  For objects, this results in the form values being set to the literal string `[Object object]`.
+
+### Example 2: Using "long notation" to handle a single checkbox.
+
+By default, checkboxes are treated as being part of an implicit group, and their values are all handled as strings.  If
+no `value` attribute is specified for a checkbox, it's value is the literal string "on".  If you want to provide a
+checkbox that will toggle a model variable between `true` and `false`, you can use additional transforms provided by
+this package, as illustrated in the following snippet:
+
+```snippet
+    bindings: {
+        myCheckBox: {
+            selector: "myCheckBoxSelected",
+            path:     "myModelVariable",
+            rules: {
+                domToModel: {
+                    "": {
+                        transform: {
+                            type: "gpii.binder.transforms.checkToBoolean",
+                            inputPath: ""
+                        }
+                    }
+                },
+                modelToDom: {
+                    "": {
+                        transform: {
+                            type: "gpii.binder.transforms.booleanToCheck",
+                            inputPath: ""
+                        }
+                    }
+                }
+            }
+        }
+    }
+```
+
+Note that the `gpii.binder.transforms.checkToBoolean` transform only checks the first value, so you can also use the
+above transformation rules in cases in which you want all of the checkboxes matching a selector to be checked if any of
+the individual checkboxes is selected.
 
 ## Short notation
 

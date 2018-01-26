@@ -3,11 +3,12 @@
     "use strict";
     var gpii = fluid.registerNamespace("gpii");
 
-// Component to test support for checkboxes
+    // Component to test support for checkboxes
     fluid.defaults("gpii.tests.binder.checkbox", {
         gradeNames: ["gpii.tests.binder.base"],
         model: {
-            initFromModel: ["on"]
+            updateFromMarkup: false,
+            initFromModel: true
         },
         selectors: {
             array: "input[name='checkbox-groups']"
@@ -15,7 +16,25 @@
         bindings: {
             initFromModel: {
                 selector: "initFromModel",
-                path:     "initFromModel"
+                path:     "initFromModel",
+                rules: {
+                    domToModel: {
+                        "": {
+                            transform: {
+                                type: "gpii.binder.transforms.checkToBoolean",
+                                inputPath: ""
+                            }
+                        }
+                    },
+                    modelToDom: {
+                        "": {
+                            transform: {
+                                type: "gpii.binder.transforms.booleanToCheck",
+                                inputPath: ""
+                            }
+                        }
+                    }
+                }
             },
             initFromMarkup: {
                 selector: "initFromMarkup",
@@ -27,7 +46,25 @@
             },
             updateFromMarkup: {
                 selector: "updateFromMarkup",
-                path:     "updateFromMarkup"
+                path:     "updateFromMarkup",
+                rules: {
+                    domToModel: {
+                        "": {
+                            transform: {
+                                type: "gpii.binder.transforms.checkToBoolean",
+                                inputPath: ""
+                            }
+                        }
+                    },
+                    modelToDom: {
+                        "": {
+                            transform: {
+                                type: "gpii.binder.transforms.booleanToCheck",
+                                inputPath: ""
+                            }
+                        }
+                    }
+                }
             },
             array: {
                 selector: "array",
@@ -50,7 +87,7 @@
                         },
                         {
                             func: "jqUnit.assertDeepEq",
-                            args: ["The 'checkbox' field should have been updated based on a form change...", ["updated using form controls"], "{testEnvironment}.binder.model.updateFromMarkup"]
+                            args: ["The 'checkbox' field should have been updated based on a form change...", true, "{testEnvironment}.binder.model.updateFromMarkup"]
                         }
                     ]
                 },
