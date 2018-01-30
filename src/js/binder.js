@@ -61,7 +61,7 @@
      * @param path {String} The path to the bound model variable.  Used to look up the binding settings.
      * @param rawValue {Object} The value to be transformed.
      * @param ruleName {String} The rule to use when transforming the rule.
-     * @returns The transformed value.
+     * @return The transformed value.
      *
      */
     gpii.binder.transformPathedValue = function (that, path, rawValue, ruleName) {
@@ -85,7 +85,7 @@
      *
      * @param that {Object} The binder component itself.
      * @param desiredPath {String} The model path for the desired binding.
-     * @returns {Object} The binder options for the specific path, in "long form".
+     * @return {Object} The binder options for the specific path, in "long form".
      *
      */
     gpii.binder.getPathBindingOptions = function (that, desiredPath) {

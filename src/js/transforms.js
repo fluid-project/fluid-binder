@@ -47,8 +47,8 @@ fluid.defaults("gpii.binder.transforms.stripEmptyString", {
  *
  * Transform the value returned by jQuery.val for a single checkbox into a boolean.
  *
- * @param `value` `{Array}` - An array of values, either the value attribute of a ticked checkbox, or "on" if the checkbox has no value specified.
- * @returns `{Boolean}` - `true` if the first value is checked, `false`.
+ * @param value {Array} - An array of values, either the value attribute of a ticked checkbox, or "on" if the checkbox has no value specified.
+ * @return {Boolean} - `true` if the first value is checked, `false`.
  *
  */
 gpii.binder.transforms.checkToBoolean = function (value) {
@@ -63,8 +63,8 @@ fluid.defaults("gpii.binder.transforms.checkToBoolean", {
  *
  * Transform a boolean model value into the value used for checkboxes by jQuery.val.
  *
- * @param `value` `{Boolean}` - The value to be passed to the DOM.
- * @returns `{Array}` - An array with the first value set to "on" if the value is `true`, an empty Array otherwise.
+ * @param value {Boolean} - The value to be passed to the DOM.
+ * @return {Array} - An array with the first value set to "on" if the value is `true`, an empty Array otherwise.
  *
  */
 gpii.binder.transforms.booleanToCheck = function (value) {
