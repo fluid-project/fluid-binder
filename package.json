@@ -9,19 +9,19 @@
   },
   "repository": "https://github.com/GPII/gpii-binder",
   "dependencies": {
-    "infusion": "3.0.0-dev.20170724T165035Z.eee50c1"
+    "infusion": "3.0.0-dev.20180227T185528Z.08741e844"
   },
   "devDependencies": {
-    "eslint": "4.3.0",
-    "eslint-config-fluid": "1.1.0",
+    "eslint": "4.18.2",
+    "eslint-config-fluid": "1.2.0",
     "fluid-grunt-eslint": "18.1.2",
-    "gpii-testem": "1.0.2-dev.20170725T121854Z.4aa6cc5",
-    "grunt": "1.0.1",
+    "gpii-testem": "2.0.1-dev.20180305T143958Z.d98bb69",
+    "grunt": "1.0.2",
     "grunt-jsonlint": "1.1.0",
     "istanbul": "0.4.5",
-    "node-jqunit": "1.1.6",
-    "qunitjs": "2.4.0",
-    "rimraf": "2.6.1",
-    "testem": "1.18.1"
+    "node-jqunit": "1.1.8",
+    "qunitjs": "2.4.1",
+    "rimraf": "2.6.2",
+    "testem": "2.0.0"
   }
 }

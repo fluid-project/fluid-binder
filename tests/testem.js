@@ -10,11 +10,9 @@ var outputFile = fluid.module.resolvePath("%gpii-binder/report.tap");
 
 fluid.defaults("gpii.test.binder.testem", {
     gradeNames: ["gpii.testem"],
-    istanbulCmd: "node node_modules/istanbul/lib/cli.js",
-    sourceDirs: ["src"],
-    testPages: [ "tests/static/all-tests.html"],
-    coverageDir: "coverage",
-    reportsDir: "reports",
+    sourceDirs: { src: "%gpii-binder/src" },
+    testPages: ["tests/static/all-tests.html"],
+    reportsDir: "%gpii-binder/reports",
     testemOptions: {
         "report_file": outputFile
     }
