@@ -55,8 +55,14 @@ gpii.binder.transforms.checkToBoolean = function (value) {
     return fluid.get(value, 0) ? true : false;
 };
 
+gpii.binder.transforms.checkToBoolean.invert = function (transformSpec) {
+    transformSpec.type = "gpii.binder.transforms.booleanToCheck";
+    return transformSpec;
+};
+
 fluid.defaults("gpii.binder.transforms.checkToBoolean", {
-    gradeNames: ["fluid.standardTransformFunction"]
+    gradeNames: ["fluid.standardTransformFunction", "fluid.lens"],
+    invertConfiguration: "gpii.binder.transforms.checkToBoolean.invert"
 });
 
 /**
@@ -71,6 +77,12 @@ gpii.binder.transforms.booleanToCheck = function (value) {
     return value ? ["on"] : [];
 };
 
+gpii.binder.transforms.booleanToCheck.invert = function (transformSpec) {
+    transformSpec.type = "gpii.binder.transforms.checkToBoolean";
+    return transformSpec;
+};
+
 fluid.defaults("gpii.binder.transforms.booleanToCheck", {
-    gradeNames: ["fluid.standardTransformFunction"]
+    gradeNames: ["fluid.standardTransformFunction", "fluid.lens"],
+    invertConfiguration: "gpii.binder.transforms.booleanToCheck.invert"
 });
