@@ -14,7 +14,8 @@ fluid.defaults("gpii.test.binder.testem", {
     testPages: ["tests/static/all-tests.html"],
     reportsDir: "%gpii-binder/reports",
     testemOptions: {
-        "report_file": outputFile
+        "report_file": outputFile,
+        "skip": "PhantomJS"
     }
 });
 
