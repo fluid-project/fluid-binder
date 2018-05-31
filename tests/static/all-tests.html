@@ -4,28 +4,37 @@
     <meta charset="UTF-8" />
     <title>GPII Binder complete tests runner</title>
 
-    <script type="text/javascript" src="/coverage/client/coverageSender.js"></script>
-
     <link rel="stylesheet" href="../../node_modules/infusion/tests/lib/qunit/css/qunit.css"/>
     <link rel="stylesheet" href="../../node_modules/infusion/tests/lib/qunit/addons/composite/qunit-composite.css"/>
+    <script type="text/javascript" src="../../node_modules/infusion/dist/infusion-all.js"></script>
     <script type="text/javascript" src="../../node_modules/infusion/tests/lib/qunit/js/qunit.js"></script>
     <script src="/testem.js"></script>
     <script src="../../node_modules/infusion/tests/lib/qunit/addons/composite/qunit-composite.js"></script>
 
     <script>
-        QUnit.testSuites("Binder Tests", [
-            "./tests-binder-array.html",
-            "./tests-binder-bindOnDomChange.html",
-            "./tests-binder-checkbox.html",
-            "./tests-binder-clear.html",
-            "./tests-binder-encoding.html",
-            "./tests-binder-long.html",
-            "./tests-binder-radio.html",
-            "./tests-binder-select.html",
-            "./tests-binder-short.html",
-            "./tests-binder-textarea.html",
-            "./tests-binder-transforms.html"
-        ]);
+        var rawTestSuites = {
+            "Binder Tests": [
+                "/tests-binder-array.html",
+                "/tests-binder-bindOnDomChange.html",
+                "/tests-binder-checkbox.html",
+                "/tests-binder-clear.html",
+                "/tests-binder-encoding.html",
+                "/tests-binder-long.html",
+                "/tests-binder-radio.html",
+                "/tests-binder-select.html",
+                "/tests-binder-short.html",
+                "/tests-binder-textarea.html",
+                "/tests-binder-transforms.html"
+            ]
+        };
+
+        fluid.each(rawTestSuites, function (tests, moduleName) {
+            var testsWithPaths = tests.map(function (entry) {
+                var leader = typeof Testem === "undefined" ? "." : "/tests/static";
+                return leader + entry;
+            });
+            QUnit.testSuites(moduleName, testsWithPaths);
+        });
     </script>
 </head>
 <body>

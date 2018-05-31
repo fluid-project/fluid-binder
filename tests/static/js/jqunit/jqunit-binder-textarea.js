@@ -1,5 +1,5 @@
 /* globals fluid */
-(function () {
+(function (fluid) {
     "use strict";
     var gpii = fluid.registerNamespace("gpii");
 
@@ -42,4 +42,4 @@
     });
 
     gpii.tests.binder.textarea.environment();
-})();
+})(fluid);
