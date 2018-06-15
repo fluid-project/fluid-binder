@@ -1,8 +1,8 @@
 node_modules
-bower_components
 .idea/
 coverage
 instrumented
 .vagrant
 report.tap
 reports
+package-lock.json
