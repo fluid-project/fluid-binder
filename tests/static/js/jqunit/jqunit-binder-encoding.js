@@ -3,7 +3,7 @@
     "use strict";
     var gpii = fluid.registerNamespace("gpii");
 
-// Component to test support for encoded "typed" data
+    // Component to test support for encoded "typed" data
     fluid.defaults("gpii.tests.binder.encoding", {
         gradeNames: ["gpii.binder.bindOnCreate"],
         model: {},
@@ -166,40 +166,46 @@
 
     fluid.defaults("gpii.tests.binder.encoding.caseHolder", {
         gradeNames: ["gpii.tests.binder.caseHolder"],
+        mergePolicy: {
+            "inputs": "noexpand"
+        },
+        inputs: {
+            updatedObject: "{ \"baz\": \"qux\"}"
+        },
         rawModules: [{
-            name: "Testing support for encoding non-string data...",
+            name: "Testing support for encoding non-string data.",
             tests: [
                 {
-                    name: "Encoded variables in the initial markup should be passed to the model correctly...",
+                    name: "Encoded variables in the initial markup should be passed to the model correctly.",
                     sequence: [
                         {
                             func: "jqUnit.assertEquals",
-                            args: ["A number in the initial markup should be a number in the model...", 3, "{testEnvironment}.binder.model.number-from-markup"]
+                            args: ["A number in the initial markup should be a number in the model.", 3, "{testEnvironment}.binder.model.number-from-markup"]
                         },
                         {
                             func: "jqUnit.assertEquals",
-                            args: ["A false value in the initial markup should be false in the model...", false, "{testEnvironment}.binder.model.false-from-markup"]
+                            args: ["A false value in the initial markup should be false in the model.", false, "{testEnvironment}.binder.model.false-from-markup"]
                         },
                         {
                             func: "jqUnit.assertEquals",
-                            args: ["A zero in the initial markup should be a number in the model...", 0, "{testEnvironment}.binder.model.zero-from-markup"]
+                            args: ["A zero in the initial markup should be a number in the model.", 0, "{testEnvironment}.binder.model.zero-from-markup"]
                         },
                         {
                             func: "jqUnit.assertEquals",
-                            args: ["A null value in the initial markup should not be set in the model...", undefined, "{testEnvironment}.binder.model.null-from-markup"]
+                            args: ["A null value in the initial markup should not be set in the model.", undefined, "{testEnvironment}.binder.model.null-from-markup"]
                         },
                         {
                             func: "jqUnit.assertDeepEq",
-                            args: ["An array in the initial markup should be an object in the model...", ["foo", "bar"], "{testEnvironment}.binder.model.array-from-markup"]
+                            args: ["An array in the initial markup should be an object in the model.", ["foo", "bar"], "{testEnvironment}.binder.model.array-from-markup"]
                         },
                         {
                             func: "jqUnit.assertDeepEq",
-                            args: ["An object in the initial markup should be an object in the model...", {"foo": "bar"}, "{testEnvironment}.binder.model.object-from-markup"]
+                            args: ["An object in the initial markup should be an object in the model.", {"foo": "bar"}, "{testEnvironment}.binder.model.object-from-markup"]
                         }
                     ]
                 },
                 {
-                    name: "Confirm that picking a numeric value from a list results in a model update...",
+                    name: "Confirm that picking a numeric value from a list results in a model update.",
                     type: "test",
                     sequence: [
                         {
@@ -208,12 +214,12 @@
                         },
                         {
                             func: "jqUnit.assertEquals",
-                            args: ["The model data should be set to the correct number...", 2, "{testEnvironment}.binder.model.number-select"]
+                            args: ["The model data should be set to the correct number.", 2, "{testEnvironment}.binder.model.number-select"]
                         }
                     ]
                 },
                 {
-                    name: "Confirm that setting a number value via a model update results in a form change...",
+                    name: "Confirm that setting a number value via a model update results in a form change.",
                     type: "test",
                     sequence: [
                         {
@@ -222,12 +228,12 @@
                         },
                         {
                             func: "gpii.tests.binder.testElement",
-                            args: ["assertEquals", "The form element should have been updated...", "1", ".number-select"] // (fnName, message, expected, selector)
+                            args: ["assertEquals", "The form element should have been updated.", "1", ".number-select"] // (fnName, message, expected, selector)
                         }
                     ]
                 },
                 {
-                    name: "Confirm that picking a 'falsy' value from a list results in a model update...",
+                    name: "Confirm that picking a 'falsy' value from a list results in a model update.",
                     type: "test",
                     sequence: [
                         // NOTE: This must be a string because jQuery's val() function works with strings, arrays, and objects, but not `false`.
@@ -237,7 +243,7 @@
                         },
                         {
                             func: "jqUnit.assertEquals",
-                            args: ["The model data should be set to false...", false, "{testEnvironment}.binder.model.falsy-select"]
+                            args: ["The model data should be set to false.", false, "{testEnvironment}.binder.model.falsy-select"]
                         },
                         {
                             func: "fluid.changeElementValue",
@@ -245,7 +251,7 @@
                         },
                         {
                             func: "jqUnit.assertEquals",
-                            args: ["The model data should be set to false...", false, "{testEnvironment}.binder.model.falsy-select"]
+                            args: ["The model data should be set to false.", false, "{testEnvironment}.binder.model.falsy-select"]
                         },
                         {
                             func: "fluid.changeElementValue",
@@ -253,12 +259,12 @@
                         },
                         {
                             func: "jqUnit.assertEquals",
-                            args: ["The model data should be set to false...", false, "{testEnvironment}.binder.model.falsy-select"]
+                            args: ["The model data should be set to false.", false, "{testEnvironment}.binder.model.falsy-select"]
                         }
                     ]
                 },
                 {
-                    name: "Confirm that setting a 'falsy' value via a model update results in a form change...",
+                    name: "Confirm that setting a 'falsy' value via a model update results in a form change.",
                     type: "test",
                     sequence: [
                         {
@@ -267,7 +273,22 @@
                         },
                         {
                             func: "gpii.tests.binder.testElement",
-                            args: ["assertEquals", "The form element should have been updated...", "false", "[name='false-from-model']"] // (fnName, message, expected, selector)
+                            args: ["assertEquals", "The form element should have been updated.", "false", "[name='false-from-model']"] // (fnName, message, expected, selector)
+                        }
+                    ]
+                },
+                // https://issues.gpii.net/browse/GPII-3549
+                {
+                    name: "Confirm that setting an object value in the DOM replaces the existing value entirely (GPII-3549).",
+                    type: "test",
+                    sequence: [
+                        {
+                            func: "fluid.changeElementValue",
+                            args: ["[name='object-from-markup']", "{that}.options.inputs.updatedObject"]
+                        },
+                        {
+                            func: "jqUnit.assertDeepEq",
+                            args: ["The model data should be cleanly updated.", { baz: "qux" }, "{testEnvironment}.binder.model.object-from-markup"]
                         }
                     ]
                 }

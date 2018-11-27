@@ -29,12 +29,14 @@
      */
     gpii.binder.changeModelValue = function (that, path, elementValue) {
         var transformedValue = gpii.binder.transformPathedValue(that, path, elementValue, "domToModel");
-        if (transformedValue === null || transformedValue === undefined) {
-            that.applier.change(path, transformedValue, "DELETE");
+        var changes = [];
+        changes.push({ path: path, type: "DELETE"});
+
+        if (transformedValue !== null && transformedValue !== undefined) {
+            changes.push({ path: path, value: transformedValue });
         }
-        else {
-            that.applier.change(path, transformedValue);
-        }
+
+        fluid.fireChanges(that.applier, changes);
     };
 
     /**
