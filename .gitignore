@@ -1,7 +1,5 @@
 node_modules
 .idea/
-coverage
-instrumented
 .vagrant
 report.tap
 reports
