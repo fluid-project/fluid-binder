@@ -23,9 +23,9 @@
      *
      * The raw values are transformed using `fluid.model.transformWithRules` and `options.rules.domToModel`.
      *
-     * @param that {Object} The component itself.
-     * @param path {String} The path to the model variable to be updated.
-     * @param elementValue {Object} The value to set.
+     * @param {Object} that - The component itself.
+     * @param {String} path - The path to the model variable to be updated.
+     * @param {Object} elementValue - The value to set.
      */
     gpii.binder.changeModelValue = function (that, path, elementValue) {
         var transformedValue = gpii.binder.transformPathedValue(that, path, elementValue, "domToModel");
@@ -41,10 +41,10 @@
      *
      * Change the value of a DOM element based on a model values. Raw values are transformed using ``.
      *
-     * @param that {Object} The component itself.
-     * @param element {Object} The jQuery element itself.
-     * @param path {String} The path to the model variable to be updated.
-     * @param modelValue {Object} The value to set.
+     * @param {Object} that - The component itself.
+     * @param {Object} element - The jQuery element itself.
+     * @param {String} path - The path to the model variable to be updated.
+     * @param {Object} modelValue - The value to set.
      *
      * */
     gpii.binder.changeElementValue = function (that, element, path, modelValue) {
@@ -58,10 +58,11 @@
      * the model transformation system deals oddly with `undefined` values, those are implicitly converted to `null`
      * before attempting to transform them.
      *
-     * @param path {String} The path to the bound model variable.  Used to look up the binding settings.
-     * @param rawValue {Object} The value to be transformed.
-     * @param ruleName {String} The rule to use when transforming the rule.
-     * @returns The transformed value.
+     * @param {Object} that - The component itself.
+     * @param {String} path - The path to the bound model variable.  Used to look up the binding settings.
+     * @param {Object} rawValue - The value to be transformed.
+     * @param {String} ruleName - The rule to use when transforming the rule.
+     * @return {Any} The transformed value.
      *
      */
     gpii.binder.transformPathedValue = function (that, path, rawValue, ruleName) {
@@ -83,9 +84,9 @@
      *
      * Retrieve the binding settings for an individual path.
      *
-     * @param that {Object} The binder component itself.
-     * @param desiredPath {String} The model path for the desired binding.
-     * @returns {Object} The binder options for the specific path, in "long form".
+     * @param {Object} that - The binder component itself.
+     * @param {String} desiredPath - The model path for the desired binding.
+     * @return {Object} The binder options for the specific path, in "long form".
      *
      */
     gpii.binder.getPathBindingOptions = function (that, desiredPath) {
@@ -107,7 +108,7 @@
      *
      * The main function to create bindings between markup and model elements.  See above for usage details.
      *
-     * @param that - A fluid viewComponent with `options.bindings` and `options.selectors` defined.
+     * @param {Object} that - A fluid viewComponent with `options.bindings` and `options.selectors` defined.
      *
      */
     gpii.binder.applyBinding = function (that) {
