@@ -29,14 +29,15 @@
      */
     gpii.binder.changeModelValue = function (that, path, elementValue) {
         var transformedValue = gpii.binder.transformPathedValue(that, path, elementValue, "domToModel");
-        var changes = [];
-        changes.push({ path: path, type: "DELETE"});
+
+        var transaction = that.applier.initiate();
+        transaction.fireChangeRequest({ path: path, type: "DELETE"});
 
         if (transformedValue !== null && transformedValue !== undefined) {
-            changes.push({ path: path, value: transformedValue });
+            transaction.fireChangeRequest({ path: path, value: transformedValue });
         }
 
-        fluid.fireChanges(that.applier, changes);
+        transaction.commit();
     };
 
     /**

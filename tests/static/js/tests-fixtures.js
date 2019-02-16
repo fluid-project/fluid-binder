@@ -9,11 +9,23 @@
     "use strict";
     var gpii = fluid.registerNamespace("gpii");
 
+    fluid.registerNamespace("gpii.tests.binder.base");
+
+    gpii.tests.binder.base.tallyUpdates = function (that, path) {
+        console.log("tallying a model change to '" + path + "'.");
+        var currentCount = fluid.get(that.updateCounter, path) || 0;
+        currentCount++;
+        fluid.set(that.updateCounter, path, currentCount);
+    };
+
     // Base viewComponent used in most tests.
     fluid.defaults("gpii.tests.binder.base", {
         gradeNames: ["gpii.binder.bindOnCreate"],
         model: {
             initFromModel:    "initialized from model" // The markup will be initialized with this value.
+        },
+        members: {
+            updateCounter: {}
         },
         selectors: {
             initFromModel:    "[name='init-from-model']",
@@ -21,6 +33,12 @@
             updateFromModel:  "[name='update-from-model']",
             updateFromMarkup: "[name='update-from-markup']",
             missingElement:   ".not-found-at-all"
+        },
+        modelListeners: {
+            "*": {
+                funcName: "gpii.tests.binder.base.tallyUpdates",
+                args: ["{that}", "{change}.path"]
+            }
         }
     });
 
@@ -115,9 +133,14 @@
                 name: "Common tests for gpii-binder...",
                 tests: [
                     {
-                        name: "Confirm that a form update results in a model update...",
+                        name: "Confirm that a form update results in a single model update...",
                         type: "test",
                         sequence: [
+                            // The value should have been changed once based on the value of the markup.
+                            {
+                                funcName: "jqUnit.assertEquals",
+                                args: ["There should have been one initial model relay to populate the field.", 1, "{testEnvironment}.binder.updateCounter.updateFromMarkup"]
+                            },
                             {
                                 func: "fluid.changeElementValue",
                                 args: ["[name='update-from-markup']", "updated via form element"]
@@ -125,6 +148,11 @@
                             {
                                 func: "jqUnit.assertEquals",
                                 args: [ QUnit.config.currentModule + ": Model data should be correctly updated after a form field change...", "updated via form element", "{testEnvironment}.binder.model.updateFromMarkup"]
+                            },
+                            // The tally should now indicate that the value has been updated twice.
+                            {
+                                funcName: "jqUnit.assertEquals",
+                                args: ["There should have been one additional model relay based on the form change.", 2, "{testEnvironment}.binder.updateCounter.updateFromMarkup"]
                             }
                         ]
                     },
