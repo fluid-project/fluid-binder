@@ -1,6 +1,6 @@
 {
     "name": "gpii-binder",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "author": "Tony Atkins <tony@raisingthefloor.org>",
     "license": "BSD-3-Clause",
     "scripts": {
