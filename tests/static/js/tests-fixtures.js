@@ -12,7 +12,7 @@
     fluid.registerNamespace("gpii.tests.binder.base");
 
     gpii.tests.binder.base.tallyUpdates = function (that, path) {
-        console.log("tallying a model change to '" + path + "'.");
+        fluid.log("tallying a model change to '" + path + "'.");
         var currentCount = fluid.get(that.updateCounter, path) || 0;
         currentCount++;
         fluid.set(that.updateCounter, path, currentCount);

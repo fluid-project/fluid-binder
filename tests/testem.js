@@ -20,7 +20,7 @@ fluid.defaults("gpii.test.binder.testem", {
     reportsDir: "%gpii-binder/reports",
     testemOptions: {
         "report_file": outputFile,
-        "skip": "PhantomJS"
+        "skip": "PhantomJS,Headless Chrome,Safari"
     }
 });
 
