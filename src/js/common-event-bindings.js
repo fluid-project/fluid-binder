@@ -15,6 +15,11 @@
      * other event constructs could be supported in the future, but only
      * jQuery events are implemented at the time of writing.
      *
+     * Binding is initiated when the components `onMarkupRendered` event is
+     * fired. If you are using a grade derived from `gpii.handlebars.templateAware`
+     * this event will be automatically fired when the handlebars markup is
+     * rendered.
+     *
      * Example usage of adding a click handler to a selector productListLinks.
      * ```
      * markupEventBindings: {
@@ -32,7 +37,8 @@
         },
         events: {
             onDomBind: null,
-            onDomUnbind: null
+            onDomUnbind: null,
+            onMarkupRendered: null
         },
         listeners: {
             onMarkupRendered: "{that}.events.onDomBind.fire({that}, {that}.container)",
