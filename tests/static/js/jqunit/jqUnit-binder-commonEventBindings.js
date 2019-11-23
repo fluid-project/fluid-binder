@@ -11,7 +11,8 @@
         selectors: {
             inputButton: "#input-button",
             inputKeydown: "#input-button",
-            paragraphClick: ".paragraph-click"
+            paragraphClick: ".paragraph-click",
+            multipleEventInputButton: "#input-multiple-events-button"
         },
         markupEventBindings: {
             inputButton: {
@@ -25,6 +26,10 @@
             paragraphClick: {
                 method: "click",
                 args: ["{that}.handleParagraphClick"]
+            },
+            multipleEventInputButton: {
+                method: ["click", "keydown"],
+                args: ["{that}.handleInputClick"]
             }
         },
         invokers: {
@@ -85,6 +90,21 @@
                         {
                             func: "gpii.tests.binder.clickSelector",
                             args: [".paragraph-click"]
+                        }
+                    ]
+                },
+                {
+                    name: "Test markup event binding for both `click` and `keydown` on an input button",
+                    type: "test",
+                    expect: 2,
+                    sequence: [
+                        {
+                            func: "gpii.tests.binder.clickSelector",
+                            args: ["#input-multiple-events-button"]
+                        },
+                        {
+                            func: "gpii.tests.binder.keydownSelector",
+                            args: ["#input-multiple-events-button"]
                         }
                     ]
                 }

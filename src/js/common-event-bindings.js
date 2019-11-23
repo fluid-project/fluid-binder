@@ -73,8 +73,17 @@
             return fluid.expandCompoundArg(that, arg, name + " argument " + index);
         });
         fluid.log("Got expanded value of ", expanded, " for jQuery decorator");
-        var func = node[dec.method];
-        return func.apply(node, expanded);
+        // Support for listing multiple methods in an array, or just a single string method
+        var methods = [dec.method];
+        var togo = [];
+        if (fluid.isArrayable(dec.method)) {
+            methods = dec.method;
+        }
+        fluid.each(methods, function (method) {
+            var func = node[method];
+            togo.push(func.apply(node, expanded));
+        });
+        return togo;
     };
 
     fluid.decoratorViewComponent.processDecorators = function (that, decorators) {
