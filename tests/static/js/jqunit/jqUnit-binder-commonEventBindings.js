@@ -10,11 +10,16 @@
         },
         selectors: {
             inputButton: "#input-button",
-            paragraphClick: ".parapgraph-click"
+            inputKeydown: "#input-button",
+            paragraphClick: ".paragraph-click"
         },
         markupEventBindings: {
             inputButton: {
                 method: "click",
+                args: ["{that}.handleInputClick"]
+            },
+            inputKeydown: {
+                method: "keydown",
                 args: ["{that}.handleInputClick"]
             },
             paragraphClick: {
@@ -62,13 +67,24 @@
                     ]
                 },
                 {
+                    name: "Test markup event binding for keydown on an input button",
+                    type: "test",
+                    expect: 1,
+                    sequence: [
+                        {
+                            func: "gpii.tests.binder.keydownSelector",
+                            args: ["#input-button"]
+                        }
+                    ]
+                },
+                {
                     name: "Test markup event binding for click on a paragraph with a class",
                     type: "test",
                     expect: 1,
                     sequence: [
                         {
                             func: "gpii.tests.binder.clickSelector",
-                            args: [".parapgraph-click"]
+                            args: [".paragraph-click"]
                         }
                     ]
                 }

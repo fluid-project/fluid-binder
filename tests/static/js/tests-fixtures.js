@@ -54,6 +54,11 @@
         $(selector).click();
     };
 
+    // Client-side function to keydown a selector
+    gpii.tests.binder.keydownSelector = function (selector) {
+        $(selector).keydown();
+    };
+
     // Client side one-shot element test, which can use most jqUnit functions.
     gpii.tests.binder.testElement = function (fnName, message, expected, selector) {
         var value = gpii.tests.binder.getElementValue(selector);
