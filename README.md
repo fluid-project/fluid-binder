@@ -177,6 +177,47 @@ If your component generates or regenerates markup, you will need to call `gpii.b
 whenever it changes.  The `gpii.binder.bindOnDomChange` grade included in this package will reapply the bindings
 whenever an `onDomChange` event is fired.
 
+## Markup Event Bindings
+
+In addition to bi-directional binding of model variables to DOM elements denoted by selectors, another feature is
+convenient binding of DOM events by selectors. This allows a streamlined syntax taking a view component selector as
+a key, and specifying a jQuery event type and arguments to be bound to that selector. These arguments can contain
+fluid IOC references, making it easy to attach an invoker on a component to an event.
+
+### `gpii.binder.bindMarkupEvents`
+
+Inheriting this grade provides the event `onMarkupRendered` which will trigger the event binding.  This event is automatically
+fired by `gpii.handlebars.templateAware` when rendering, making this a useful mix in grade for handlebars work. You can also
+fire the `onDomBind` event to trigger binding.  Similar to the `binding` options detailed above, this component adds a
+section `markupEventBindings` for attaching events to selectors.
+
+Currently, all events are standard jQuery events. In the future other event models may be supported. The `args` listed
+will be passed to the jQuery event, meaning you can use infusion syntax to pass a components invoker as the first
+argument to be the callback.
+
+| Option             | Type     | Description |
+| ------------------ | -------- | ----------- |
+| `selectors` | `{Object}` | You must define one or more [selectors](http://docs.fluidproject.org/infusion/development/tutorial-gettingStartedWithInfusion/ViewComponents.html#selectors) that can be used in a binding. |
+| `markupEventBindings` | `{Object}` | Defines the relationship between selectors and event bindings. This takes a string or array of strings listing DOM events, and a set of arguments to be passed to the event listener. |
+
+#### Example: Attaching an invoker to the `click` and `keydown` events.
+
+    markupEventBindings: {
+        productListLinks: {
+            method: ["click", "keydown"]
+            args: ["{that}.selectProduct"] // This invoker will be passed the DOM Event as it's first argument
+        }
+    }
+
+For a single event we can use just the string:
+
+    markupEventBindings: {
+        productListLinks: {
+            method: "click",
+            args: ["{that}.selectProduct"]
+        }
+    }
+
 ## Tests
 
 To run the tests in this package, run `npm test`.  In addition to the normal test output, a test coverage report will be

@@ -47,12 +47,49 @@
         }
     });
 
+    /**
+     *
+     * Markup Event Binding
+     *
+     * @typedef {Object} MarkupEventBinding
+     * @property {String} type - Currently the only supported value is `jQuery`. This property
+     * can also be omitted, in which case it will default to `jQuery`.
+     * @property {String|Array} method - The DOM Event we are binding to such as `click`. If we
+     * want to listen for multiple events in the same binding this can be an array of event
+     * types such as `["click", "keypress"]`.
+     * @property {Array} args - A list of arguments to be passed to the event. This supports the
+     * usual range of fluid IOC syntax. Typically, this will be an invoker on the component to be
+     * called when the event is triggered.
+     */
+
+    /**
+     *
+     * Markup Event Bindings
+     *
+     * This is an object containing mappings of selector names to `MarkupEventBinding`
+     * declarations. Each key should be a name corresponding to a selector in the
+     * components `selectors` option block.
+     *
+     * @typedef {Object} MarkupEventBindings
+     */
+
     fluid.registerNamespace("fluid.decoratorViewComponent");
 
     //
     // The methods below might be generic enough to go straight to infusion
     //
 
+    /**
+     *
+     * Expands string encoded arguments to the event invoker, filling
+     * in any compact string versions of infusion invokers.
+     *
+     * @param {Object} that - The component itself.
+     * @param {String|Object} arg - A single argument being passed to the event
+     * infoker.
+     * @param {String} name - The name for the invoker.
+     * @return {Object} The expanded argument.
+     */
     fluid.expandCompoundArg = function (that, arg, name) {
         var expanded = arg;
         if (typeof(arg) === "string") {
@@ -67,6 +104,19 @@
         return expanded;
     };
 
+    /**
+     *
+     * Processes a single markup event binding decorator of event type jQuery.
+     * Currently the only type of event supported is jQuery events, so this does
+     * all the work.
+     *
+     * @param {MarkupEventBinding} dec - The single binding decorator being processed.
+     * @param {DOMNode} node - The node we are listening to for the specified events.
+     * @param {Object} that - The component itself.
+     * @param {String} name - Name that will be used for the invoker created to handle
+     * this event.
+     * @return {Array} List of event functions created for this binding decorator.
+     */
     fluid.processjQueryDecorator = function (dec, node, that, name) {
         var args = fluid.makeArray(dec.args);
         var expanded = fluid.transform(args, function (arg, index) {
@@ -86,6 +136,14 @@
         return togo;
     };
 
+    /**
+     *
+     * Function to process the markup binding decorators and create the events described
+     * by them. The markup needs to be rendered and settled before this can be called.
+     *
+     * @param {Object} that - The component itself.
+     * @param {MarkupEventBindings} decorators - Markup Event Binding decorators on the component.
+     */
     fluid.decoratorViewComponent.processDecorators = function (that, decorators) {
         fluid.each(decorators, function (val, key) {
             var node = that.locate(key);
