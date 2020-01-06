@@ -7,6 +7,7 @@
 
     This code was originally written by Antranig Basman <amb26@ponder.org.uk> and with his advice was updated and
     extended by Tony Atkins <tony@raisingthefloor.org>.
+    extended by Tony Atkins <tony@raisingthefloor.org>.
 
 */
 /* global fluid, jQuery */
@@ -151,10 +152,7 @@
     };
 
     fluid.defaults("gpii.binder", {
-        gradeNames: ["fluid.viewComponent"],
-        mergePolicy: {
-            bindings: "nomerge"
-        }
+        gradeNames: ["fluid.viewComponent"]
     });
 
     // A mix-in grade to apply bindings when a viewComponent is created.
