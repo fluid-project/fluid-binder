@@ -20,7 +20,7 @@ fluid.defaults("gpii.test.binder.testem", {
     reportsDir: "%gpii-binder/reports",
     testemOptions: {
         "report_file": outputFile,
-        "skip": "PhantomJS,Headless Chrome,Safari"
+        "skip": "PhantomJS,Headless Chrome,Safari,IE,Firefox" // TODO: Enable Firefox once GPII-4145 is resolved
     }
 });
 
