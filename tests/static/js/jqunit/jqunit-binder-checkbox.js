@@ -1,7 +1,5 @@
-/* globals fluid */
 (function () {
     "use strict";
-    var gpii = fluid.registerNamespace("gpii");
 
     // Component to test support for checkboxes
     fluid.defaults("gpii.tests.binder.checkbox", {
@@ -217,5 +215,5 @@
         }
     });
 
-    gpii.tests.binder.checkbox.environment();
+    fluid.test.runTests("gpii.tests.binder.checkbox.environment");
 })();

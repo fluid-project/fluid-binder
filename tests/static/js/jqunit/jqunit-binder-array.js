@@ -1,7 +1,5 @@
-/* globals fluid */
 (function () {
     "use strict";
-    var gpii = fluid.registerNamespace("gpii");
 
     // Component to test support for arrays
     fluid.defaults("gpii.tests.binder.array", {
@@ -41,5 +39,5 @@
         }
     });
 
-    gpii.tests.binder.array.environment();
+    fluid.test.runTests("gpii.tests.binder.array.environment");
 })();

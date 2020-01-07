@@ -1,8 +1,6 @@
-/* globals fluid */
 (function () {
     "use strict";
     var gpii = fluid.registerNamespace("gpii");
-
 
     // bindOnDomChange
     // gpii.binder.bindOnDomChange
@@ -84,5 +82,5 @@
         }
     });
 
-    gpii.tests.binder.bindOnDomChange.environment();
+    fluid.test.runTests("gpii.tests.binder.bindOnDomChange.environment");
 })();

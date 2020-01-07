@@ -1,7 +1,5 @@
-/* globals fluid */
 (function () {
     "use strict";
-    var gpii = fluid.registerNamespace("gpii");
 
     // Component to test support for select elements
     fluid.defaults("gpii.tests.binder.select", {
@@ -78,5 +76,5 @@
         }
     });
 
-    gpii.tests.binder.select.environment();
+    fluid.test.runTests("gpii.tests.binder.select.environment");
 })();

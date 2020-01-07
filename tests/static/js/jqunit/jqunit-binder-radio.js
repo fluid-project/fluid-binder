@@ -1,7 +1,5 @@
-/* globals fluid */
 (function () {
     "use strict";
-    var gpii = fluid.registerNamespace("gpii");
 
     // Component to test support for radio buttons
     fluid.defaults("gpii.tests.binder.radio", {
@@ -78,5 +76,5 @@
         }
     });
 
-    gpii.tests.binder.radio.environment();
+    fluid.test.runTests("gpii.tests.binder.radio.environment");
 })();

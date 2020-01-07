@@ -1,4 +1,4 @@
-/* globals fluid, jqUnit */
+/* globals jqUnit */
 (function (fluid, jqUnit) {
     "use strict";
     var gpii = fluid.registerNamespace("gpii");

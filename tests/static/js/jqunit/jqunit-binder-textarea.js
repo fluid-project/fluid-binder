@@ -1,7 +1,5 @@
-/* globals fluid */
 (function (fluid) {
     "use strict";
-    var gpii = fluid.registerNamespace("gpii");
 
     // Component to test support for textarea elements
     fluid.defaults("gpii.tests.binder.textarea", {
@@ -41,5 +39,5 @@
         }
     });
 
-    gpii.tests.binder.textarea.environment();
+    fluid.test.runTests("gpii.tests.binder.textarea.environment");
 })(fluid);

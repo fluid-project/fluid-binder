@@ -1,7 +1,5 @@
-/* globals fluid */
 (function () {
     "use strict";
-    var gpii = fluid.registerNamespace("gpii");
 
     fluid.defaults("gpii.tests.binder.toBeCleared", {
         gradeNames: ["gpii.binder.bindOnCreate"],
@@ -83,5 +81,5 @@
         }
     });
 
-    gpii.tests.binder.clear.environment();
+    fluid.test.runTests("gpii.tests.binder.clear.environment");
 })();
