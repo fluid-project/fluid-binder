@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Unit Tests for Binder Module "Long notation"...</title>
+        <title>Unit Tests for Binder Module "Mixed notation"...</title>
 
         <!-- Bring in jQuery and other dependencies -->
         <script type="text/javascript" src="../../node_modules/infusion/src/lib/jquery/core/js/jquery.js"></script>
@@ -26,15 +26,15 @@
         <script type="text/javascript" src="../../src/js/binder.js"></script>
     </head>
     <body>
-        <h1 id="qunit-header">"Long" Component Tests</h1>
+        <h1 id="qunit-header">"Mixed" Component Tests</h1>
         <h2 id="qunit-banner"></h2>
         <div id="qunit-testrunner-toolbar"></div>
         <h2 id="qunit-userAgent"></h2>
         <ol id="qunit-tests"></ol>
 
         <!-- Test HTML, we have to hide these ourselves.  QUnit's styles put it offscreen, which doesn't work for us. -->
-        <!-- Fixtures used to test "long" notation -->
-        <div class="viewport-long" style="display:none">
+        <!-- Fixtures used to test a mixture of "short" and "long" notation. -->
+        <div class="viewport-mixed" style="display:none">
             <form>
                 <input type="text" name="init-from-model"/>
                 <input type="text" name="init-from-markup" value="initialized from markup"/>
@@ -45,6 +45,6 @@
 
         <!-- our QUnit tests -->
         <script type="text/javascript" src="./js/tests-long-fixtures.js"></script>
-        <script type="text/javascript" src="./js/jqunit/jqunit-binder-long.js"></script>
+        <script type="text/javascript" src="./js/jqunit/jqunit-binder-mixed.js"></script>
     </body>
 </html>

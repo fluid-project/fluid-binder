@@ -1,10 +1,7 @@
-/* globals fluid */
 (function () {
     "use strict";
-    var gpii = fluid.registerNamespace("gpii");
 
-    // Component to test "long notation"
-    fluid.defaults("gpii.tests.binder.long", {
+    fluid.defaults("gpii.tests.binder.long.startup", {
         gradeNames: ["gpii.tests.binder.base"],
         bindings: {
             initFromModel: {
@@ -14,7 +11,14 @@
             initFromMarkup: {
                 selector: "initFromMarkup",
                 path:     "initFromMarkup"
-            },
+            }
+        }
+    });
+
+    // Component to test "long notation".   Also guards against a regression of merge policy issues addressed in GPII-4145.
+    fluid.defaults("gpii.tests.binder.long", {
+        gradeNames: ["gpii.tests.binder.long.startup"],
+        bindings: {
             updateFromModel: {
                 selector: "updateFromModel",
                 path:     "updateFromModel"
@@ -45,5 +49,5 @@
         }
     });
 
-    gpii.tests.binder["long"].environment();
+    fluid.test.runTests("gpii.tests.binder.long.environment");
 })();
