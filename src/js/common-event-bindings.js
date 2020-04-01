@@ -58,7 +58,7 @@
      * want to listen for multiple events in the same binding this can be an array of event
      * types such as `["click", "keypress"]`.
      * @property {Array} args - A list of arguments to be passed to the event. This supports the
-     * usual range of fluid IOC syntax. Typically, this will be an invoker on the component to be
+     * usual range of Fluid IoC syntax. Typically, this will be an invoker on the component to be
      * called when the event is triggered.
      */
 
@@ -85,8 +85,7 @@
      * in any compact string versions of infusion invokers.
      *
      * @param {Object} that - The component itself.
-     * @param {String|Object} arg - A single argument being passed to the event
-     * infoker.
+     * @param {String|Object} arg - A single argument being passed to the event invoker.
      * @param {String} name - The name for the invoker.
      * @return {Object} The expanded argument.
      */
@@ -115,7 +114,7 @@
      * @param {Object} that - The component itself.
      * @param {String} name - Name that will be used for the invoker created to handle
      * this event.
-     * @return {Array} List of event functions created for this binding decorator.
+     * @return {jQuery[]} Array of jQuery objects which the events attached to them.
      */
     fluid.processjQueryDecorator = function (dec, node, that, name) {
         var args = fluid.makeArray(dec.args);
@@ -141,7 +140,7 @@
      * Function to process the markup binding decorators and create the events described
      * by them. The markup needs to be rendered and settled before this can be called.
      *
-     * @param {Object} that - The component itself.
+     * @param {gpii.binder.bindMarkupEvents} that - Any component inheriting from `bindMarkupEvents`.
      * @param {MarkupEventBindings} decorators - Markup Event Binding decorators on the component.
      */
     fluid.decoratorViewComponent.processDecorators = function (that, decorators) {
