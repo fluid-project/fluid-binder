@@ -26,22 +26,12 @@
             },
             paragraphClick: {
                 method: "click",
-                args: ["gpii.tests.binder.commonEventBindings.handleParagraphClick({arguments}.0)"]
+                args: ["{that}.handleParagraphClick"]
             },
             multipleEventInputButton: {
-                method: ["click", "keydown"],
+                method: ["click"],
                 args: ["{that}.handleInputClick"]
-            },
-            multipleEventHandlerInputButton: [
-                {
-                    method: "click",
-                    args: ["{that}.handleInputClick"]
-                },
-                {
-                    method: "keydown",
-                    args: ["{that}.handleInputKeydown"]
-                }
-            ]
+            }
         },
         invokers: {
             handleInputClick: {
@@ -50,6 +40,10 @@
             },
             handleInputKeydown: {
                 funcName: "gpii.tests.binder.commonEventBindings.handleInputKeydown",
+                args: ["{arguments}.0"]
+            },
+            handleParagraphClick: {
+                funcName: "gpii.tests.binder.commonEventBindings.handleParagraphClick",
                 args: ["{arguments}.0"]
             }
         },
@@ -70,10 +64,10 @@
         jqUnit.assertEquals("We just clicked a paragraph...", "P", event.target.nodeName);
     };
 
-    fluid.defaults("gpii.tests.binder.commonEventBindings.caseHolder", {
+    fluid.defaults("gpii.tests.binder.commonEventBindingsOverride.caseHolder", {
         gradeNames: ["gpii.tests.binder.caseHolder"],
         rawModules: [{
-            name: "Testing support for common event bindings...",
+            name: "Testing support for overriding common event bindings in sub grades...",
             tests: [
                 {
                     name: "Test markup event binding for click on an input button",
@@ -142,17 +136,42 @@
         }]
     });
 
-    fluid.defaults("gpii.tests.binder.commonEventBindings.environment", {
+    //
+    // Test for overriding binder markup events
+    //
+    fluid.defaults("gpii.tests.binder.commonEventBindingsOverride", {
+        gradeNames: ["gpii.tests.binder.commonEventBindings"],
+        markupEventBindings: {
+            // In the original grade this only had 1 method, overriding with 2
+            multipleEventInputButton: {
+                method: ["click", "keydown"],
+                args: ["{that}.handleInputClick"]
+            },
+            // This is a new set of events that was not in the original grade
+            multipleEventHandlerInputButton: [
+                {
+                    method: "click",
+                    args: ["{that}.handleInputClick"]
+                },
+                {
+                    method: "keydown",
+                    args: ["{that}.handleInputKeydown"]
+                }
+            ]
+        }
+    });
+
+    fluid.defaults("gpii.tests.binder.commonEventBindingsOverride.environment", {
         gradeNames:       ["gpii.tests.binder.environment"],
         markupFixture:    ".viewport-common-event-bindings",
-        binderGradeNames: ["gpii.tests.binder.commonEventBindings"],
+        binderGradeNames: ["gpii.tests.binder.commonEventBindingsOverride"],
         moduleName:       "Testing common event bindings",
         components: {
-            commonEventBindingsTests: {
-                type: "gpii.tests.binder.commonEventBindings.caseHolder"
+            commonEventBindingsOverrideTests: {
+                type: "gpii.tests.binder.commonEventBindingsOverride.caseHolder"
             }
         }
     });
 
-    gpii.tests.binder.commonEventBindings.environment();
+    gpii.tests.binder.commonEventBindingsOverride.environment();
 })();

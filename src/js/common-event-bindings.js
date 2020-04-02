@@ -97,7 +97,7 @@
                 // TODO: perhaps a a courtesy we could expose {node} or even {this}
                 expanded = fluid.makeInvoker(that, invokerec, name);
             } else {
-                expanded = fluid.expandOptions(arg, that);
+                expanded = fluid.expandImmediate(arg, that);
             }
         }
         return expanded;
@@ -148,12 +148,16 @@
             var node = that.locate(key);
             if (node.length > 0) {
                 var name = "Decorator for DOM node with selector " + key + " for component " + fluid.dumpThat(that);
-                var decs = fluid.makeArray(val);
-                fluid.each(decs, function (dec) {
-                    // If no type is specified default to jQuery
-                    if (!dec.type || dec.type === "jQuery") {
-                        fluid.processjQueryDecorator(dec, node, that, name);
-                    }
+                // val can be an array to support multiple event handlers
+                var handlerDecs = fluid.isArrayable(val) ? val : [val];
+                fluid.each(handlerDecs, function (nextVal) {
+                    var decs = fluid.makeArray(nextVal);
+                    fluid.each(decs, function (dec) {
+                        // If no type is specified default to jQuery
+                        if (!dec.type || dec.type === "jQuery") {
+                            fluid.processjQueryDecorator(dec, node, that, name);
+                        }
+                    });
                 });
             }
         });
