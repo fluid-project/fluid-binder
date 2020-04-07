@@ -1,7 +1,5 @@
-/* globals fluid, jqUnit */
 (function () {
     "use strict";
-    var gpii = fluid.registerNamespace("gpii");
 
     // Component to test support for encoded "typed" data
     fluid.defaults("gpii.tests.binder.encoding", {
@@ -307,6 +305,6 @@
             }
         }
     });
-    jqUnit.module("foo");
-    gpii.tests.binder.encoding.environment();
+
+    fluid.test.runTests("gpii.tests.binder.encoding.environment");
 })();

@@ -1,6 +1,6 @@
 {
     "name": "gpii-binder",
-    "version": "1.0.7",
+    "version": "1.1.1",
     "author": "Tony Atkins <tony@raisingthefloor.org>",
     "license": "BSD-3-Clause",
     "scripts": {
@@ -9,13 +9,13 @@
     },
     "repository": "https://github.com/GPII/gpii-binder",
     "dependencies": {
-        "infusion": "3.0.0-dev.20191007T194251Z.4ef5356a5.FLUID-6278"
+        "infusion": "3.0.0-dev.20191220T163226Z.db83ce0ef.FLUID-6145"
     },
     "devDependencies": {
-        "eslint": "6.5.1",
+        "eslint": "6.8.0",
         "eslint-config-fluid": "1.4.0",
-        "gpii-grunt-lint-all": "1.0.5",
-        "gpii-testem": "2.1.10",
+        "gpii-grunt-lint-all": "1.0.7",
+        "gpii-testem": "2.1.11",
         "grunt": "1.0.4",
         "node-jqunit": "1.1.8",
         "qunitjs": "2.4.1",

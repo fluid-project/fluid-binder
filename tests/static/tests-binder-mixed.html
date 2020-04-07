@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Unit Tests for Binder Module  "textarea" support...</title>
+        <title>Unit Tests for Binder Module "Mixed notation"...</title>
 
         <!-- Bring in jQuery and other dependencies -->
         <script type="text/javascript" src="../../node_modules/infusion/src/lib/jquery/core/js/jquery.js"></script>
@@ -13,39 +13,38 @@
         <!-- QUnit/jqUnit dependencies -->
         <script type="text/javascript" src="../../node_modules/infusion/tests/lib/qunit/js/qunit.js"></script>
         <script src="/testem.js"></script>
-
         <script type="text/javascript" src="../../node_modules/infusion/tests/test-core/jqUnit/js/jqUnit.js"></script>
         <script type="text/javascript" src="../../node_modules/infusion/tests/test-core/jqUnit/js/jqUnit-browser.js"></script>
 
-        <script type="text/javascript" src="/coverage/client/coverageSender.js"></script>
+        <link rel="stylesheet" href="../../node_modules/infusion/tests/lib/qunit/css/qunit.css"/>
 
         <!-- Our test fixtures -->
         <script type="text/javascript" src="./js/tests-fixtures.js"></script>
 
         <!-- Bring in client library being tested -->
+        <script type="text/javascript" src="/coverage/client/coverageSender.js"></script>
         <script type="text/javascript" src="../../src/js/binder.js"></script>
-
-        <link rel="stylesheet" href="../../node_modules/node-jqunit/node_modules/infusion/tests/lib/qunit/css/qunit.css"/>
-
     </head>
     <body>
-        <h1 id="qunit-header">"textarea" Component Tests</h1>
+        <h1 id="qunit-header">"Mixed" Component Tests</h1>
         <h2 id="qunit-banner"></h2>
         <div id="qunit-testrunner-toolbar"></div>
         <h2 id="qunit-userAgent"></h2>
         <ol id="qunit-tests"></ol>
 
-        <!-- Test HTML, we have to hide this ourselves.  QUnit's styles put it offscreen, which doesn't work for us. -->
-        <div class="viewport-textarea" style="display:none">
+        <!-- Test HTML, we have to hide these ourselves.  QUnit's styles put it offscreen, which doesn't work for us. -->
+        <!-- Fixtures used to test a mixture of "short" and "long" notation. -->
+        <div class="viewport-mixed" style="display:none">
             <form>
-                <textarea name="init-from-model"></textarea>
-                <textarea name="init-from-markup">initialized from markup</textarea>
-                <textarea name="update-from-model"></textarea>
-                <textarea name="update-from-markup"></textarea>
+                <input type="text" name="init-from-model"/>
+                <input type="text" name="init-from-markup" value="initialized from markup"/>
+                <input type="text" name="update-from-model"/>
+                <input type="text" name="update-from-markup"/>
             </form>
         </div>
 
         <!-- our QUnit tests -->
-        <script type="text/javascript" src="./js/jqunit/jqunit-binder-textarea.js"></script>
+        <script type="text/javascript" src="./js/tests-long-fixtures.js"></script>
+        <script type="text/javascript" src="./js/jqunit/jqunit-binder-mixed.js"></script>
     </body>
 </html>
