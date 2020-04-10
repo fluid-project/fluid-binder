@@ -84,7 +84,7 @@
      * Expands string encoded arguments to the event invoker, filling
      * in any compact string versions of infusion invokers.
      *
-     * @param {Object} that - The component itself.
+     * @param {gpii.binder.bindMarkupEvents} that - Any infusion component with sub-grade `bindMarkupEvents`.
      * @param {String|Object} arg - A single argument being passed to the event invoker.
      * @param {String} name - The name for the invoker.
      * @return {Object} The expanded argument.
@@ -111,7 +111,7 @@
      *
      * @param {MarkupEventBinding} dec - The single binding decorator being processed.
      * @param {DOMNode} node - The node we are listening to for the specified events.
-     * @param {Object} that - The component itself.
+     * @param {gpii.binder.bindMarkupEvents} that - Any infusion component with sub-grade `bindMarkupEvents`.
      * @param {String} name - Name that will be used for the invoker created to handle
      * this event.
      * @return {jQuery[]} Array of jQuery objects which the events attached to them.
