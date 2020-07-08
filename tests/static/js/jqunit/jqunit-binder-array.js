@@ -2,8 +2,8 @@
     "use strict";
 
     // Component to test support for arrays
-    fluid.defaults("gpii.tests.binder.array", {
-        gradeNames: ["gpii.tests.binder.base"],
+    fluid.defaults("fluid.tests.binder.array", {
+        gradeNames: ["fluid.tests.binder.base"],
         bindings: [
             {
                 selector: "initFromModel",
@@ -24,20 +24,20 @@
         ]
     });
 
-    fluid.defaults("gpii.tests.binder.array.environment", {
-        gradeNames:       ["gpii.tests.binder.environment"],
+    fluid.defaults("fluid.tests.binder.array.environment", {
+        gradeNames:       ["fluid.tests.binder.environment"],
         markupFixture:    ".viewport-array",
-        binderGradeNames: ["gpii.tests.binder.array"],
+        binderGradeNames: ["fluid.tests.binder.array"],
         moduleName:       "Testing array notation",
         components: {
             startupTests: {
-                type: "gpii.tests.binder.caseHolder.startup"
+                type: "fluid.tests.binder.caseHolder.startup"
             },
             simpleRelayTests: {
-                type: "gpii.tests.binder.caseHolder.simpleRelay"
+                type: "fluid.tests.binder.caseHolder.simpleRelay"
             }
         }
     });
 
-    fluid.test.runTests("gpii.tests.binder.array.environment");
+    fluid.test.runTests("fluid.tests.binder.array.environment");
 })();

@@ -6,9 +6,8 @@
 /* eslint-env node */
 "use strict";
 var fluid = fluid || require("infusion");
-var gpii  = fluid.registerNamespace("gpii");
 
-fluid.registerNamespace("gpii.binder.transforms");
+fluid.registerNamespace("fluid.binder.transforms");
 
 /*
 
@@ -24,7 +23,7 @@ fluid.registerNamespace("gpii.binder.transforms");
                 domToModel: {
                     "": {
                         transform: {
-                            type:  "gpii.binder.transforms.stripEmptyString",
+                            type:  "fluid.binder.transforms.stripEmptyString",
                             inputPath: ""
                         }
                     }
@@ -35,11 +34,11 @@ fluid.registerNamespace("gpii.binder.transforms");
     ```
 
  */
-gpii.binder.transforms.stripEmptyString = function (value) {
+fluid.binder.transforms.stripEmptyString = function (value) {
     return value === "" ? null : value;
 };
 
-fluid.defaults("gpii.binder.transforms.stripEmptyString", {
+fluid.defaults("fluid.binder.transforms.stripEmptyString", {
     gradeNames: ["fluid.standardTransformFunction"]
 });
 
@@ -51,18 +50,18 @@ fluid.defaults("gpii.binder.transforms.stripEmptyString", {
  * @return {Boolean} - `true` if the first value is checked, `false`.
  *
  */
-gpii.binder.transforms.checkToBoolean = function (value) {
+fluid.binder.transforms.checkToBoolean = function (value) {
     return fluid.get(value, 0) ? true : false;
 };
 
-gpii.binder.transforms.checkToBoolean.invert = function (transformSpec) {
-    transformSpec.type = "gpii.binder.transforms.booleanToCheck";
+fluid.binder.transforms.checkToBoolean.invert = function (transformSpec) {
+    transformSpec.type = "fluid.binder.transforms.booleanToCheck";
     return transformSpec;
 };
 
-fluid.defaults("gpii.binder.transforms.checkToBoolean", {
+fluid.defaults("fluid.binder.transforms.checkToBoolean", {
     gradeNames: ["fluid.standardTransformFunction", "fluid.lens"],
-    invertConfiguration: "gpii.binder.transforms.checkToBoolean.invert"
+    invertConfiguration: "fluid.binder.transforms.checkToBoolean.invert"
 });
 
 /**
@@ -73,16 +72,16 @@ fluid.defaults("gpii.binder.transforms.checkToBoolean", {
  * @return {Array} - An array with the first value set to "on" if the value is `true`, an empty Array otherwise.
  *
  */
-gpii.binder.transforms.booleanToCheck = function (value) {
+fluid.binder.transforms.booleanToCheck = function (value) {
     return value ? ["on"] : [];
 };
 
-gpii.binder.transforms.booleanToCheck.invert = function (transformSpec) {
-    transformSpec.type = "gpii.binder.transforms.checkToBoolean";
+fluid.binder.transforms.booleanToCheck.invert = function (transformSpec) {
+    transformSpec.type = "fluid.binder.transforms.checkToBoolean";
     return transformSpec;
 };
 
-fluid.defaults("gpii.binder.transforms.booleanToCheck", {
+fluid.defaults("fluid.binder.transforms.booleanToCheck", {
     gradeNames: ["fluid.standardTransformFunction", "fluid.lens"],
-    invertConfiguration: "gpii.binder.transforms.booleanToCheck.invert"
+    invertConfiguration: "fluid.binder.transforms.booleanToCheck.invert"
 });

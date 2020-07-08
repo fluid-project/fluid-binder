@@ -2,8 +2,8 @@
     "use strict";
 
     // Component to test support for textarea elements
-    fluid.defaults("gpii.tests.binder.textarea", {
-        gradeNames: ["gpii.tests.binder.base"],
+    fluid.defaults("fluid.tests.binder.textarea", {
+        gradeNames: ["fluid.tests.binder.base"],
         bindings: [
             {
                 selector: "initFromModel",
@@ -24,20 +24,20 @@
         ]
     });
 
-    fluid.defaults("gpii.tests.binder.textarea.environment", {
-        gradeNames:       ["gpii.tests.binder.environment"],
+    fluid.defaults("fluid.tests.binder.textarea.environment", {
+        gradeNames:       ["fluid.tests.binder.environment"],
         markupFixture:    ".viewport-textarea",
-        binderGradeNames: ["gpii.tests.binder.textarea"],
+        binderGradeNames: ["fluid.tests.binder.textarea"],
         moduleName:       "Testing textarea form inputs",
         components: {
             startupTests: {
-                type: "gpii.tests.binder.caseHolder.startup"
+                type: "fluid.tests.binder.caseHolder.startup"
             },
             simpleRelayTests: {
-                type: "gpii.tests.binder.caseHolder.simpleRelay"
+                type: "fluid.tests.binder.caseHolder.simpleRelay"
             }
         }
     });
 
-    fluid.test.runTests("gpii.tests.binder.textarea.environment");
+    fluid.test.runTests("fluid.tests.binder.textarea.environment");
 })(fluid);

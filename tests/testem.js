@@ -1,25 +1,24 @@
 /* eslint-env node */
 "use strict";
 var fluid = require("infusion");
-var gpii  = fluid.registerNamespace("gpii");
 
 require("../");
-require("gpii-testem");
+require("fluid-testem");
 
-var outputFile = fluid.module.resolvePath("%gpii-binder/report.tap");
+var outputFile = fluid.module.resolvePath("%fluid-binder/report.tap");
 
-fluid.defaults("gpii.test.binder.testem", {
-    gradeNames: ["gpii.testem"],
+fluid.defaults("fluid.test.binder.testem", {
+    gradeNames: ["fluid.testem"],
     sourceDirs: {
-        src: "%gpii-binder/src"
+        src: "%fluid-binder/src"
     },
     contentDirs: {
-        tests:   "%gpii-binder/tests"
+        tests:   "%fluid-binder/tests"
     },
     testPages: ["tests/static/all-tests.html"],
-    reportsDir: "%gpii-binder/reports",
+    reportsDir: "%fluid-binder/reports",
     browserArgs: {
-        // The `--headless` arg is needed until https://issues.gpii.net/browse/GPII-4145 is resolved.
+        // The `--headless` arg is needed until https://issues.fluid.net/browse/fluid-4145 is resolved.
         //
         // If you want to actually see the Firefox output, you'll need to run Testem manually, i.e.:
         // `node node_modules/testem/testem.js --file tests/testem.js`
@@ -34,4 +33,4 @@ fluid.defaults("gpii.test.binder.testem", {
     }
 });
 
-module.exports = gpii.test.binder.testem().getTestemOptions();
+module.exports = fluid.test.binder.testem().getTestemOptions();

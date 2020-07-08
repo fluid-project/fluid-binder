@@ -1,8 +1,8 @@
 (function () {
     "use strict";
 
-    fluid.defaults("gpii.tests.binder.toBeCleared", {
-        gradeNames: ["gpii.binder.bindOnCreate"],
+    fluid.defaults("fluid.tests.binder.toBeCleared", {
+        gradeNames: ["fluid.binder.bindOnCreate"],
         model: {
             toBeCleared: "Model value"
         },
@@ -17,7 +17,7 @@
                     domToModel: {
                         "": {
                             transform: {
-                                type:      "gpii.binder.transforms.stripEmptyString",
+                                type:      "fluid.binder.transforms.stripEmptyString",
                                 inputPath: ""
                             }
                         }
@@ -35,8 +35,8 @@
         }
     });
 
-    fluid.defaults("gpii.tests.binder.clear.caseHolder", {
-        gradeNames: ["gpii.tests.binder.caseHolder"],
+    fluid.defaults("fluid.tests.binder.clear.caseHolder", {
+        gradeNames: ["fluid.tests.binder.caseHolder"],
         rawModules: [{
             name: "Testing clearing an existing model value from a text field...",
             tests: [
@@ -69,17 +69,17 @@
         }]
     });
 
-    fluid.defaults("gpii.tests.binder.clear.environment", {
-        gradeNames:       ["gpii.tests.binder.environment"],
+    fluid.defaults("fluid.tests.binder.clear.environment", {
+        gradeNames:       ["fluid.tests.binder.environment"],
         markupFixture:    ".viewport-clear",
-        binderGradeNames: ["gpii.tests.binder.toBeCleared"],
+        binderGradeNames: ["fluid.tests.binder.toBeCleared"],
         moduleName:       "Testing clearing an existing value",
         components: {
             tests: {
-                type: "gpii.tests.binder.clear.caseHolder"
+                type: "fluid.tests.binder.clear.caseHolder"
             }
         }
     });
 
-    fluid.test.runTests("gpii.tests.binder.clear.environment");
+    fluid.test.runTests("fluid.tests.binder.clear.environment");
 })();

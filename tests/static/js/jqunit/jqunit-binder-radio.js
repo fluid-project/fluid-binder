@@ -2,8 +2,8 @@
     "use strict";
 
     // Component to test support for radio buttons
-    fluid.defaults("gpii.tests.binder.radio", {
-        gradeNames: ["gpii.tests.binder.base"],
+    fluid.defaults("fluid.tests.binder.radio", {
+        gradeNames: ["fluid.tests.binder.base"],
         bindings: {
             initFromModel: {
                 selector: "initFromModel",
@@ -24,8 +24,8 @@
         }
     });
 
-    fluid.defaults("gpii.tests.binder.radio.caseHolder", {
-        gradeNames: ["gpii.tests.binder.caseHolder"],
+    fluid.defaults("fluid.tests.binder.radio.caseHolder", {
+        gradeNames: ["fluid.tests.binder.caseHolder"],
         rawModules: [{
             name: "Testing support for radio buttons...",
             tests: [
@@ -34,7 +34,7 @@
                     type: "test",
                     sequence: [
                         {
-                            func: "gpii.tests.binder.clickSelector",
+                            func: "fluid.tests.binder.clickSelector",
                             args: ["#update-from-markup-markup"]
                         },
                         {
@@ -52,7 +52,7 @@
                             args: ["updateFromModel", "updated using applier"]
                         },
                         {
-                            func: "gpii.tests.binder.testElement",
+                            func: "fluid.tests.binder.testElement",
                             args: ["assertEquals", "A form element should be updated after a model change...", "updated using applier", "[name='update-from-model']"] // (fnName, message, expected, selector)
                         }
                     ]
@@ -61,20 +61,20 @@
         }]
     });
 
-    fluid.defaults("gpii.tests.binder.radio.environment", {
-        gradeNames:       ["gpii.tests.binder.environment"],
+    fluid.defaults("fluid.tests.binder.radio.environment", {
+        gradeNames:       ["fluid.tests.binder.environment"],
         markupFixture:    ".viewport-radio",
-        binderGradeNames: ["gpii.tests.binder.radio"],
+        binderGradeNames: ["fluid.tests.binder.radio"],
         moduleName:       "Testing radio button support",
         components: {
             startupTests: {
-                type: "gpii.tests.binder.caseHolder.startup"
+                type: "fluid.tests.binder.caseHolder.startup"
             },
             radioTests: {
-                type: "gpii.tests.binder.radio.caseHolder"
+                type: "fluid.tests.binder.radio.caseHolder"
             }
         }
     });
 
-    fluid.test.runTests("gpii.tests.binder.radio.environment");
+    fluid.test.runTests("fluid.tests.binder.radio.environment");
 })();

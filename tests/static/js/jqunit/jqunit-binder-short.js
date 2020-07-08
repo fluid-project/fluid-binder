@@ -2,8 +2,8 @@
     "use strict";
 
     // Component to test "short notation"
-    fluid.defaults("gpii.tests.binder.short", {
-        gradeNames: ["gpii.tests.binder.base"],
+    fluid.defaults("fluid.tests.binder.short", {
+        gradeNames: ["fluid.tests.binder.base"],
         bindings: {
             initFromModel:    "initFromModel",
             initFromMarkup:   "initFromMarkup",
@@ -13,20 +13,20 @@
         }
     });
 
-    fluid.defaults("gpii.tests.binder.short.environment", {
-        gradeNames:       ["gpii.tests.binder.environment"],
+    fluid.defaults("fluid.tests.binder.short.environment", {
+        gradeNames:       ["fluid.tests.binder.environment"],
         moduleName:       "Testing binder component (short notation)",
         markupFixture:    ".viewport-short",
-        binderGradeNames: ["gpii.tests.binder.short"],
+        binderGradeNames: ["fluid.tests.binder.short"],
         components: {
             startupTests: {
-                type: "gpii.tests.binder.caseHolder.startup"
+                type: "fluid.tests.binder.caseHolder.startup"
             },
             simpleRelayTests: {
-                type: "gpii.tests.binder.caseHolder.simpleRelay"
+                type: "fluid.tests.binder.caseHolder.simpleRelay"
             }
         }
     });
 
-    fluid.test.runTests("gpii.tests.binder.short.environment");
+    fluid.test.runTests("fluid.tests.binder.short.environment");
 })();
