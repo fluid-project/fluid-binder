@@ -15,7 +15,7 @@
         "eslint": "7.4.0",
         "eslint-config-fluid": "1.4.0",
         "fluid-grunt-lint-all": "1.0.8",
-        "fluid-testem": "2.1.13-dev.20200708T092513Z.7e90cc4.FLUID-6524",
+        "fluid-testem": "2.1.13",
         "grunt": "1.2.1",
         "node-jqunit": "1.1.8",
         "qunitjs": "2.4.1",
