@@ -1,4 +1,4 @@
-# `gpii-binder`
+# `fluid-binder`
 
 This package provides a mechanism for binding [Fluid view
 component](http://docs.fluidproject.org/infusion/development/tutorial-gettingStartedWithInfusion/ViewComponents.html)
@@ -15,7 +15,7 @@ primary (and tested) use case is binding model variables to form elements, speci
 * `<textarea>` fields
 * `<select>` fields
 
-Once you run `gpii.binder.applyBinding(component)` (see "Static Functions" below), a binding is created
+Once you run `fluid.binder.applyBinding(component)` (see "Static Functions" below), a binding is created
 between any selectors and model variables referenced in`options.binding` (see "Supported options" for the format).
 
 Once a binding exists, changes to a bound model sent using [the change applier](http://docs.fluidproject.org/infusion/development/ChangeApplier.html)
@@ -28,7 +28,7 @@ updated the value using browser events *and* change focus.  For more details, se
 
 ## Supported options
 
-The `gpii.binder.applyBinding` function provided by this package can only do its work if you have the
+The `fluid.binder.applyBinding` function provided by this package can only do its work if you have the
 following options defined:
 
 | Option             | Type     | Description |
@@ -109,7 +109,7 @@ this package, as illustrated in the following snippet:
                 domToModel: {
                     "": {
                         transform: {
-                            type: "gpii.binder.transforms.checkToBoolean",
+                            type: "fluid.binder.transforms.checkToBoolean",
                             inputPath: ""
                         }
                     }
@@ -117,7 +117,7 @@ this package, as illustrated in the following snippet:
                 modelToDom: {
                     "": {
                         transform: {
-                            type: "gpii.binder.transforms.booleanToCheck",
+                            type: "fluid.binder.transforms.booleanToCheck",
                             inputPath: ""
                         }
                     }
@@ -127,7 +127,7 @@ this package, as illustrated in the following snippet:
     }
 ```
 
-Note that the `gpii.binder.transforms.checkToBoolean` transform only checks the first value, so you can also use the
+Note that the `fluid.binder.transforms.checkToBoolean` transform only checks the first value, so you can also use the
 above transformation rules in cases in which you want all of the checkboxes matching a selector to be checked if any of
 the individual checkboxes is selected.
 
@@ -153,7 +153,7 @@ You can use both forms together, as in:
 
 ## Static Functions
 
-### `gpii.binder.applyBinding(component)`
+### `fluid.binder.applyBinding(component)`
 
 * `component` `{Object}` - A fluid `viewComponent` with both `selectors` and `bindings` options defined (see above).
 * Returns: Nothing.
@@ -164,17 +164,17 @@ For example, if all required markup already exists on startup, you can simply bi
 
     listeners: {
         "onCreate.applyBindings": {
-            "funcName": "gpii.binder.applyBinding",
+            "funcName": "fluid.binder.applyBinding",
             "args":     "{that}"
         }
     }
 
-The `gpii.binder.bindOnCreate` grade included with this package will do this for you.
+The `fluid.binder.bindOnCreate` grade included with this package will do this for you.
 
 #### Bindings and dynamic markup
 
-If your component generates or regenerates markup, you will need to call `gpii.binder.applyBinding(component)`
-whenever it changes.  The `gpii.binder.bindOnDomChange` grade included in this package will reapply the bindings
+If your component generates or regenerates markup, you will need to call `fluid.binder.applyBinding(component)`
+whenever it changes.  The `fluid.binder.bindOnDomChange` grade included in this package will reapply the bindings
 whenever an `onDomChange` event is fired.
 
 ## Tests

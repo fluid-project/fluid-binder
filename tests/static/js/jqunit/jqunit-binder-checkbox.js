@@ -2,8 +2,8 @@
     "use strict";
 
     // Component to test support for checkboxes
-    fluid.defaults("gpii.tests.binder.checkbox", {
-        gradeNames: ["gpii.tests.binder.base"],
+    fluid.defaults("fluid.tests.binder.checkbox", {
+        gradeNames: ["fluid.tests.binder.base"],
         model: {
             updateFromMarkup: false,
             initFromModel: true
@@ -19,7 +19,7 @@
                     domToModel: {
                         "": {
                             transform: {
-                                type: "gpii.binder.transforms.checkToBoolean",
+                                type: "fluid.binder.transforms.checkToBoolean",
                                 inputPath: ""
                             }
                         }
@@ -27,7 +27,7 @@
                     modelToDom: {
                         "": {
                             transform: {
-                                type: "gpii.binder.transforms.booleanToCheck",
+                                type: "fluid.binder.transforms.booleanToCheck",
                                 inputPath: ""
                             }
                         }
@@ -49,7 +49,7 @@
                     domToModel: {
                         "": {
                             transform: {
-                                type: "gpii.binder.transforms.checkToBoolean",
+                                type: "fluid.binder.transforms.checkToBoolean",
                                 inputPath: ""
                             }
                         }
@@ -57,7 +57,7 @@
                     modelToDom: {
                         "": {
                             transform: {
-                                type: "gpii.binder.transforms.booleanToCheck",
+                                type: "fluid.binder.transforms.booleanToCheck",
                                 inputPath: ""
                             }
                         }
@@ -71,8 +71,8 @@
         }
     });
 
-    fluid.defaults("gpii.tests.binder.checkbox.caseHolder", {
-        gradeNames: ["gpii.tests.binder.caseHolder"],
+    fluid.defaults("fluid.tests.binder.checkbox.caseHolder", {
+        gradeNames: ["fluid.tests.binder.caseHolder"],
         rawModules: [{
             name: "Testing support for checkbox fields...",
             tests: [
@@ -80,7 +80,7 @@
                     name: "Confirm that a single form update to the 'checkbox' component results in a model update...",
                     sequence: [
                         {
-                            func: "gpii.tests.binder.clickSelector",
+                            func: "fluid.tests.binder.clickSelector",
                             args: [".viewport-checkbox input[name='update-from-markup']"]
                         },
                         {
@@ -97,15 +97,15 @@
                             args: ["array", []]
                         },
                         {
-                            func: "gpii.tests.binder.clickSelector",
+                            func: "fluid.tests.binder.clickSelector",
                             args: ["#checkbox-group-string"]
                         },
                         {
-                            func: "gpii.tests.binder.clickSelector",
+                            func: "fluid.tests.binder.clickSelector",
                             args: ["#checkbox-group-number"]
                         },
                         {
-                            func: "gpii.tests.binder.clickSelector",
+                            func: "fluid.tests.binder.clickSelector",
                             args: ["#checkbox-group-boolean"]
                         },
                         {
@@ -122,7 +122,7 @@
                             args: ["array", []]
                         },
                         {
-                            func: "gpii.tests.binder.clickSelector",
+                            func: "fluid.tests.binder.clickSelector",
                             args: ["#checkbox-group-number"]
                         },
                         {
@@ -139,7 +139,7 @@
                             args:     ["updateFromModel", "updated using applier"]
                         },
                         {
-                            func: "gpii.tests.binder.testElement",
+                            func: "fluid.tests.binder.testElement",
                             args: ["assertDeepEq", "The 'checkbox' form field should have been updated with new model data...", ["updated using applier"], "[name='update-from-model']"] // (fnName, message, expected, selector)
                         }
                     ]
@@ -152,7 +152,7 @@
                             args: ["array", ["a string"]]
                         },
                         {
-                            func: "gpii.tests.binder.testElement",
+                            func: "fluid.tests.binder.testElement",
                             args: ["assertDeepEq", "The 'string' checkbox should be checked...", ["a string"], "[name='checkbox-groups']:checked"] // (fnName, message, expected, selector)
                         }
                     ]
@@ -165,7 +165,7 @@
                             args: ["array", ["42"]]
                         },
                         {
-                            func: "gpii.tests.binder.testElement",
+                            func: "fluid.tests.binder.testElement",
                             args: ["assertDeepEq", "The 'number' checkbox should be checked...", ["42"], "[name='checkbox-groups']:checked"] // (fnName, message, expected, selector)
                         }
                     ]
@@ -178,7 +178,7 @@
                             args: ["array", ["false"]]
                         },
                         {
-                            func: "gpii.tests.binder.testElement",
+                            func: "fluid.tests.binder.testElement",
                             args: ["assertDeepEq", "The 'boolean' checkbox should be checked...", ["false"], "[name='checkbox-groups']:checked"] // (fnName, message, expected, selector)
                         }
                     ]
@@ -194,7 +194,7 @@
                             // checkbox should be ticked.
                         },
                         {
-                            func: "gpii.tests.binder.testElement",
+                            func: "fluid.tests.binder.testElement",
                             args: ["assertDeepEq", "The 'checkbox' form field should have been updated with new model data...", ["a string", "42", "false"], "[name='checkbox-groups']:checked"] // (fnName, message, expected, selector)
                         }
                     ]
@@ -203,17 +203,17 @@
         }]
     });
 
-    fluid.defaults("gpii.tests.binder.checkbox.environment", {
-        gradeNames:       ["gpii.tests.binder.environment"],
+    fluid.defaults("fluid.tests.binder.checkbox.environment", {
+        gradeNames:       ["fluid.tests.binder.environment"],
         markupFixture:    ".viewport-checkbox",
-        binderGradeNames: ["gpii.tests.binder.checkbox"],
+        binderGradeNames: ["fluid.tests.binder.checkbox"],
         moduleName:       "Testing checkbox support",
         components: {
             checkboxTests: {
-                type: "gpii.tests.binder.checkbox.caseHolder"
+                type: "fluid.tests.binder.checkbox.caseHolder"
             }
         }
     });
 
-    fluid.test.runTests("gpii.tests.binder.checkbox.environment");
+    fluid.test.runTests("fluid.tests.binder.checkbox.environment");
 })();

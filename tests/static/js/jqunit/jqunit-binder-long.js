@@ -1,8 +1,8 @@
 (function () {
     "use strict";
 
-    fluid.defaults("gpii.tests.binder.long.startup", {
-        gradeNames: ["gpii.tests.binder.base"],
+    fluid.defaults("fluid.tests.binder.long.startup", {
+        gradeNames: ["fluid.tests.binder.base"],
         bindings: {
             initFromModel: {
                 selector: "initFromModel",
@@ -15,9 +15,9 @@
         }
     });
 
-    // Component to test "long notation".   Also guards against a regression of merge policy issues addressed in GPII-4145.
-    fluid.defaults("gpii.tests.binder.long", {
-        gradeNames: ["gpii.tests.binder.long.startup"],
+    // Component to test "long notation".   Also guards against a regression of merge policy issues addressed in fluid-4145.
+    fluid.defaults("fluid.tests.binder.long", {
+        gradeNames: ["fluid.tests.binder.long.startup"],
         bindings: {
             updateFromModel: {
                 selector: "updateFromModel",
@@ -34,20 +34,20 @@
         }
     });
 
-    fluid.defaults("gpii.tests.binder.long.environment", {
-        gradeNames:       ["gpii.tests.binder.environment"],
+    fluid.defaults("fluid.tests.binder.long.environment", {
+        gradeNames:       ["fluid.tests.binder.environment"],
         markupFixture:    ".viewport-long",
-        binderGradeNames: ["gpii.tests.binder.long"],
+        binderGradeNames: ["fluid.tests.binder.long"],
         moduleName:       "Testing binder component (long notation)",
         components: {
             startupTests: {
-                type: "gpii.tests.binder.caseHolder.startup"
+                type: "fluid.tests.binder.caseHolder.startup"
             },
             simpleRelayTests: {
-                type: "gpii.tests.binder.caseHolder.simpleRelay"
+                type: "fluid.tests.binder.caseHolder.simpleRelay"
             }
         }
     });
 
-    fluid.test.runTests("gpii.tests.binder.long.environment");
+    fluid.test.runTests("fluid.tests.binder.long.environment");
 })();

@@ -1,32 +1,31 @@
 /* globals jqUnit */
 (function (fluid, jqUnit) {
     "use strict";
-    var gpii = fluid.registerNamespace("gpii");
 
-    fluid.registerNamespace("gpii.tests.binder.transforms");
+    fluid.registerNamespace("fluid.tests.binder.transforms");
 
-    gpii.tests.binder.transforms.testDefs = {
+    fluid.tests.binder.transforms.testDefs = {
         checkToBoolean: {
-            message: "Testing `gpii.binder.transforms.checkToBoolean`",
+            message: "Testing `fluid.binder.transforms.checkToBoolean`",
             input: { value: ["on"] },
             expected: { value: true },
             transformRules: {
                 "value": {
                     transform: {
-                        type: "gpii.binder.transforms.checkToBoolean",
+                        type: "fluid.binder.transforms.checkToBoolean",
                         inputPath: "value"
                     }
                 }
             }
         },
         booleanToCheck: {
-            message: "Testing `gpii.binder.transforms.booleanToCheck`",
+            message: "Testing `fluid.binder.transforms.booleanToCheck`",
             input: { value: false },
             expected: { value: [] },
             transformRules: {
                 "value": {
                     transform: {
-                        type: "gpii.binder.transforms.booleanToCheck",
+                        type: "fluid.binder.transforms.booleanToCheck",
                         inputPath: "value"
                     }
                 }
@@ -36,7 +35,7 @@
 
     jqUnit.module("Static tests for model transformation transform functions.");
 
-    fluid.each(gpii.tests.binder.transforms.testDefs, function (testDef) {
+    fluid.each(fluid.tests.binder.transforms.testDefs, function (testDef) {
         jqUnit.test(testDef.message, function () {
             var output = fluid.model.transformWithRules(testDef.input, testDef.transformRules);
             jqUnit.assertDeepEq(testDef.message + " (forward)", testDef.expected, output);

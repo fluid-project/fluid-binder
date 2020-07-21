@@ -2,8 +2,8 @@
     "use strict";
 
     // Component to test support for encoded "typed" data
-    fluid.defaults("gpii.tests.binder.encoding", {
-        gradeNames: ["gpii.binder.bindOnCreate"],
+    fluid.defaults("fluid.tests.binder.encoding", {
+        gradeNames: ["fluid.binder.bindOnCreate"],
         model: {},
         selectors: {
             "number-from-markup": "[name='number-from-markup']",
@@ -162,8 +162,8 @@
         }
     });
 
-    fluid.defaults("gpii.tests.binder.encoding.caseHolder", {
-        gradeNames: ["gpii.tests.binder.caseHolder"],
+    fluid.defaults("fluid.tests.binder.encoding.caseHolder", {
+        gradeNames: ["fluid.tests.binder.caseHolder"],
         mergePolicy: {
             "inputs": "noexpand"
         },
@@ -225,7 +225,7 @@
                             args: ["number-select", 1]
                         },
                         {
-                            func: "gpii.tests.binder.testElement",
+                            func: "fluid.tests.binder.testElement",
                             args: ["assertEquals", "The form element should have been updated.", "1", ".number-select"] // (fnName, message, expected, selector)
                         }
                     ]
@@ -270,14 +270,14 @@
                             args: ["false-from-model", false]
                         },
                         {
-                            func: "gpii.tests.binder.testElement",
+                            func: "fluid.tests.binder.testElement",
                             args: ["assertEquals", "The form element should have been updated.", "false", "[name='false-from-model']"] // (fnName, message, expected, selector)
                         }
                     ]
                 },
-                // https://issues.gpii.net/browse/GPII-3549
+                // https://issues.fluid.net/browse/fluid-3549
                 {
-                    name: "Confirm that setting an object value in the DOM replaces the existing value entirely (GPII-3549).",
+                    name: "Confirm that setting an object value in the DOM replaces the existing value entirely (fluid-3549).",
                     type: "test",
                     sequence: [
                         {
@@ -294,17 +294,17 @@
         }]
     });
 
-    fluid.defaults("gpii.tests.binder.encoding.environment", {
-        gradeNames: ["gpii.tests.binder.environment"],
+    fluid.defaults("fluid.tests.binder.encoding.environment", {
+        gradeNames: ["fluid.tests.binder.environment"],
         markupFixture: ".viewport-encoding",
-        binderGradeNames: ["gpii.tests.binder.encoding"],
+        binderGradeNames: ["fluid.tests.binder.encoding"],
         moduleName: "Testing encoding support",
         components: {
             encodingTests: {
-                type: "gpii.tests.binder.encoding.caseHolder"
+                type: "fluid.tests.binder.encoding.caseHolder"
             }
         }
     });
 
-    fluid.test.runTests("gpii.tests.binder.encoding.environment");
+    fluid.test.runTests("fluid.tests.binder.encoding.environment");
 })();
