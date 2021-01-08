@@ -13,8 +13,8 @@
         "infusion": "3.0.0-dev.20200604T195400Z.dddc6a2.FLUID-6145"
     },
     "devDependencies": {
-        "eslint": "7.4.0",
-        "eslint-config-fluid": "1.4.0",
+        "eslint": "7.17.0",
+        "eslint-config-fluid": "2.0.0",
         "fluid-lint-all": "1.0.0-dev.20210108T112637Z.3a60d59.GH-1",
         "fluid-testem": "2.1.13",
         "node-jqunit": "1.1.8",
