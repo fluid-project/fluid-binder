@@ -4,7 +4,7 @@
 
  */
 /* eslint-env browser */
-/* globals fluid, $, jqUnit, QUnit */
+/* globals jqUnit, QUnit */
 (function (fluid, $, jqUnit, QUnit) {
     "use strict";
     fluid.registerNamespace("fluid.tests.binder.base");
