@@ -4,7 +4,7 @@
     "author": "Tony Atkins <tony@raisingthefloor.org>",
     "license": "BSD-3-Clause",
     "scripts": {
-        "lint": "npx fluid-lint-all@1.0.0-dev.20210108T112637Z.3a60d59.GH-1",
+        "lint": "fluid-lint-all",
         "pretest": "npx rimraf coverage/* instrumented/* reports/*",
         "test": "node node_modules/testem/testem.js ci --file tests/testem.js"
     },
@@ -15,6 +15,7 @@
     "devDependencies": {
         "eslint": "7.4.0",
         "eslint-config-fluid": "1.4.0",
+        "fluid-lint-all": "1.0.0-dev.20210108T112637Z.3a60d59.GH-1",
         "fluid-testem": "2.1.13",
         "node-jqunit": "1.1.8",
         "qunitjs": "2.4.1",
