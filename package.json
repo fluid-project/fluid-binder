@@ -10,7 +10,7 @@
     },
     "repository": "https://github.com/fluid-project/fluid-binder",
     "dependencies": {
-        "infusion": "3.0.0-dev.20200604T195400Z.dddc6a2.FLUID-6145"
+        "infusion": "3.0.0-dev.20201113T153152Z.32176dcbe.FLUID-6145"
     },
     "devDependencies": {
         "eslint": "7.17.0",
