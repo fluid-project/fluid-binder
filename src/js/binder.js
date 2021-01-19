@@ -10,7 +10,6 @@
     extended by Tony Atkins <tony@raisingthefloor.org>.
 
 */
-/* global fluid, jQuery */
 (function () {
     "use strict";
     fluid.registerNamespace("fluid.binder");

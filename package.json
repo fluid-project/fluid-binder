@@ -4,23 +4,21 @@
     "author": "Tony Atkins <tony@raisingthefloor.org>",
     "license": "BSD-3-Clause",
     "scripts": {
-        "pretest": "node node_modules/rimraf/bin.js coverage/* instrumented/* reports/*",
+        "lint": "fluid-lint-all",
+        "pretest": "npx rimraf coverage/* instrumented/* reports/*",
         "test": "node node_modules/testem/testem.js ci --file tests/testem.js"
     },
     "repository": "https://github.com/fluid-project/fluid-binder",
     "dependencies": {
-        "infusion": "3.0.0-dev.20200604T195400Z.dddc6a2.FLUID-6145"
+        "infusion": "3.0.0-dev.20201113T153152Z.32176dcbe.FLUID-6145"
     },
     "devDependencies": {
-        "eslint": "7.4.0",
-        "eslint-config-fluid": "1.4.0",
-        "eslint-plugin-markdown": "1.0.2",
-        "fluid-grunt-lint-all": "1.0.8",
-        "fluid-testem": "2.1.13",
-        "grunt": "1.2.1",
+        "eslint": "7.17.0",
+        "eslint-config-fluid": "2.0.0",
+        "fluid-lint-all": "1.0.0",
+        "fluid-testem": "2.1.14",
         "node-jqunit": "1.1.8",
         "qunitjs": "2.4.1",
-        "rimraf": "3.0.2",
         "testem": "3.2.0"
     }
 }
