@@ -10,15 +10,15 @@
     },
     "repository": "https://github.com/fluid-project/fluid-binder",
     "dependencies": {
-        "infusion": "3.0.0-dev.20201113T153152Z.32176dcbe.FLUID-6145"
+        "infusion": "4.0.0"
     },
     "devDependencies": {
-        "eslint": "7.17.0",
-        "eslint-config-fluid": "2.0.0",
-        "fluid-lint-all": "1.0.0",
-        "fluid-testem": "2.1.14",
-        "node-jqunit": "1.1.8",
+        "eslint": "8.14.0",
+        "eslint-config-fluid": "2.0.1",
+        "fluid-lint-all": "1.2.2",
+        "fluid-testem": "2.1.15",
+        "node-jqunit": "1.1.9",
         "qunitjs": "2.4.1",
-        "testem": "3.2.0"
+        "testem": "3.6.0"
     }
 }

@@ -14,25 +14,7 @@
         bindings: {
             initFromModel: {
                 selector: "initFromModel",
-                path:     "initFromModel",
-                rules: {
-                    domToModel: {
-                        "": {
-                            transform: {
-                                type: "fluid.binder.transforms.checkToBoolean",
-                                inputPath: ""
-                            }
-                        }
-                    },
-                    modelToDom: {
-                        "": {
-                            transform: {
-                                type: "fluid.binder.transforms.booleanToCheck",
-                                inputPath: ""
-                            }
-                        }
-                    }
-                }
+                path: "initFromModel"
             },
             initFromMarkup: {
                 selector: "initFromMarkup",
@@ -44,25 +26,7 @@
             },
             updateFromMarkup: {
                 selector: "updateFromMarkup",
-                path:     "updateFromMarkup",
-                rules: {
-                    domToModel: {
-                        "": {
-                            transform: {
-                                type: "fluid.binder.transforms.checkToBoolean",
-                                inputPath: ""
-                            }
-                        }
-                    },
-                    modelToDom: {
-                        "": {
-                            transform: {
-                                type: "fluid.binder.transforms.booleanToCheck",
-                                inputPath: ""
-                            }
-                        }
-                    }
-                }
+                path:     "updateFromMarkup"
             },
             array: {
                 selector: "array",
@@ -140,7 +104,7 @@
                         },
                         {
                             func: "fluid.tests.binder.testElement",
-                            args: ["assertDeepEq", "The 'checkbox' form field should have been updated with new model data...", ["updated using applier"], "[name='update-from-model']"] // (fnName, message, expected, selector)
+                            args: ["assertEquals", "The 'checkbox' form field should have been updated with new model data...", true, "[name='update-from-model']"] // (fnName, message, expected, selector)
                         }
                     ]
                 },
