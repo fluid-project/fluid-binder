@@ -1,6 +1,6 @@
 {
     "name": "fluid-binder",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "author": "Tony Atkins <tony@raisingthefloor.org>",
     "license": "BSD-3-Clause",
     "scripts": {
